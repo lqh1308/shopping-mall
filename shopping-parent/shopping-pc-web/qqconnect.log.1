@@ -1,0 +1,1310 @@
+106605 DEBUG [2019-08-14 19:07:15]  Couldn't find template in cache for "pay_success.ftl"("zh_CN", UTF-8, parsed); will try to load it.
+106606 DEBUG [2019-08-14 19:07:15]  TemplateLoader.findTemplateSource("pay_success_zh_CN.ftl"): Not found
+106607 DEBUG [2019-08-14 19:07:15]  TemplateLoader.findTemplateSource("pay_success_zh.ftl"): Not found
+106607 DEBUG [2019-08-14 19:07:15]  TemplateLoader.findTemplateSource("pay_success.ftl"): Found
+106607 DEBUG [2019-08-14 19:07:15]  Loading template for "pay_success.ftl"("zh_CN", UTF-8, parsed) from "E:\\ShopMall\\shopping-parent\\shopping-pc-web\\target\\classes\\templates\\pay_success.ftl"
+106612 DEBUG [2019-08-14 19:07:15]  "pay_success.ftl"("zh_CN", UTF-8, parsed) cached copy not yet stale; using cached.
+509166 DEBUG [2019-08-14 19:13:57]  TemplateLoader.findTemplateSource("error_zh_CN.ftl"): Not found
+509167 DEBUG [2019-08-14 19:13:57]  TemplateLoader.findTemplateSource("error_zh.ftl"): Not found
+509168 DEBUG [2019-08-14 19:13:57]  TemplateLoader.findTemplateSource("error.ftl"): Found
+509168 DEBUG [2019-08-14 19:13:57]  "error.ftl"("zh_CN", UTF-8, parsed): using cached since E:\ShopMall\shopping-parent\shopping-pc-web\target\classes\templates\error.ftl hasn't changed.
+509169 DEBUG [2019-08-14 19:13:57]  "error.ftl"("zh_CN", UTF-8, parsed) cached copy not yet stale; using cached.
+509169 ERROR [2019-08-14 19:13:57]  Error executing FreeMarker template
+FreeMarker template error:
+The following has evaluated to null or missing:
+==> errorMsg  [in template "error.ftl" at line 2, column 6]
+
+----
+Tip: If the failing expression is known to be legally refer to something that's sometimes null or missing, either specify a default value like myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthesis: (myOptionalVar.foo)!myDefault, (myOptionalVar.foo)??
+----
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: ${errorMsg}  [in template "error.ftl" at line 2, column 4]
+----
+
+Java stack trace (for programmers):
+----
+freemarker.core.InvalidReferenceException: [... Exception message was already printed; see it above ...]
+	at freemarker.core.InvalidReferenceException.getInstance(InvalidReferenceException.java:134)
+	at freemarker.core.EvalUtil.coerceModelToTextualCommon(EvalUtil.java:465)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:387)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:356)
+	at freemarker.core.DollarVariable.calculateInterpolatedStringOrMarkup(DollarVariable.java:96)
+	at freemarker.core.DollarVariable.accept(DollarVariable.java:59)
+	at freemarker.core.Environment.visit(Environment.java:326)
+	at freemarker.core.Environment.visit(Environment.java:332)
+	at freemarker.core.Environment.process(Environment.java:305)
+	at freemarker.template.Template.process(Template.java:378)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.processTemplate(FreeMarkerView.java:367)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.doRender(FreeMarkerView.java:284)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.renderMergedTemplateModel(FreeMarkerView.java:234)
+	at org.springframework.web.servlet.view.AbstractTemplateView.renderMergedOutputModel(AbstractTemplateView.java:167)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:303)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1282)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1037)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:980)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:728)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:469)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:392)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:311)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:395)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:254)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:177)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1455)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+570240 DEBUG [2019-08-14 19:14:58]  TemplateLoader.findTemplateSource("error_zh_CN.ftl"): Not found
+570240 DEBUG [2019-08-14 19:14:58]  TemplateLoader.findTemplateSource("error_zh.ftl"): Not found
+570241 DEBUG [2019-08-14 19:14:58]  TemplateLoader.findTemplateSource("error.ftl"): Found
+570241 DEBUG [2019-08-14 19:14:58]  "error.ftl"("zh_CN", UTF-8, parsed): using cached since E:\ShopMall\shopping-parent\shopping-pc-web\target\classes\templates\error.ftl hasn't changed.
+570242 DEBUG [2019-08-14 19:14:58]  "error.ftl"("zh_CN", UTF-8, parsed) cached copy not yet stale; using cached.
+570242 ERROR [2019-08-14 19:14:58]  Error executing FreeMarker template
+FreeMarker template error:
+The following has evaluated to null or missing:
+==> errorMsg  [in template "error.ftl" at line 2, column 6]
+
+----
+Tip: If the failing expression is known to be legally refer to something that's sometimes null or missing, either specify a default value like myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthesis: (myOptionalVar.foo)!myDefault, (myOptionalVar.foo)??
+----
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: ${errorMsg}  [in template "error.ftl" at line 2, column 4]
+----
+
+Java stack trace (for programmers):
+----
+freemarker.core.InvalidReferenceException: [... Exception message was already printed; see it above ...]
+	at freemarker.core.InvalidReferenceException.getInstance(InvalidReferenceException.java:134)
+	at freemarker.core.EvalUtil.coerceModelToTextualCommon(EvalUtil.java:465)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:387)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:356)
+	at freemarker.core.DollarVariable.calculateInterpolatedStringOrMarkup(DollarVariable.java:96)
+	at freemarker.core.DollarVariable.accept(DollarVariable.java:59)
+	at freemarker.core.Environment.visit(Environment.java:326)
+	at freemarker.core.Environment.visit(Environment.java:332)
+	at freemarker.core.Environment.process(Environment.java:305)
+	at freemarker.template.Template.process(Template.java:378)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.processTemplate(FreeMarkerView.java:367)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.doRender(FreeMarkerView.java:284)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.renderMergedTemplateModel(FreeMarkerView.java:234)
+	at org.springframework.web.servlet.view.AbstractTemplateView.renderMergedOutputModel(AbstractTemplateView.java:167)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:303)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1282)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1037)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:980)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:728)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:469)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:392)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:311)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:395)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:254)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:177)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1455)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+607397 DEBUG [2019-08-14 19:15:35]  TemplateLoader.findTemplateSource("error_zh_CN.ftl"): Not found
+607397 DEBUG [2019-08-14 19:15:35]  TemplateLoader.findTemplateSource("error_zh.ftl"): Not found
+607398 DEBUG [2019-08-14 19:15:35]  TemplateLoader.findTemplateSource("error.ftl"): Found
+607398 DEBUG [2019-08-14 19:15:35]  "error.ftl"("zh_CN", UTF-8, parsed): using cached since E:\ShopMall\shopping-parent\shopping-pc-web\target\classes\templates\error.ftl hasn't changed.
+607399 DEBUG [2019-08-14 19:15:35]  "error.ftl"("zh_CN", UTF-8, parsed) cached copy not yet stale; using cached.
+607399 ERROR [2019-08-14 19:15:35]  Error executing FreeMarker template
+FreeMarker template error:
+The following has evaluated to null or missing:
+==> errorMsg  [in template "error.ftl" at line 2, column 6]
+
+----
+Tip: If the failing expression is known to be legally refer to something that's sometimes null or missing, either specify a default value like myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthesis: (myOptionalVar.foo)!myDefault, (myOptionalVar.foo)??
+----
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: ${errorMsg}  [in template "error.ftl" at line 2, column 4]
+----
+
+Java stack trace (for programmers):
+----
+freemarker.core.InvalidReferenceException: [... Exception message was already printed; see it above ...]
+	at freemarker.core.InvalidReferenceException.getInstance(InvalidReferenceException.java:134)
+	at freemarker.core.EvalUtil.coerceModelToTextualCommon(EvalUtil.java:465)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:387)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:356)
+	at freemarker.core.DollarVariable.calculateInterpolatedStringOrMarkup(DollarVariable.java:96)
+	at freemarker.core.DollarVariable.accept(DollarVariable.java:59)
+	at freemarker.core.Environment.visit(Environment.java:326)
+	at freemarker.core.Environment.visit(Environment.java:332)
+	at freemarker.core.Environment.process(Environment.java:305)
+	at freemarker.template.Template.process(Template.java:378)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.processTemplate(FreeMarkerView.java:367)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.doRender(FreeMarkerView.java:284)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.renderMergedTemplateModel(FreeMarkerView.java:234)
+	at org.springframework.web.servlet.view.AbstractTemplateView.renderMergedOutputModel(AbstractTemplateView.java:167)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:303)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1282)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1037)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:980)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:728)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:469)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:392)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:311)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:395)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:254)
+	at org.apache.catalina.core.StandardHostValve.throwable(StandardHostValve.java:349)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:175)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1455)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+629393 DEBUG [2019-08-14 19:15:57]  TemplateLoader.findTemplateSource("error_zh_CN.ftl"): Not found
+629394 DEBUG [2019-08-14 19:15:57]  TemplateLoader.findTemplateSource("error_zh.ftl"): Not found
+629394 DEBUG [2019-08-14 19:15:57]  TemplateLoader.findTemplateSource("error.ftl"): Found
+629394 DEBUG [2019-08-14 19:15:57]  "error.ftl"("zh_CN", UTF-8, parsed): using cached since E:\ShopMall\shopping-parent\shopping-pc-web\target\classes\templates\error.ftl hasn't changed.
+629395 DEBUG [2019-08-14 19:15:57]  "error.ftl"("zh_CN", UTF-8, parsed) cached copy not yet stale; using cached.
+629395 ERROR [2019-08-14 19:15:57]  Error executing FreeMarker template
+FreeMarker template error:
+The following has evaluated to null or missing:
+==> errorMsg  [in template "error.ftl" at line 2, column 6]
+
+----
+Tip: If the failing expression is known to be legally refer to something that's sometimes null or missing, either specify a default value like myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthesis: (myOptionalVar.foo)!myDefault, (myOptionalVar.foo)??
+----
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: ${errorMsg}  [in template "error.ftl" at line 2, column 4]
+----
+
+Java stack trace (for programmers):
+----
+freemarker.core.InvalidReferenceException: [... Exception message was already printed; see it above ...]
+	at freemarker.core.InvalidReferenceException.getInstance(InvalidReferenceException.java:134)
+	at freemarker.core.EvalUtil.coerceModelToTextualCommon(EvalUtil.java:465)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:387)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:356)
+	at freemarker.core.DollarVariable.calculateInterpolatedStringOrMarkup(DollarVariable.java:96)
+	at freemarker.core.DollarVariable.accept(DollarVariable.java:59)
+	at freemarker.core.Environment.visit(Environment.java:326)
+	at freemarker.core.Environment.visit(Environment.java:332)
+	at freemarker.core.Environment.process(Environment.java:305)
+	at freemarker.template.Template.process(Template.java:378)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.processTemplate(FreeMarkerView.java:367)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.doRender(FreeMarkerView.java:284)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.renderMergedTemplateModel(FreeMarkerView.java:234)
+	at org.springframework.web.servlet.view.AbstractTemplateView.renderMergedOutputModel(AbstractTemplateView.java:167)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:303)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1282)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1037)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:980)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:728)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:469)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:392)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:311)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:395)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:254)
+	at org.apache.catalina.core.StandardHostValve.throwable(StandardHostValve.java:349)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:175)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1455)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+832152 DEBUG [2019-08-14 19:19:20]  TemplateLoader.findTemplateSource("error_zh_CN.ftl"): Not found
+832153 DEBUG [2019-08-14 19:19:20]  TemplateLoader.findTemplateSource("error_zh.ftl"): Not found
+832153 DEBUG [2019-08-14 19:19:20]  TemplateLoader.findTemplateSource("error.ftl"): Found
+832153 DEBUG [2019-08-14 19:19:20]  "error.ftl"("zh_CN", UTF-8, parsed): using cached since E:\ShopMall\shopping-parent\shopping-pc-web\target\classes\templates\error.ftl hasn't changed.
+832154 DEBUG [2019-08-14 19:19:20]  "error.ftl"("zh_CN", UTF-8, parsed) cached copy not yet stale; using cached.
+832154 ERROR [2019-08-14 19:19:20]  Error executing FreeMarker template
+FreeMarker template error:
+The following has evaluated to null or missing:
+==> errorMsg  [in template "error.ftl" at line 2, column 6]
+
+----
+Tip: If the failing expression is known to be legally refer to something that's sometimes null or missing, either specify a default value like myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthesis: (myOptionalVar.foo)!myDefault, (myOptionalVar.foo)??
+----
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: ${errorMsg}  [in template "error.ftl" at line 2, column 4]
+----
+
+Java stack trace (for programmers):
+----
+freemarker.core.InvalidReferenceException: [... Exception message was already printed; see it above ...]
+	at freemarker.core.InvalidReferenceException.getInstance(InvalidReferenceException.java:134)
+	at freemarker.core.EvalUtil.coerceModelToTextualCommon(EvalUtil.java:465)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:387)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:356)
+	at freemarker.core.DollarVariable.calculateInterpolatedStringOrMarkup(DollarVariable.java:96)
+	at freemarker.core.DollarVariable.accept(DollarVariable.java:59)
+	at freemarker.core.Environment.visit(Environment.java:326)
+	at freemarker.core.Environment.visit(Environment.java:332)
+	at freemarker.core.Environment.process(Environment.java:305)
+	at freemarker.template.Template.process(Template.java:378)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.processTemplate(FreeMarkerView.java:367)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.doRender(FreeMarkerView.java:284)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.renderMergedTemplateModel(FreeMarkerView.java:234)
+	at org.springframework.web.servlet.view.AbstractTemplateView.renderMergedOutputModel(AbstractTemplateView.java:167)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:303)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1282)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1037)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:980)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:728)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:469)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:392)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:311)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:395)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:254)
+	at org.apache.catalina.core.StandardHostValve.throwable(StandardHostValve.java:349)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:175)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1455)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+920671 DEBUG [2019-08-14 19:20:49]  TemplateLoader.findTemplateSource("error_zh_CN.ftl"): Not found
+920672 DEBUG [2019-08-14 19:20:49]  TemplateLoader.findTemplateSource("error_zh.ftl"): Not found
+920673 DEBUG [2019-08-14 19:20:49]  TemplateLoader.findTemplateSource("error.ftl"): Found
+920673 DEBUG [2019-08-14 19:20:49]  "error.ftl"("zh_CN", UTF-8, parsed): using cached since E:\ShopMall\shopping-parent\shopping-pc-web\target\classes\templates\error.ftl hasn't changed.
+920673 DEBUG [2019-08-14 19:20:49]  "error.ftl"("zh_CN", UTF-8, parsed) cached copy not yet stale; using cached.
+920673 ERROR [2019-08-14 19:20:49]  Error executing FreeMarker template
+FreeMarker template error:
+The following has evaluated to null or missing:
+==> errorMsg  [in template "error.ftl" at line 2, column 6]
+
+----
+Tip: If the failing expression is known to be legally refer to something that's sometimes null or missing, either specify a default value like myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthesis: (myOptionalVar.foo)!myDefault, (myOptionalVar.foo)??
+----
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: ${errorMsg}  [in template "error.ftl" at line 2, column 4]
+----
+
+Java stack trace (for programmers):
+----
+freemarker.core.InvalidReferenceException: [... Exception message was already printed; see it above ...]
+	at freemarker.core.InvalidReferenceException.getInstance(InvalidReferenceException.java:134)
+	at freemarker.core.EvalUtil.coerceModelToTextualCommon(EvalUtil.java:465)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:387)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:356)
+	at freemarker.core.DollarVariable.calculateInterpolatedStringOrMarkup(DollarVariable.java:96)
+	at freemarker.core.DollarVariable.accept(DollarVariable.java:59)
+	at freemarker.core.Environment.visit(Environment.java:326)
+	at freemarker.core.Environment.visit(Environment.java:332)
+	at freemarker.core.Environment.process(Environment.java:305)
+	at freemarker.template.Template.process(Template.java:378)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.processTemplate(FreeMarkerView.java:367)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.doRender(FreeMarkerView.java:284)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.renderMergedTemplateModel(FreeMarkerView.java:234)
+	at org.springframework.web.servlet.view.AbstractTemplateView.renderMergedOutputModel(AbstractTemplateView.java:167)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:303)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1282)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1037)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:980)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:728)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:469)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:392)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:311)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:395)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:254)
+	at org.apache.catalina.core.StandardHostValve.throwable(StandardHostValve.java:349)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:175)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1455)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+1054207 DEBUG [2019-08-14 19:23:02]  TemplateLoader.findTemplateSource("error_zh_CN.ftl"): Not found
+1054207 DEBUG [2019-08-14 19:23:02]  TemplateLoader.findTemplateSource("error_zh.ftl"): Not found
+1054208 DEBUG [2019-08-14 19:23:02]  TemplateLoader.findTemplateSource("error.ftl"): Found
+1054208 DEBUG [2019-08-14 19:23:02]  "error.ftl"("zh_CN", UTF-8, parsed): using cached since E:\ShopMall\shopping-parent\shopping-pc-web\target\classes\templates\error.ftl hasn't changed.
+1054208 DEBUG [2019-08-14 19:23:02]  "error.ftl"("zh_CN", UTF-8, parsed) cached copy not yet stale; using cached.
+1054209 ERROR [2019-08-14 19:23:02]  Error executing FreeMarker template
+FreeMarker template error:
+The following has evaluated to null or missing:
+==> errorMsg  [in template "error.ftl" at line 2, column 6]
+
+----
+Tip: If the failing expression is known to be legally refer to something that's sometimes null or missing, either specify a default value like myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthesis: (myOptionalVar.foo)!myDefault, (myOptionalVar.foo)??
+----
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: ${errorMsg}  [in template "error.ftl" at line 2, column 4]
+----
+
+Java stack trace (for programmers):
+----
+freemarker.core.InvalidReferenceException: [... Exception message was already printed; see it above ...]
+	at freemarker.core.InvalidReferenceException.getInstance(InvalidReferenceException.java:134)
+	at freemarker.core.EvalUtil.coerceModelToTextualCommon(EvalUtil.java:465)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:387)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:356)
+	at freemarker.core.DollarVariable.calculateInterpolatedStringOrMarkup(DollarVariable.java:96)
+	at freemarker.core.DollarVariable.accept(DollarVariable.java:59)
+	at freemarker.core.Environment.visit(Environment.java:326)
+	at freemarker.core.Environment.visit(Environment.java:332)
+	at freemarker.core.Environment.process(Environment.java:305)
+	at freemarker.template.Template.process(Template.java:378)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.processTemplate(FreeMarkerView.java:367)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.doRender(FreeMarkerView.java:284)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.renderMergedTemplateModel(FreeMarkerView.java:234)
+	at org.springframework.web.servlet.view.AbstractTemplateView.renderMergedOutputModel(AbstractTemplateView.java:167)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:303)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1282)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1037)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:980)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:728)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:469)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:392)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:311)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:395)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:254)
+	at org.apache.catalina.core.StandardHostValve.throwable(StandardHostValve.java:349)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:175)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1455)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+1120518 DEBUG [2019-08-14 19:24:08]  Couldn't find template in cache for "error.ftl"("zh_CN", UTF-8, parsed); will try to load it.
+1120519 DEBUG [2019-08-14 19:24:08]  TemplateLoader.findTemplateSource("error_zh_CN.ftl"): Not found
+1120520 DEBUG [2019-08-14 19:24:08]  TemplateLoader.findTemplateSource("error_zh.ftl"): Not found
+1120520 DEBUG [2019-08-14 19:24:08]  TemplateLoader.findTemplateSource("error.ftl"): Found
+1120520 DEBUG [2019-08-14 19:24:08]  Loading template for "error.ftl"("zh_CN", UTF-8, parsed) from "E:\\ShopMall\\shopping-parent\\shopping-pc-web\\target\\classes\\templates\\error.ftl"
+1120522 DEBUG [2019-08-14 19:24:08]  "error.ftl"("zh_CN", UTF-8, parsed) cached copy not yet stale; using cached.
+1120522 ERROR [2019-08-14 19:24:08]  Error executing FreeMarker template
+FreeMarker template error:
+The following has evaluated to null or missing:
+==> errorMsg  [in template "error.ftl" at line 2, column 6]
+
+----
+Tip: If the failing expression is known to be legally refer to something that's sometimes null or missing, either specify a default value like myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthesis: (myOptionalVar.foo)!myDefault, (myOptionalVar.foo)??
+----
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: ${errorMsg}  [in template "error.ftl" at line 2, column 4]
+----
+
+Java stack trace (for programmers):
+----
+freemarker.core.InvalidReferenceException: [... Exception message was already printed; see it above ...]
+	at freemarker.core.InvalidReferenceException.getInstance(InvalidReferenceException.java:134)
+	at freemarker.core.EvalUtil.coerceModelToTextualCommon(EvalUtil.java:465)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:387)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:356)
+	at freemarker.core.DollarVariable.calculateInterpolatedStringOrMarkup(DollarVariable.java:96)
+	at freemarker.core.DollarVariable.accept(DollarVariable.java:59)
+	at freemarker.core.Environment.visit(Environment.java:326)
+	at freemarker.core.Environment.visit(Environment.java:332)
+	at freemarker.core.Environment.process(Environment.java:305)
+	at freemarker.template.Template.process(Template.java:378)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.processTemplate(FreeMarkerView.java:367)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.doRender(FreeMarkerView.java:284)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.renderMergedTemplateModel(FreeMarkerView.java:234)
+	at org.springframework.web.servlet.view.AbstractTemplateView.renderMergedOutputModel(AbstractTemplateView.java:167)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:303)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1282)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1037)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:980)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:728)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:469)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:392)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:311)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:395)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:254)
+	at org.apache.catalina.core.StandardHostValve.throwable(StandardHostValve.java:349)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:175)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1455)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+1156446 DEBUG [2019-08-14 19:24:44]  TemplateLoader.findTemplateSource("error_zh_CN.ftl"): Not found
+1156447 DEBUG [2019-08-14 19:24:44]  TemplateLoader.findTemplateSource("error_zh.ftl"): Not found
+1156447 DEBUG [2019-08-14 19:24:44]  TemplateLoader.findTemplateSource("error.ftl"): Found
+1156448 DEBUG [2019-08-14 19:24:44]  "error.ftl"("zh_CN", UTF-8, parsed): using cached since E:\ShopMall\shopping-parent\shopping-pc-web\target\classes\templates\error.ftl hasn't changed.
+1156448 DEBUG [2019-08-14 19:24:44]  "error.ftl"("zh_CN", UTF-8, parsed) cached copy not yet stale; using cached.
+1156448 ERROR [2019-08-14 19:24:44]  Error executing FreeMarker template
+FreeMarker template error:
+The following has evaluated to null or missing:
+==> errorMsg  [in template "error.ftl" at line 2, column 6]
+
+----
+Tip: If the failing expression is known to be legally refer to something that's sometimes null or missing, either specify a default value like myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthesis: (myOptionalVar.foo)!myDefault, (myOptionalVar.foo)??
+----
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: ${errorMsg}  [in template "error.ftl" at line 2, column 4]
+----
+
+Java stack trace (for programmers):
+----
+freemarker.core.InvalidReferenceException: [... Exception message was already printed; see it above ...]
+	at freemarker.core.InvalidReferenceException.getInstance(InvalidReferenceException.java:134)
+	at freemarker.core.EvalUtil.coerceModelToTextualCommon(EvalUtil.java:465)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:387)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:356)
+	at freemarker.core.DollarVariable.calculateInterpolatedStringOrMarkup(DollarVariable.java:96)
+	at freemarker.core.DollarVariable.accept(DollarVariable.java:59)
+	at freemarker.core.Environment.visit(Environment.java:326)
+	at freemarker.core.Environment.visit(Environment.java:332)
+	at freemarker.core.Environment.process(Environment.java:305)
+	at freemarker.template.Template.process(Template.java:378)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.processTemplate(FreeMarkerView.java:367)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.doRender(FreeMarkerView.java:284)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.renderMergedTemplateModel(FreeMarkerView.java:234)
+	at org.springframework.web.servlet.view.AbstractTemplateView.renderMergedOutputModel(AbstractTemplateView.java:167)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:303)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1282)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1037)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:980)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:728)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:469)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:392)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:311)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:395)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:254)
+	at org.apache.catalina.core.StandardHostValve.throwable(StandardHostValve.java:349)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:175)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1455)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+1237739 DEBUG [2019-08-14 19:26:06]  TemplateLoader.findTemplateSource("error_zh_CN.ftl"): Not found
+1237740 DEBUG [2019-08-14 19:26:06]  TemplateLoader.findTemplateSource("error_zh.ftl"): Not found
+1237740 DEBUG [2019-08-14 19:26:06]  TemplateLoader.findTemplateSource("error.ftl"): Found
+1237740 DEBUG [2019-08-14 19:26:06]  "error.ftl"("zh_CN", UTF-8, parsed): using cached since E:\ShopMall\shopping-parent\shopping-pc-web\target\classes\templates\error.ftl hasn't changed.
+1237741 DEBUG [2019-08-14 19:26:06]  "error.ftl"("zh_CN", UTF-8, parsed) cached copy not yet stale; using cached.
+1237741 ERROR [2019-08-14 19:26:06]  Error executing FreeMarker template
+FreeMarker template error:
+The following has evaluated to null or missing:
+==> errorMsg  [in template "error.ftl" at line 2, column 6]
+
+----
+Tip: If the failing expression is known to be legally refer to something that's sometimes null or missing, either specify a default value like myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthesis: (myOptionalVar.foo)!myDefault, (myOptionalVar.foo)??
+----
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: ${errorMsg}  [in template "error.ftl" at line 2, column 4]
+----
+
+Java stack trace (for programmers):
+----
+freemarker.core.InvalidReferenceException: [... Exception message was already printed; see it above ...]
+	at freemarker.core.InvalidReferenceException.getInstance(InvalidReferenceException.java:134)
+	at freemarker.core.EvalUtil.coerceModelToTextualCommon(EvalUtil.java:465)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:387)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:356)
+	at freemarker.core.DollarVariable.calculateInterpolatedStringOrMarkup(DollarVariable.java:96)
+	at freemarker.core.DollarVariable.accept(DollarVariable.java:59)
+	at freemarker.core.Environment.visit(Environment.java:326)
+	at freemarker.core.Environment.visit(Environment.java:332)
+	at freemarker.core.Environment.process(Environment.java:305)
+	at freemarker.template.Template.process(Template.java:378)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.processTemplate(FreeMarkerView.java:367)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.doRender(FreeMarkerView.java:284)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.renderMergedTemplateModel(FreeMarkerView.java:234)
+	at org.springframework.web.servlet.view.AbstractTemplateView.renderMergedOutputModel(AbstractTemplateView.java:167)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:303)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1282)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1037)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:980)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:728)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:469)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:392)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:311)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:395)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:254)
+	at org.apache.catalina.core.StandardHostValve.throwable(StandardHostValve.java:349)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:175)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1455)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+1386355 DEBUG [2019-08-14 19:28:34]  Couldn't find template in cache for "success.ftl"("zh_CN", UTF-8, parsed); will try to load it.
+1386356 DEBUG [2019-08-14 19:28:34]  TemplateLoader.findTemplateSource("success_zh_CN.ftl"): Not found
+1386356 DEBUG [2019-08-14 19:28:34]  TemplateLoader.findTemplateSource("success_zh.ftl"): Not found
+1386357 DEBUG [2019-08-14 19:28:34]  TemplateLoader.findTemplateSource("success.ftl"): Not found
+1386386 DEBUG [2019-08-14 19:28:34]  TemplateLoader.findTemplateSource("error_zh_CN.ftl"): Not found
+1386387 DEBUG [2019-08-14 19:28:34]  TemplateLoader.findTemplateSource("error_zh.ftl"): Not found
+1386388 DEBUG [2019-08-14 19:28:34]  TemplateLoader.findTemplateSource("error.ftl"): Found
+1386388 DEBUG [2019-08-14 19:28:34]  "error.ftl"("zh_CN", UTF-8, parsed): using cached since E:\ShopMall\shopping-parent\shopping-pc-web\target\classes\templates\error.ftl hasn't changed.
+1386388 DEBUG [2019-08-14 19:28:34]  "error.ftl"("zh_CN", UTF-8, parsed) cached copy not yet stale; using cached.
+1386388 ERROR [2019-08-14 19:28:34]  Error executing FreeMarker template
+FreeMarker template error:
+The following has evaluated to null or missing:
+==> errorMsg  [in template "error.ftl" at line 2, column 6]
+
+----
+Tip: If the failing expression is known to be legally refer to something that's sometimes null or missing, either specify a default value like myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthesis: (myOptionalVar.foo)!myDefault, (myOptionalVar.foo)??
+----
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: ${errorMsg}  [in template "error.ftl" at line 2, column 4]
+----
+
+Java stack trace (for programmers):
+----
+freemarker.core.InvalidReferenceException: [... Exception message was already printed; see it above ...]
+	at freemarker.core.InvalidReferenceException.getInstance(InvalidReferenceException.java:134)
+	at freemarker.core.EvalUtil.coerceModelToTextualCommon(EvalUtil.java:465)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:387)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:356)
+	at freemarker.core.DollarVariable.calculateInterpolatedStringOrMarkup(DollarVariable.java:96)
+	at freemarker.core.DollarVariable.accept(DollarVariable.java:59)
+	at freemarker.core.Environment.visit(Environment.java:326)
+	at freemarker.core.Environment.visit(Environment.java:332)
+	at freemarker.core.Environment.process(Environment.java:305)
+	at freemarker.template.Template.process(Template.java:378)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.processTemplate(FreeMarkerView.java:367)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.doRender(FreeMarkerView.java:284)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.renderMergedTemplateModel(FreeMarkerView.java:234)
+	at org.springframework.web.servlet.view.AbstractTemplateView.renderMergedOutputModel(AbstractTemplateView.java:167)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:303)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1282)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1037)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:980)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:728)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:469)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:392)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:311)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:395)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:254)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:177)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1455)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+1396656 DEBUG [2019-08-14 19:28:45]  TemplateLoader.findTemplateSource("success_zh_CN.ftl"): Not found
+1396657 DEBUG [2019-08-14 19:28:45]  TemplateLoader.findTemplateSource("success_zh.ftl"): Not found
+1396657 DEBUG [2019-08-14 19:28:45]  TemplateLoader.findTemplateSource("success.ftl"): Not found
+1396657 DEBUG [2019-08-14 19:28:45]  "success.ftl"("zh_CN", UTF-8, parsed) no source found.
+1396672 DEBUG [2019-08-14 19:28:45]  TemplateLoader.findTemplateSource("error_zh_CN.ftl"): Not found
+1396673 DEBUG [2019-08-14 19:28:45]  TemplateLoader.findTemplateSource("error_zh.ftl"): Not found
+1396673 DEBUG [2019-08-14 19:28:45]  TemplateLoader.findTemplateSource("error.ftl"): Found
+1396673 DEBUG [2019-08-14 19:28:45]  "error.ftl"("zh_CN", UTF-8, parsed): using cached since E:\ShopMall\shopping-parent\shopping-pc-web\target\classes\templates\error.ftl hasn't changed.
+1396673 DEBUG [2019-08-14 19:28:45]  "error.ftl"("zh_CN", UTF-8, parsed) cached copy not yet stale; using cached.
+1396673 ERROR [2019-08-14 19:28:45]  Error executing FreeMarker template
+FreeMarker template error:
+The following has evaluated to null or missing:
+==> errorMsg  [in template "error.ftl" at line 2, column 6]
+
+----
+Tip: If the failing expression is known to be legally refer to something that's sometimes null or missing, either specify a default value like myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthesis: (myOptionalVar.foo)!myDefault, (myOptionalVar.foo)??
+----
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: ${errorMsg}  [in template "error.ftl" at line 2, column 4]
+----
+
+Java stack trace (for programmers):
+----
+freemarker.core.InvalidReferenceException: [... Exception message was already printed; see it above ...]
+	at freemarker.core.InvalidReferenceException.getInstance(InvalidReferenceException.java:134)
+	at freemarker.core.EvalUtil.coerceModelToTextualCommon(EvalUtil.java:465)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:387)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:356)
+	at freemarker.core.DollarVariable.calculateInterpolatedStringOrMarkup(DollarVariable.java:96)
+	at freemarker.core.DollarVariable.accept(DollarVariable.java:59)
+	at freemarker.core.Environment.visit(Environment.java:326)
+	at freemarker.core.Environment.visit(Environment.java:332)
+	at freemarker.core.Environment.process(Environment.java:305)
+	at freemarker.template.Template.process(Template.java:378)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.processTemplate(FreeMarkerView.java:367)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.doRender(FreeMarkerView.java:284)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.renderMergedTemplateModel(FreeMarkerView.java:234)
+	at org.springframework.web.servlet.view.AbstractTemplateView.renderMergedOutputModel(AbstractTemplateView.java:167)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:303)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1282)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1037)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:980)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:728)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:469)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:392)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:311)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:395)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:254)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:177)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1455)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+1400831 DEBUG [2019-08-14 19:28:49]  "success.ftl"("zh_CN", UTF-8, parsed) cached copy not yet stale; using cached.
+1400838 DEBUG [2019-08-14 19:28:49]  "error.ftl"("zh_CN", UTF-8, parsed) cached copy not yet stale; using cached.
+1400838 DEBUG [2019-08-14 19:28:49]  "error.ftl"("zh_CN", UTF-8, parsed) cached copy not yet stale; using cached.
+1400839 ERROR [2019-08-14 19:28:49]  Error executing FreeMarker template
+FreeMarker template error:
+The following has evaluated to null or missing:
+==> errorMsg  [in template "error.ftl" at line 2, column 6]
+
+----
+Tip: If the failing expression is known to be legally refer to something that's sometimes null or missing, either specify a default value like myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthesis: (myOptionalVar.foo)!myDefault, (myOptionalVar.foo)??
+----
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: ${errorMsg}  [in template "error.ftl" at line 2, column 4]
+----
+
+Java stack trace (for programmers):
+----
+freemarker.core.InvalidReferenceException: [... Exception message was already printed; see it above ...]
+	at freemarker.core.InvalidReferenceException.getInstance(InvalidReferenceException.java:134)
+	at freemarker.core.EvalUtil.coerceModelToTextualCommon(EvalUtil.java:465)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:387)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:356)
+	at freemarker.core.DollarVariable.calculateInterpolatedStringOrMarkup(DollarVariable.java:96)
+	at freemarker.core.DollarVariable.accept(DollarVariable.java:59)
+	at freemarker.core.Environment.visit(Environment.java:326)
+	at freemarker.core.Environment.visit(Environment.java:332)
+	at freemarker.core.Environment.process(Environment.java:305)
+	at freemarker.template.Template.process(Template.java:378)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.processTemplate(FreeMarkerView.java:367)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.doRender(FreeMarkerView.java:284)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.renderMergedTemplateModel(FreeMarkerView.java:234)
+	at org.springframework.web.servlet.view.AbstractTemplateView.renderMergedOutputModel(AbstractTemplateView.java:167)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:303)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1282)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1037)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:980)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:728)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:469)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:392)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:311)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:395)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:254)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:177)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1455)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+1423592 DEBUG [2019-08-14 19:29:12]  TemplateLoader.findTemplateSource("error_zh_CN.ftl"): Not found
+1423592 DEBUG [2019-08-14 19:29:12]  TemplateLoader.findTemplateSource("error_zh.ftl"): Not found
+1423593 DEBUG [2019-08-14 19:29:12]  TemplateLoader.findTemplateSource("error.ftl"): Found
+1423593 DEBUG [2019-08-14 19:29:12]  "error.ftl"("zh_CN", UTF-8, parsed): using cached since E:\ShopMall\shopping-parent\shopping-pc-web\target\classes\templates\error.ftl hasn't changed.
+1423593 DEBUG [2019-08-14 19:29:12]  "error.ftl"("zh_CN", UTF-8, parsed) cached copy not yet stale; using cached.
+1423594 ERROR [2019-08-14 19:29:12]  Error executing FreeMarker template
+FreeMarker template error:
+The following has evaluated to null or missing:
+==> errorMsg  [in template "error.ftl" at line 2, column 6]
+
+----
+Tip: If the failing expression is known to be legally refer to something that's sometimes null or missing, either specify a default value like myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthesis: (myOptionalVar.foo)!myDefault, (myOptionalVar.foo)??
+----
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: ${errorMsg}  [in template "error.ftl" at line 2, column 4]
+----
+
+Java stack trace (for programmers):
+----
+freemarker.core.InvalidReferenceException: [... Exception message was already printed; see it above ...]
+	at freemarker.core.InvalidReferenceException.getInstance(InvalidReferenceException.java:134)
+	at freemarker.core.EvalUtil.coerceModelToTextualCommon(EvalUtil.java:465)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:387)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:356)
+	at freemarker.core.DollarVariable.calculateInterpolatedStringOrMarkup(DollarVariable.java:96)
+	at freemarker.core.DollarVariable.accept(DollarVariable.java:59)
+	at freemarker.core.Environment.visit(Environment.java:326)
+	at freemarker.core.Environment.visit(Environment.java:332)
+	at freemarker.core.Environment.process(Environment.java:305)
+	at freemarker.template.Template.process(Template.java:378)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.processTemplate(FreeMarkerView.java:367)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.doRender(FreeMarkerView.java:284)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.renderMergedTemplateModel(FreeMarkerView.java:234)
+	at org.springframework.web.servlet.view.AbstractTemplateView.renderMergedOutputModel(AbstractTemplateView.java:167)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:303)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1282)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1037)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:980)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:728)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:469)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:392)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:311)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:395)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:254)
+	at org.apache.catalina.core.StandardHostValve.throwable(StandardHostValve.java:349)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:175)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1455)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+1509121 DEBUG [2019-08-14 19:30:37]  TemplateLoader.findTemplateSource("error_zh_CN.ftl"): Not found
+1509122 DEBUG [2019-08-14 19:30:37]  TemplateLoader.findTemplateSource("error_zh.ftl"): Not found
+1509123 DEBUG [2019-08-14 19:30:37]  TemplateLoader.findTemplateSource("error.ftl"): Found
+1509123 DEBUG [2019-08-14 19:30:37]  "error.ftl"("zh_CN", UTF-8, parsed): using cached since E:\ShopMall\shopping-parent\shopping-pc-web\target\classes\templates\error.ftl hasn't changed.
+1509123 DEBUG [2019-08-14 19:30:37]  "error.ftl"("zh_CN", UTF-8, parsed) cached copy not yet stale; using cached.
+1509124 ERROR [2019-08-14 19:30:37]  Error executing FreeMarker template
+FreeMarker template error:
+The following has evaluated to null or missing:
+==> errorMsg  [in template "error.ftl" at line 2, column 6]
+
+----
+Tip: If the failing expression is known to be legally refer to something that's sometimes null or missing, either specify a default value like myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthesis: (myOptionalVar.foo)!myDefault, (myOptionalVar.foo)??
+----
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: ${errorMsg}  [in template "error.ftl" at line 2, column 4]
+----
+
+Java stack trace (for programmers):
+----
+freemarker.core.InvalidReferenceException: [... Exception message was already printed; see it above ...]
+	at freemarker.core.InvalidReferenceException.getInstance(InvalidReferenceException.java:134)
+	at freemarker.core.EvalUtil.coerceModelToTextualCommon(EvalUtil.java:465)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:387)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:356)
+	at freemarker.core.DollarVariable.calculateInterpolatedStringOrMarkup(DollarVariable.java:96)
+	at freemarker.core.DollarVariable.accept(DollarVariable.java:59)
+	at freemarker.core.Environment.visit(Environment.java:326)
+	at freemarker.core.Environment.visit(Environment.java:332)
+	at freemarker.core.Environment.process(Environment.java:305)
+	at freemarker.template.Template.process(Template.java:378)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.processTemplate(FreeMarkerView.java:367)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.doRender(FreeMarkerView.java:284)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.renderMergedTemplateModel(FreeMarkerView.java:234)
+	at org.springframework.web.servlet.view.AbstractTemplateView.renderMergedOutputModel(AbstractTemplateView.java:167)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:303)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1282)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1037)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:980)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:728)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:469)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:392)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:311)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:395)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:254)
+	at org.apache.catalina.core.StandardHostValve.throwable(StandardHostValve.java:349)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:175)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1455)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+0    DEBUG [2019-08-14 19:36:17]  Couldn't find template in cache for "success.ftl"("zh_CN", UTF-8, parsed); will try to load it.
+7    DEBUG [2019-08-14 19:36:17]  TemplateLoader.findTemplateSource("success_zh_CN.ftl"): Not found
+12   DEBUG [2019-08-14 19:36:17]  TemplateLoader.findTemplateSource("success_zh.ftl"): Not found
+13   DEBUG [2019-08-14 19:36:17]  TemplateLoader.findTemplateSource("success.ftl"): Not found
+101  DEBUG [2019-08-14 19:36:17]  Couldn't find template in cache for "error.ftl"("zh_CN", UTF-8, parsed); will try to load it.
+102  DEBUG [2019-08-14 19:36:17]  TemplateLoader.findTemplateSource("error_zh_CN.ftl"): Not found
+103  DEBUG [2019-08-14 19:36:17]  TemplateLoader.findTemplateSource("error_zh.ftl"): Not found
+107  DEBUG [2019-08-14 19:36:17]  TemplateLoader.findTemplateSource("error.ftl"): Found
+109  DEBUG [2019-08-14 19:36:17]  Loading template for "error.ftl"("zh_CN", UTF-8, parsed) from "E:\\ShopMall\\shopping-parent\\shopping-pc-web\\target\\classes\\templates\\error.ftl"
+208  DEBUG [2019-08-14 19:36:17]  "error.ftl"("zh_CN", UTF-8, parsed) cached copy not yet stale; using cached.
+228  ERROR [2019-08-14 19:36:17]  Error executing FreeMarker template
+FreeMarker template error:
+The following has evaluated to null or missing:
+==> errorMsg  [in template "error.ftl" at line 2, column 6]
+
+----
+Tip: If the failing expression is known to be legally refer to something that's sometimes null or missing, either specify a default value like myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthesis: (myOptionalVar.foo)!myDefault, (myOptionalVar.foo)??
+----
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: ${errorMsg}  [in template "error.ftl" at line 2, column 4]
+----
+
+Java stack trace (for programmers):
+----
+freemarker.core.InvalidReferenceException: [... Exception message was already printed; see it above ...]
+	at freemarker.core.InvalidReferenceException.getInstance(InvalidReferenceException.java:134)
+	at freemarker.core.EvalUtil.coerceModelToTextualCommon(EvalUtil.java:465)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:387)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:356)
+	at freemarker.core.DollarVariable.calculateInterpolatedStringOrMarkup(DollarVariable.java:96)
+	at freemarker.core.DollarVariable.accept(DollarVariable.java:59)
+	at freemarker.core.Environment.visit(Environment.java:326)
+	at freemarker.core.Environment.visit(Environment.java:332)
+	at freemarker.core.Environment.process(Environment.java:305)
+	at freemarker.template.Template.process(Template.java:378)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.processTemplate(FreeMarkerView.java:367)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.doRender(FreeMarkerView.java:284)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.renderMergedTemplateModel(FreeMarkerView.java:234)
+	at org.springframework.web.servlet.view.AbstractTemplateView.renderMergedOutputModel(AbstractTemplateView.java:167)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:303)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1282)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1037)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:980)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:728)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:469)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:392)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:311)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:395)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:254)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:177)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1455)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+39243 DEBUG [2019-08-14 19:36:56]  TemplateLoader.findTemplateSource("error_zh_CN.ftl"): Not found
+39246 DEBUG [2019-08-14 19:36:56]  TemplateLoader.findTemplateSource("error_zh.ftl"): Not found
+39246 DEBUG [2019-08-14 19:36:56]  TemplateLoader.findTemplateSource("error.ftl"): Found
+39247 DEBUG [2019-08-14 19:36:56]  "error.ftl"("zh_CN", UTF-8, parsed): using cached since E:\ShopMall\shopping-parent\shopping-pc-web\target\classes\templates\error.ftl hasn't changed.
+39247 DEBUG [2019-08-14 19:36:56]  "error.ftl"("zh_CN", UTF-8, parsed) cached copy not yet stale; using cached.
+39247 ERROR [2019-08-14 19:36:56]  Error executing FreeMarker template
+FreeMarker template error:
+The following has evaluated to null or missing:
+==> errorMsg  [in template "error.ftl" at line 2, column 6]
+
+----
+Tip: If the failing expression is known to be legally refer to something that's sometimes null or missing, either specify a default value like myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthesis: (myOptionalVar.foo)!myDefault, (myOptionalVar.foo)??
+----
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: ${errorMsg}  [in template "error.ftl" at line 2, column 4]
+----
+
+Java stack trace (for programmers):
+----
+freemarker.core.InvalidReferenceException: [... Exception message was already printed; see it above ...]
+	at freemarker.core.InvalidReferenceException.getInstance(InvalidReferenceException.java:134)
+	at freemarker.core.EvalUtil.coerceModelToTextualCommon(EvalUtil.java:465)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:387)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:356)
+	at freemarker.core.DollarVariable.calculateInterpolatedStringOrMarkup(DollarVariable.java:96)
+	at freemarker.core.DollarVariable.accept(DollarVariable.java:59)
+	at freemarker.core.Environment.visit(Environment.java:326)
+	at freemarker.core.Environment.visit(Environment.java:332)
+	at freemarker.core.Environment.process(Environment.java:305)
+	at freemarker.template.Template.process(Template.java:378)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.processTemplate(FreeMarkerView.java:367)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.doRender(FreeMarkerView.java:284)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.renderMergedTemplateModel(FreeMarkerView.java:234)
+	at org.springframework.web.servlet.view.AbstractTemplateView.renderMergedOutputModel(AbstractTemplateView.java:167)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:303)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1282)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1037)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:980)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:728)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:469)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:392)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:311)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:395)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:254)
+	at org.apache.catalina.core.StandardHostValve.throwable(StandardHostValve.java:349)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:175)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1455)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+145681 DEBUG [2019-08-14 19:38:43]  TemplateLoader.findTemplateSource("success_zh_CN.ftl"): Not found
+145682 DEBUG [2019-08-14 19:38:43]  TemplateLoader.findTemplateSource("success_zh.ftl"): Not found
+145682 DEBUG [2019-08-14 19:38:43]  TemplateLoader.findTemplateSource("success.ftl"): Not found
+145682 DEBUG [2019-08-14 19:38:43]  "success.ftl"("zh_CN", UTF-8, parsed) no source found.
+145696 DEBUG [2019-08-14 19:38:43]  TemplateLoader.findTemplateSource("error_zh_CN.ftl"): Not found
+145696 DEBUG [2019-08-14 19:38:43]  TemplateLoader.findTemplateSource("error_zh.ftl"): Not found
+145697 DEBUG [2019-08-14 19:38:43]  TemplateLoader.findTemplateSource("error.ftl"): Found
+145697 DEBUG [2019-08-14 19:38:43]  "error.ftl"("zh_CN", UTF-8, parsed): using cached since E:\ShopMall\shopping-parent\shopping-pc-web\target\classes\templates\error.ftl hasn't changed.
+145697 DEBUG [2019-08-14 19:38:43]  "error.ftl"("zh_CN", UTF-8, parsed) cached copy not yet stale; using cached.
+145697 ERROR [2019-08-14 19:38:43]  Error executing FreeMarker template
+FreeMarker template error:
+The following has evaluated to null or missing:
+==> errorMsg  [in template "error.ftl" at line 2, column 6]
+
+----
+Tip: If the failing expression is known to be legally refer to something that's sometimes null or missing, either specify a default value like myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthesis: (myOptionalVar.foo)!myDefault, (myOptionalVar.foo)??
+----
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: ${errorMsg}  [in template "error.ftl" at line 2, column 4]
+----
+
+Java stack trace (for programmers):
+----
+freemarker.core.InvalidReferenceException: [... Exception message was already printed; see it above ...]
+	at freemarker.core.InvalidReferenceException.getInstance(InvalidReferenceException.java:134)
+	at freemarker.core.EvalUtil.coerceModelToTextualCommon(EvalUtil.java:465)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:387)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:356)
+	at freemarker.core.DollarVariable.calculateInterpolatedStringOrMarkup(DollarVariable.java:96)
+	at freemarker.core.DollarVariable.accept(DollarVariable.java:59)
+	at freemarker.core.Environment.visit(Environment.java:326)
+	at freemarker.core.Environment.visit(Environment.java:332)
+	at freemarker.core.Environment.process(Environment.java:305)
+	at freemarker.template.Template.process(Template.java:378)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.processTemplate(FreeMarkerView.java:367)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.doRender(FreeMarkerView.java:284)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.renderMergedTemplateModel(FreeMarkerView.java:234)
+	at org.springframework.web.servlet.view.AbstractTemplateView.renderMergedOutputModel(AbstractTemplateView.java:167)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:303)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1282)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1037)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:980)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:728)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:469)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:392)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:311)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:395)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:254)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:177)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1455)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
+171448 DEBUG [2019-08-14 19:39:09]  TemplateLoader.findTemplateSource("success_zh_CN.ftl"): Not found
+171449 DEBUG [2019-08-14 19:39:09]  TemplateLoader.findTemplateSource("success_zh.ftl"): Not found
+171449 DEBUG [2019-08-14 19:39:09]  TemplateLoader.findTemplateSource("success.ftl"): Not found
+171449 DEBUG [2019-08-14 19:39:09]  "success.ftl"("zh_CN", UTF-8, parsed) no source found.
+171460 DEBUG [2019-08-14 19:39:09]  TemplateLoader.findTemplateSource("error_zh_CN.ftl"): Not found
+171460 DEBUG [2019-08-14 19:39:09]  TemplateLoader.findTemplateSource("error_zh.ftl"): Not found
+171461 DEBUG [2019-08-14 19:39:09]  TemplateLoader.findTemplateSource("error.ftl"): Found
+171461 DEBUG [2019-08-14 19:39:09]  "error.ftl"("zh_CN", UTF-8, parsed): using cached since E:\ShopMall\shopping-parent\shopping-pc-web\target\classes\templates\error.ftl hasn't changed.
+171461 DEBUG [2019-08-14 19:39:09]  "error.ftl"("zh_CN", UTF-8, parsed) cached copy not yet stale; using cached.
+171461 ERROR [2019-08-14 19:39:09]  Error executing FreeMarker template
+FreeMarker template error:
+The following has evaluated to null or missing:
+==> errorMsg  [in template "error.ftl" at line 2, column 6]
+
+----
+Tip: If the failing expression is known to be legally refer to something that's sometimes null or missing, either specify a default value like myOptionalVar!myDefault, or use <#if myOptionalVar??>when-present<#else>when-missing</#if>. (These only cover the last step of the expression; to cover the whole expression, use parenthesis: (myOptionalVar.foo)!myDefault, (myOptionalVar.foo)??
+----
+
+----
+FTL stack trace ("~" means nesting-related):
+	- Failed at: ${errorMsg}  [in template "error.ftl" at line 2, column 4]
+----
+
+Java stack trace (for programmers):
+----
+freemarker.core.InvalidReferenceException: [... Exception message was already printed; see it above ...]
+	at freemarker.core.InvalidReferenceException.getInstance(InvalidReferenceException.java:134)
+	at freemarker.core.EvalUtil.coerceModelToTextualCommon(EvalUtil.java:465)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:387)
+	at freemarker.core.EvalUtil.coerceModelToStringOrMarkup(EvalUtil.java:356)
+	at freemarker.core.DollarVariable.calculateInterpolatedStringOrMarkup(DollarVariable.java:96)
+	at freemarker.core.DollarVariable.accept(DollarVariable.java:59)
+	at freemarker.core.Environment.visit(Environment.java:326)
+	at freemarker.core.Environment.visit(Environment.java:332)
+	at freemarker.core.Environment.process(Environment.java:305)
+	at freemarker.template.Template.process(Template.java:378)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.processTemplate(FreeMarkerView.java:367)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.doRender(FreeMarkerView.java:284)
+	at org.springframework.web.servlet.view.freemarker.FreeMarkerView.renderMergedTemplateModel(FreeMarkerView.java:234)
+	at org.springframework.web.servlet.view.AbstractTemplateView.renderMergedOutputModel(AbstractTemplateView.java:167)
+	at org.springframework.web.servlet.view.AbstractView.render(AbstractView.java:303)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1282)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1037)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:980)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:897)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:970)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:861)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:635)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:846)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:742)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:728)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:469)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:392)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:311)
+	at org.apache.catalina.core.StandardHostValve.custom(StandardHostValve.java:395)
+	at org.apache.catalina.core.StandardHostValve.status(StandardHostValve.java:254)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:177)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:80)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:87)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:342)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:799)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:66)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:861)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1455)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:745)
