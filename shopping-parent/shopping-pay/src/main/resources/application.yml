@@ -39,6 +39,10 @@ spring:
         testOnReturn: false
         poolPreparedStatements: true
         maxOpenPreparedStatements: 20
+
+tm: 
+  manager: 
+    url: http://127.0.0.1:8899/tx/manager/
         
 alipay: 
   #应用ID,您的APPID，收款账号既是您的APPID对应支付宝账号

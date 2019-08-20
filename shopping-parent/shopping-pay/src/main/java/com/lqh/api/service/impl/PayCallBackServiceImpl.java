@@ -5,11 +5,13 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSONObject;
 import com.alipay.api.internal.util.AlipaySignature;
+import com.codingapi.tx.annotation.TxTransaction;
 import com.lqh.api.service.PayCallBackService;
 import com.lqh.base.BaseApiService;
 import com.lqh.base.ResponseBase;
@@ -73,6 +75,8 @@ public class PayCallBackServiceImpl extends BaseApiService implements PayCallBac
 	
 	//异步
 	@Override
+	@TxTransaction
+	@Transactional
 	public String asyncPayCallBack(@RequestParam Map<String, String> map) {
 		log.info("##############开始调用asyncPayCallBack 接口###########");
 		try {
