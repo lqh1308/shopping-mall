@@ -1,7 +1,7 @@
 ##ignore this file##
-/target/
-/src/test/
-.idea
-.project
-.settings
-*.iml
+**/target/
+**/src/test/
+**/.idea
+**/.project
+**/.settings
+**/*.iml
