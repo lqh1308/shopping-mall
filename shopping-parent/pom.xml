@@ -131,9 +131,19 @@
     <build>
         <plugins>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
             </plugin>
+<!--            <plugin>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-maven-plugin</artifactId>-->
+<!--                <version>1.5.3.RELEASE</version>-->
+<!--            </plugin>-->
         </plugins>
     </build>
     <repositories>
@@ -147,12 +157,13 @@
         </repository>
     </repositories>
     <modules>
+        <module>shopping-common</module>
     	<module>shopping-message</module>
     	<module>shopping-pc-web</module>
     	<module>shopping-pay</module>
     	<module>shopping-order</module>
     	<module>shopping-api</module>
-    	<module>shopping-eurekaserver</module>
+        <module>shopping-eurekaserver</module>
     	<module>shopping-member</module>
     </modules>
 </project>
