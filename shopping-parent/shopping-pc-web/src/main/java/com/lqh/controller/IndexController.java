@@ -44,4 +44,19 @@ public class IndexController {
 		request.setAttribute("username", user.get("username"));
 		return INDEX;
 	}
+
+
+	// 退出登录
+	@RequestMapping(value="/logout", method=RequestMethod.GET)
+	public String logout(HttpServletRequest request) {
+		////获取用户信息
+		//1.获取token
+		String token = CookieUtil.getUid(request, Constans.COOKIE_MEMBER_TOKEN);
+		//2.token不为空则获取用户信息
+		ResponseBase responseBase =  memberServiceFeign.logout(token);
+//		if(!responseBase.getStatusCode().equals(Constans.HTTP_RES_CODE_200)) {
+//			request.setAttribute("error", "没有查找到用户信息！");
+//		}
+		return "redirect:" + LOGIN;
+	}
 }
