@@ -170,5 +170,6 @@
     	<module>shopping-api</module>
         <module>shopping-eurekaserver</module>
     	<module>shopping-member</module>
+    	<module>shopping-good</module>
     </modules>
 </project>

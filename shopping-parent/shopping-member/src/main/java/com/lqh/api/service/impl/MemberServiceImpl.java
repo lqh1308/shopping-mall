@@ -171,6 +171,12 @@ public class MemberServiceImpl extends BaseApiService implements MemberService{
 		return setResponseSuccess(json);
 	}
 
+	@Override
+	public ResponseBase logOut(@RequestParam("token") String token) {
+		baseRedisService.dealKey(token);
+		return setResponseSuccess();
+	}
+
 	
 
 }
