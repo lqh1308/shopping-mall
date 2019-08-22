@@ -74,7 +74,7 @@ public class LoginController {
     	//1.获取token
     	String token = CookieUtil.getUid(request, Constans.COOKIE_MEMBER_TOKEN);
     	//2.redis删除token
-    	ResponseBase responseBase = memberServiceFeign.logOut(token);
+    	ResponseBase responseBase = memberServiceFeign.logout(token);
     	if(!responseBase.getStatusCode().equals(Constans.HTTP_RES_CODE_200)) {
     		request.setAttribute("error", "退出失败");
     		return INDEX;

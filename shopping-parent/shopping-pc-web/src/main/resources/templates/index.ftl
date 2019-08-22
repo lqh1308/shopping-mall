@@ -37,7 +37,7 @@
 
 <#if isLogin==true>
 <li><a href="user/toUserPage">${username}</a></li>
-<li><a href="logOut">退出</a></li>
+<li><a href="logout">退出</a></li>
 <#else>
 <li><a href="login">登录</a></li>
 <li><a href="register">注册</a></li>
