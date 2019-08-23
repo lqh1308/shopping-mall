@@ -69,7 +69,7 @@ public class LoginController {
     }
     
     
-    @RequestMapping(value="/logOut", method=RequestMethod.GET)
+    @RequestMapping(value="/logout", method=RequestMethod.GET)
     public String logOut(HttpServletRequest request, HttpServletResponse response) {
     	//1.获取token
     	String token = CookieUtil.getUid(request, Constans.COOKIE_MEMBER_TOKEN);
