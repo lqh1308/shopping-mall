@@ -13,7 +13,7 @@
 	    <artifactId>shopping-api-member</artifactId>
 	    <version>0.0.1-SNAPSHOT</version>
   	</dependency>
-
+  	
     <dependency>
         <groupId>com.sdk4j</groupId>
         <artifactId>sdk4j</artifactId>
@@ -23,10 +23,15 @@
 	  	<groupId>com.lqh</groupId>
 	    <artifactId>shopping-api-pay</artifactId>
 	    <version>0.0.1-SNAPSHOT</version>
-    </dependency>
+ </dependency>
     <dependency>
 	  	<groupId>com.lqh</groupId>
 	    <artifactId>shopping-api-order</artifactId>
+	    <version>0.0.1-SNAPSHOT</version>  	
+    </dependency>
+        <dependency>
+	  	<groupId>com.lqh</groupId>
+	    <artifactId>shopping-api-good</artifactId>
 	    <version>0.0.1-SNAPSHOT</version>
     </dependency>
         <dependency>

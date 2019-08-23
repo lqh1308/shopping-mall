@@ -171,19 +171,12 @@ public class MemberServiceImpl extends BaseApiService implements MemberService{
 		return setResponseSuccess(json);
 	}
 
-	//根据token退出登陆
-	public ResponseBase logout(String token) {
-		if(StringUtils.isEmpty(token)) {
-			log.warn("token为空");
-			return setResponseError("token为空");
-		}
-		String userid = baseRedisService.getString(token);
-		if(StringUtils.isEmpty(userid)) {
-			log.warn("token过期");
-			return setResponseError("token过期");
-		}
+	@Override
+	public ResponseBase logout(@RequestParam("token") String token) {
 		baseRedisService.dealKey(token);
-		log.info("userid: {} 已退出", userid);
 		return setResponseSuccess();
 	}
+
+	
+
 }

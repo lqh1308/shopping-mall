@@ -169,7 +169,8 @@
     	<module>shopping-order</module>
     	<module>shopping-api</module>
         <module>shopping-eurekaserver</module>
-        <module>shopping-member</module>
+    	<module>shopping-member</module>
+    	<module>shopping-good</module>
         <module>shopping-category</module>
     </modules>
 </project>

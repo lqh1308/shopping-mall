@@ -68,4 +68,21 @@ public class LoginController {
         return "redirect:" + authorizeURL;
     }
     
+    
+    @RequestMapping(value="/logOut", method=RequestMethod.GET)
+    public String logOut(HttpServletRequest request, HttpServletResponse response) {
+    	//1.获取token
+    	String token = CookieUtil.getUid(request, Constans.COOKIE_MEMBER_TOKEN);
+    	//2.redis删除token
+    	ResponseBase responseBase = memberServiceFeign.logout(token);
+    	if(!responseBase.getStatusCode().equals(Constans.HTTP_RES_CODE_200)) {
+    		request.setAttribute("error", "退出失败");
+    		return INDEX;
+    	}
+    	//3.删除浏览器的cookie
+    	CookieUtil.removeCookie(response, Constans.COOKIE_MEMBER_TOKEN);
+    	request.setAttribute("isLogin", false);
+    	request.setAttribute("username", null);
+    	return INDEX;
+    }
 }

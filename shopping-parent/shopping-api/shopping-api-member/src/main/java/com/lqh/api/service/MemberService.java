@@ -18,6 +18,9 @@ public interface MemberService {
 	@RequestMapping("/login")
 	public ResponseBase login(@RequestBody User user);
 	
+	@RequestMapping("/logout")
+	public ResponseBase logout(@RequestParam("token") String token);
+	
 	@RequestMapping("/findByToken")
 	public ResponseBase findByToken(@RequestParam("token") String token);
 	

@@ -34,8 +34,15 @@
 <div class="nb">
 <span style="color:#e01;font-size:14px;">演示站，请勿购物！！&nbsp; 前台账号 yunec&nbsp; &nbsp; <span style="color: rgb(238, 0, 17); font-size: 14px;">密码&nbsp;</span>666666&nbsp; &nbsp;后台地址：&nbsp;<a href="https://demo.yunec.cn/admin.html" target="_self" title="https://demo.yunec.cn/admin.html">https://demo.yunec.cn/admin.html</a></span><div class="rside" style="float:right">
 <ul class="head-ul">
+
+<#if isLogin==true>
+<li><a href="user/toUserPage">${username}</a></li>
+<li><a href="logout">退出</a></li>
+<#else>
 <li><a href="login">登录</a></li>
 <li><a href="register">注册</a></li>
+</#if>
+
 <li><a href="toMyOrder">我的订单</a></li>
 <li><a href="user/toUserPage">会员中心</a></li>
 </ul>
@@ -243,15 +250,20 @@
 </div><div class="banner">
 <div class="slidebanner">
 <div class="hd">
+<!--
 <ul><li class="">1</li><li class="">2</li><li class="">3</li><li class="on">4</li><li class="">5</li></ul>
+-->
 </div>
 <div class="bd">
-<ul><li style="display: none;"><a href="https://demo.yunec.cn/" style="background:url(upload/img/banner/4c9a8e0cc29395d1980500592c671b93_b.jpg) no-repeat top center"></a></li>
+<!--
+<ul>
+<li style="display: none;"><a href="https://demo.yunec.cn/" style="background:url(upload/img/banner/4c9a8e0cc29395d1980500592c671b93_b.jpg) no-repeat top center"></a></li>
 <li style="display: none;"><a href="https://demo.yunec.cn/" style="background:url(upload/img/banner/f5c4079eb966eb0be52405f9392b01bf_b.jpg) no-repeat top center"></a></li>
 <li style="display: none;"><a href="https://demo.yunec.cn/" style="background:url(upload/img/banner/476bbb34a7a5e6a4645df8463ddea02a_b.jpg) no-repeat top center"></a></li>
 <li style="display: list-item;"><a href="https://demo.yunec.cn/" style="background:url(upload/img/banner/d4f739418f78e155ae42e276a283ccc8_b.jpg) no-repeat top center"></a></li>
 <li style="display: none;"><a href="https://demo.yunec.cn/" style="background:url(upload/img/banner/de5a8e9f29cf2bb1edcf404a28320d14_b.jpg) no-repeat top center"></a></li>
 </ul>
+-->
 </div>
 </div>
 <div class="nb">
@@ -259,8 +271,13 @@
 <div class="login-quick"><a href="user/toUserPage" class="head"><img src="view/default/images/index/avatar.jpg" alt="70*70"></a>
 <!--<div class="login-quick"><a href="https://demo.yunec.cn/login.html" class="head"><img src="view/default/images/index/avatar.jpg" alt="70*70"></a>-->
 <p>Hi~您好！</p>
-<a href="https://demo.yunec.cn/login.html" class="btn-login">请登录</a>
-<a href="https://demo.yunec.cn/reg.html" class="btn-regist">免费注册</a></div>
+<#if isLogin==true>
+<a href="user/toUserPage" class="btn-login">老铁</a>
+<a href="user/toUserPage" class="btn-regist">${username}</a></div>
+<#else>
+<a href="login" class="btn-login">请登录</a>
+<a href="register" class="btn-regist">免费注册</a></div>
+</#if>
 <div class="new-quick">
 <div class="quicknew-bar">
 <span>资讯</span><a href="https://demo.yunec.cn/n-news.html" target="_blank" class="rside">更多</a>
@@ -420,7 +437,8 @@
 </div>
 	
 </div>
-<div class="rightgood-body"><div class="floor floor0" id="floor0">
+<div class="rightgood-body">
+<div class="floor floor0" id="floor0">
 <div class="floor-title">
 <h3><a href="https://demo.yunec.cn/17rec.html">数码电器</a></h3>
 <a href="https://demo.yunec.cn/17rec.html" class="more">查看全部 &gt;</a>
@@ -1033,6 +1051,7 @@
 </div><script src="view/default/js/jquery-1.9.1.min.js" type="text/javascript"></script>
 <script src="view/default/js/jquery.SuperSlide.2.1.1.js" type="text/javascript"></script>
 <script src="view/default/js/main.js" type="text/javascript"></script>
+<script src="view/default/js/good/good.js" type="text/javascript"></script>
 
 <script>
 
@@ -1040,7 +1059,7 @@ $(".nav .nav-classify").addClass("nav-classifyopaity");
  			$(function () {
  				loadLayer();
  			});
-jQuery(".slidebanner").slide({mainCell:".bd ul",titCell:".hd ul",autoPlay:true,autoPage:true});
+<!--jQuery(".slidebanner").slide({mainCell:".bd ul",titCell:".hd ul",autoPlay:true,autoPage:true});-->
 jQuery(".slide-timeslimit").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",autoPlay:false,scroll:6,vis:6});
 //秒杀计时
 InterValObj1 = window.setInterval(function () {SetRemainTime(1);}, 1000); 
@@ -1058,7 +1077,7 @@ $(".leftgood-bar").fadeOut(200);
 setLeftBar();
 function setLeftBar(){
 if($(window).width()>1800){
-$(".leftgood-bar").css("left",'250px');
+$(".leftgood-bar").css("left",'150px');
 }
 if($(window).width()<=1800){
 $(".leftgood-bar").css("left",'120px');
