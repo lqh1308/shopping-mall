@@ -16,6 +16,8 @@ public class Category implements Serializable {
 	private Integer p_cgy_id;
 	
 	private String title;
+
+	private int level;
 	
 	private String type;
 	

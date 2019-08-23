@@ -31,7 +31,4 @@ public interface MemberService {
 	//qq 关联登陆
 	@RequestMapping("/findByOpenIdUser")
 	public ResponseBase findByOpenIdUser(@RequestParam("openId") String openId);
-
-	@RequestMapping("/logout")
-	public ResponseBase logout(@RequestParam("token") String token);
 }

@@ -36,11 +36,7 @@ public class InitCategoryProcesses implements CommandLineRunner {
             log.error("================ 初始化类目数据失败！=======================", e);
         }
     }
-    /**
-     * 把数据变成Map<int, List<Category>>形式，key是父id，value是这个父id拥有的下级Category
-     * 所以要找全部等级的
-     * @throws Exception
-     */
+
     public void initCategory() throws Exception {
         List<Category> categorys = dao.getAll();
         TreeMap<Integer, List<Category>> map = coreProcesses(categorys);
@@ -49,15 +45,36 @@ public class InitCategoryProcesses implements CommandLineRunner {
         log.info("使用RedisTemplate缓存到Redis服务器，key值为:{}", CATEGORY_REDIS_KEY);
     }
 
+    /**
+     * 把数据变成Map&lt;int, List&lt;Category&gt;&gt;形式<br>
+     *     key是父id，value是这个父id的Category以及拥有的下级Category，
+     *     即 <br>Map = { <br>
+     *     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;key: 0, <br>
+     *     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;value: [<br>
+     *      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Category:{0:父}, <br>
+     *      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Category:{1:子1}, <br>
+     *      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Category:{2:子2}<br>
+     *      &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;....<br>
+     *     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;] <br>
+     *     &nbsp;&nbsp;&nbsp;&nbsp;}
+     * @throws Exception
+     */
     public static TreeMap<Integer, List<Category>> coreProcesses(List<Category> categorys) {
         TreeMap<Integer, List<Category>> map = new TreeMap<>();
         Iterator<Category> i = categorys.iterator();
         while (i.hasNext()) {
             Category temp = i.next();
+            //获取当前节点父id
             Integer pId = temp.getP_cgy_id();
+            //获取当前节点id
+            Integer id = temp.getCgy_id();
+            //获取当前节点父id的下级list
             List<Category> list = map.get(pId);
-            if (null == list) {
+            if (null == list) { // 如果不存在就创建一个
                 list = new ArrayList<>();
+                // List index为0是父节点
+                list.add(getCategoryById(categorys, pId));
+                // List index>0是子节点
                 list.add(temp);
                 map.put(pId, list);
             } else {
@@ -66,6 +83,14 @@ public class InitCategoryProcesses implements CommandLineRunner {
             }
         }
         return map;
+    }
+
+    public static Category getCategoryById(List<Category> categorys, Integer id) {
+        for(Category c : categorys) {
+            if(c.getCgy_id().equals(id))
+                return c;
+        }
+        return null;
     }
 
     public void putMap(String tableKey, Map map) {
