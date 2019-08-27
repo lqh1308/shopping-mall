@@ -1,9 +1,7 @@
 package com.lqh.config;
 
-import com.lqh.api.service.CategoryService;
-import com.lqh.base.ResponseBase;
 import com.lqh.dao.CategoryDao;
-import com.lqh.entity.Category;
+import entity.Category;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

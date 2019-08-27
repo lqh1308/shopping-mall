@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
-import com.lqh.entity.Banner;
+import entity.Banner;
 
 @Mapper
 public interface GoodDao {

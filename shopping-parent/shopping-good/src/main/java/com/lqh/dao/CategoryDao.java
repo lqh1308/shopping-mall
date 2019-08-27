@@ -1,6 +1,6 @@
 package com.lqh.dao;
 
-import com.lqh.entity.Category;
+import entity.Category;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 

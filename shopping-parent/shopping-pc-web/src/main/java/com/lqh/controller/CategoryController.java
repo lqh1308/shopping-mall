@@ -1,7 +1,7 @@
 package com.lqh.controller;
 
 import com.lqh.base.ResponseBase;
-import com.lqh.entity.Category;
+import entity.Category;
 import com.lqh.feign.CategoryServiceFeign;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;

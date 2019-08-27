@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.lqh.base.ResponseBase;
 import com.lqh.contants.Constans;
-import com.lqh.entity.User;
+import entity.User;
 import com.lqh.feign.MemberServiceFeign;
 
 import lombok.extern.slf4j.Slf4j;
