@@ -1,4 +1,4 @@
-package api.service.impl;
+package com.lqh.api.service.impl;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -16,11 +16,11 @@ public class MemberServiceTestImpl extends BaseApiService implements MemberServi
 	public Map<String, Object> getMember(Integer id, String name) {
 		// TODO Auto-generated method stub
 		Map<String, Object> result = new HashMap<String, Object>();
-		
+
 		result.put("statusCode", "200");
 		result.put("msg", "success");
 		result.put("data", new String[] {"123", "234"});
-		
+
 		return result;
 	}
 

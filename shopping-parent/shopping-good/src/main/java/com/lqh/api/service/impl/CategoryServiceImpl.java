@@ -1,4 +1,4 @@
-package api.service.impl;
+package com.lqh.api.service.impl;
 
 import api.service.CategoryService;
 import com.lqh.base.BaseApiService;

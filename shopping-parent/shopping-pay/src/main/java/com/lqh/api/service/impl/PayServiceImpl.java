@@ -1,4 +1,4 @@
-package api.service.impl;
+package com.lqh.api.service.impl;
 
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ import com.lqh.utils.TokenUtil;
 public class PayServiceImpl extends BaseApiService implements PayService {
 	@Autowired
 	private PayDao payDao;
-	
+
 	@Value("${alipay.gatewayUrl}")
 	private String gatewayUrl;
 	@Value("${alipay.app_id}")
@@ -41,12 +41,12 @@ public class PayServiceImpl extends BaseApiService implements PayService {
 	private String return_url;
 	@Value("${alipay.notify_url}")
 	private String notify_url;
-	
+
 	@Override
 	public ResponseBase createToken(@RequestBody PaymentInfo paymentInfo) {
 		//创建支付订单
 		Integer id = payDao.savePaymentInfo(paymentInfo);
-		if(id <= 0) 
+		if(id <= 0)
 			return setResponseError("插入订单信息失败！");
 		//获取token
 		String token = TokenUtil.getPayToken();
@@ -78,7 +78,7 @@ public class PayServiceImpl extends BaseApiService implements PayService {
 		AlipayTradePagePayRequest alipayRequest = new AlipayTradePagePayRequest();
 		alipayRequest.setReturnUrl(return_url);
 		alipayRequest.setNotifyUrl(notify_url);
-		
+
 		//商户订单号，商户网站订单系统中唯一订单号，必填
 		String out_trade_no = paymentInfo.getOrderId();
 		//付款金额，必填
@@ -87,11 +87,11 @@ public class PayServiceImpl extends BaseApiService implements PayService {
 		String subject = paymentInfo.getOrderTitle();
 		//商品描述，可空
 		String body = paymentInfo.getOrderDescription();
-		
-		alipayRequest.setBizContent("{\"out_trade_no\":\""+ out_trade_no +"\"," 
-				+ "\"total_amount\":\""+ total_amount +"\"," 
-				+ "\"subject\":\""+ subject +"\"," 
-				+ "\"body\":\""+ body +"\"," 
+
+		alipayRequest.setBizContent("{\"out_trade_no\":\""+ out_trade_no +"\","
+				+ "\"total_amount\":\""+ total_amount +"\","
+				+ "\"subject\":\""+ subject +"\","
+				+ "\"body\":\""+ body +"\","
 				+ "\"product_code\":\"FAST_INSTANT_TRADE_PAY\"}");
 		//请求
 		try {
@@ -103,7 +103,7 @@ public class PayServiceImpl extends BaseApiService implements PayService {
 			// TODO Auto-generated catch block
 			return setResponseError("调用支付接口失败！");
 		}
-		
+
 	}
 
 }

@@ -1,8 +1,7 @@
-package api.service.impl;
+package com.lqh.api.service.impl;
 
 import java.util.List;
 
-import entity.Good;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -16,7 +15,7 @@ import entity.Banner;
 
 @RestController
 public class GoodServiceImpl extends BaseApiService implements GoodService{
-	
+
 	@Autowired
 	private GoodDao goodDao;
 
@@ -26,7 +25,7 @@ public class GoodServiceImpl extends BaseApiService implements GoodService{
 		List<Banner> banners = goodDao.getBrandWall();
 		JSONObject obj = new JSONObject();
 		obj.put("banners", banners);
-		
+
 		return setResponseSuccess(obj);
 	}
 
@@ -44,9 +43,6 @@ public class GoodServiceImpl extends BaseApiService implements GoodService{
 
 	@Override
 	public ResponseBase searchByCategoryCode(String l1, String l2, String l3) {
-		List<Good> goods = goodDao.searchGoodByCategoryCode(l1, l2, l3);
-		return setResponseSuccess(goods);
+		return setResponseSuccess(goodDao.searchGoodByCategoryCode(l1, l2, l3));
 	}
-
-
 }

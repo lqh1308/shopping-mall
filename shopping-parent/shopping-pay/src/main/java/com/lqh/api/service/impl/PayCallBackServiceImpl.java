@@ -1,4 +1,4 @@
-package api.service.impl;
+package com.lqh.api.service.impl;
 
 import java.util.Date;
 import java.util.Map;
@@ -31,13 +31,13 @@ public class PayCallBackServiceImpl extends BaseApiService implements PayCallBac
 	private String charset;
 	@Value("${alipay.sign_type}")
 	private String signType;
-	
+
 	@Autowired
 	private OrderServiceFeign orderServiceFeign;
 	@Autowired
 	private PayDao payDao;
-	
-	
+
+
 	//同步
 	@Override
 	public ResponseBase syncPayCallBack(@RequestParam Map<String, String> map) {
@@ -55,14 +55,14 @@ public class PayCallBackServiceImpl extends BaseApiService implements PayCallBac
 			String tradeNo = map.get("trade_no");
 			//付款金额
 			String totalAmount = map.get("total_amount");
-			
+
 			JSONObject obj = new JSONObject();
 			obj.put("outTradeNo", outTradeNo);
 			obj.put("tradeNo", tradeNo);
 			obj.put("totalAmount", totalAmount);
-			
+
 			return setResponseSuccess(obj);
-			
+
 		} catch (Exception e) {
 			// TODO: handle exception
 			log.info("##############调用syncPayCallBack 接口失败#####Error:," + e);
@@ -70,9 +70,9 @@ public class PayCallBackServiceImpl extends BaseApiService implements PayCallBac
 		} finally {
 			log.info("##############调用syncPayCallBack 接口结束###########");
 		}
-		
+
 	}
-	
+
 	//异步
 	@Override
 	@TxTransaction
@@ -92,10 +92,10 @@ public class PayCallBackServiceImpl extends BaseApiService implements PayCallBac
 			String tradeNo = map.get("trade_no");
 			//付款金额
 //			String totalAmount = map.get("total_amount");
-			
+
 			//修改支付信息
 			PaymentInfo paymentInfo = payDao.getPaymentInfoByOrderId(outTradeNo);
-			if(paymentInfo.getState() == 1) 
+			if(paymentInfo.getState() == 1)
 				//支付成功
 				return Constans.SUCCESS;
 			//没有支付成功则修改
@@ -104,13 +104,13 @@ public class PayCallBackServiceImpl extends BaseApiService implements PayCallBac
 			paymentInfo.setPayMessage(map.toString());
 			paymentInfo.setUpdated(new Date());
 			payDao.updatePaymentInfo(paymentInfo);
-			
+
 			//修改订单信息
 			ResponseBase orderResult = orderServiceFeign.updateOrder(1, tradeNo, outTradeNo);
 			if(!orderResult.getStatusCode().equals(Constans.HTTP_RES_CODE_200))
 				//修改订单信息失败
 				return Constans.ERROR;
-			
+
 			return Constans.SUCCESS;
 		} catch (Exception e) {
 			// TODO: handle exception
