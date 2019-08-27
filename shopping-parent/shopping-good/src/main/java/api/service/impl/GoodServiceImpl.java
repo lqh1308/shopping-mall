@@ -2,6 +2,7 @@ package api.service.impl;
 
 import java.util.List;
 
+import entity.Good;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -40,5 +41,12 @@ public class GoodServiceImpl extends BaseApiService implements GoodService{
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	@Override
+	public ResponseBase searchByCategoryCode(String l1, String l2, String l3) {
+		List<Good> goods = goodDao.searchGoodByCategoryCode(l1, l2, l3);
+		return setResponseSuccess(goods);
+	}
+
 
 }
