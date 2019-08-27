@@ -7,8 +7,8 @@ import org.springframework.stereotype.Component;
 
 import com.alibaba.fastjson.JSONObject;
 import com.lqh.adapter.MessageAdapter;
+import com.lqh.api.service.EmailService;
 import com.lqh.contants.Constans;
-import api.service.EmailService;
 
 import lombok.extern.slf4j.Slf4j;
 
