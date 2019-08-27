@@ -6,7 +6,7 @@ import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
-import com.lqh.entity.User;
+import entity.User;
 
 @Mapper
 public interface UserDao {
