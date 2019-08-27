@@ -11,7 +11,7 @@ import com.lqh.base.ResponseBase;
 import com.lqh.contants.Constans;
 import com.lqh.feign.GoodServiceFeign;
 
-import entity.Banner;
+import com.lqh.entity.Banner;
 
 @RestController
 public class GoodController {

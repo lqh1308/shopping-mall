@@ -10,8 +10,8 @@ import com.lqh.base.BaseApiService;
 import com.lqh.base.ResponseBase;
 import com.lqh.dao.GoodDao;
 
-import api.service.GoodService;
-import entity.Banner;
+import com.lqh.api.service.GoodService;
+import com.lqh.entity.Banner;
 
 @RestController
 public class GoodServiceImpl extends BaseApiService implements GoodService{

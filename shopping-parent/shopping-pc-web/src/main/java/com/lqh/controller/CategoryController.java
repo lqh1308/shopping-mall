@@ -18,9 +18,9 @@ public class CategoryController {
     private CategoryServiceFeign cgyServFeign;
 
     @RequestMapping("/getAll")
-    public Map<Integer, List<Category>> getAll() {
+    public Map<Long, List<Category>> getAll() {
         ResponseBase rb = cgyServFeign.getCategoryMap();
 
-        return (Map<Integer, List<Category>>) rb.getData();
+        return (Map<Long, List<Category>>) rb.getData();
     }
 }

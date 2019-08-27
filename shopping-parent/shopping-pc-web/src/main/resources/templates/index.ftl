@@ -1069,14 +1069,14 @@ $(function() {
             return;
         $('.menu-mainnav').empty();
         // cgyJson下标为1的是第一层结点的list json
-        var level_1_list = cgyJson['1'];
+        var level_1_list = cgyJson['0'];
         // list 下标为0的是父节点的Category bean，
         // 之后的才是子节点的Category bean，所以要从index=1开始遍历
-        for(var i = 1; i < level_1_list.length; i++) {
+        for(var i = 0; i < level_1_list.length; i++) {
             var level_1_node = level_1_list[i];
             var li = $('<li></li>');
             var sortmaintitle = $('<div></div>').addClass('sortmaintitle');
-            var title = $('<a></a>').attr({href: '/category/search/'+level_1_node.code, target: '_blank'}).text(level_1_node.title);
+            var title = $('<a></a>').attr({href: '/search/category/code/'+level_1_node.code, target: '_self'}).text(level_1_node.title);
             var navsonbox = $('<div></div>').addClass('navsonbox');
             var nr = $('<div></div>').addClass('nr');
             var navson_classify = $('<div></div>').addClass('navson-classify'); // 二层节点加在这个里面
@@ -1088,11 +1088,11 @@ $(function() {
 
             var level_2_list = cgyJson[level_1_node.cgy_id];
             if(level_2_list) {
-                for(var j = 1; j < level_2_list.length; j++) {
+                for(var j = 0; j < level_2_list.length; j++) {
                     var level_2_node = level_2_list[j];
                     var navson_classify_box = $('<div></div>').addClass('navson-classify-box');
                     var maintitle = $('<h3></h3>').addClass('maintitle');
-                    var title_sub = $('<a></a>').attr({href: 'javascript:void(0);', target: '_blank'}).html(level_2_node.title + '<span>&gt;<span>');
+                    var title_sub = $('<a></a>').attr({href: '/search/category/code/'+level_1_node.code + '/' + level_2_node.code, target: '_self'}).html(level_2_node.title + '<span>&gt;<span>');
                     var navson_classify_subtitle = $('<div></div>').addClass('navson-classify-subtitle'); // 第三层放这里
 
                     navson_classify.append(navson_classify_box);
@@ -1101,11 +1101,11 @@ $(function() {
 
                     var level_3_list = cgyJson[level_2_node.cgy_id];
                     if(level_3_list) {
-                        for (var k = 1; k < level_3_list.length; k++) {
+                        for (var k = 0; k < level_3_list.length; k++) {
                             var level_3_node = level_3_list[k];
                             var title_sub_sub = $('<a></a>').attr({
-                                href: 'javascript:void(0);',
-                                target: '_blank'
+                                href: '/search/category/code/'+level_1_node.code + '/' + level_2_node.code + '/' + level_3_node.code,
+                                target: '_self'
                             }).text(level_3_node.title);
 
                             navson_classify_subtitle.append(title_sub_sub);
