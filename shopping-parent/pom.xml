@@ -171,5 +171,6 @@
         <module>shopping-eurekaserver</module>
     	<module>shopping-member</module>
     	<module>shopping-good</module>
+    	<module>shopping-cart</module>
     </modules>
 </project>

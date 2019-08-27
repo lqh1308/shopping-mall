@@ -278,6 +278,7 @@
 <a href="login" class="btn-login">请登录</a>
 <a href="register" class="btn-regist">免费注册</a></div>
 </#if>
+<!--
 <div class="new-quick">
 <div class="quicknew-bar">
 <span>资讯</span><a href="https://demo.yunec.cn/n-news.html" target="_blank" class="rside">更多</a>
@@ -286,6 +287,7 @@
 <li><a href="https://demo.yunec.cn/news/66DOZBlkh.html">模板引擎说明</a></li>
 </ul>
 </div>
+-->
 </div>
 </div>
 </div>
@@ -1054,7 +1056,70 @@
 <script src="view/default/js/good/good.js" type="text/javascript"></script>
 
 <script>
+$(function() {
+    var isDev = true;
+    function out(msg) { if(isDev) console.log(msg); }
 
+    var cgyJson = null;
+    $.getJSON("/category/getAll", function(json) {
+        cgyJson = json;
+        init_main_nav();
+    });
+
+    function init_main_nav() {
+        if(cgyJson == null)
+            return;
+        $('.menu-mainnav').empty();
+        // cgyJson下标为1的是第一层结点的list json
+        var level_1_list = cgyJson['0'];
+        // list 下标为0的是父节点的Category bean，
+        // 之后的才是子节点的Category bean，所以要从index=1开始遍历
+        for(var i = 0; i < level_1_list.length; i++) {
+            var level_1_node = level_1_list[i];
+            var li = $('<li></li>');
+            var sortmaintitle = $('<div></div>').addClass('sortmaintitle');
+            var title = $('<a></a>').attr({href: '/search/category/code/'+level_1_node.code, target: '_self'}).text(level_1_node.title);
+            var navsonbox = $('<div></div>').addClass('navsonbox');
+            var nr = $('<div></div>').addClass('nr');
+            var navson_classify = $('<div></div>').addClass('navson-classify'); // 二层节点加在这个里面
+            sortmaintitle.append(title);
+            navsonbox.append(nr);
+            nr.append(navson_classify);
+            li.append(sortmaintitle).append(navsonbox);
+            $('.menu-mainnav').append(li);
+
+            var level_2_list = cgyJson[level_1_node.cgy_id];
+            if(level_2_list) {
+                for(var j = 0; j < level_2_list.length; j++) {
+                    var level_2_node = level_2_list[j];
+                    var navson_classify_box = $('<div></div>').addClass('navson-classify-box');
+                    var maintitle = $('<h3></h3>').addClass('maintitle');
+                    var title_sub = $('<a></a>').attr({href: '/search/category/code/'+level_1_node.code + '/' + level_2_node.code, target: '_self'}).html(level_2_node.title + '<span>&gt;<span>');
+                    var navson_classify_subtitle = $('<div></div>').addClass('navson-classify-subtitle'); // 第三层放这里
+
+                    navson_classify.append(navson_classify_box);
+                    navson_classify_box.append(maintitle).append(navson_classify_subtitle);
+                    maintitle.append(title_sub);
+
+                    var level_3_list = cgyJson[level_2_node.cgy_id];
+                    if(level_3_list) {
+                        for (var k = 0; k < level_3_list.length; k++) {
+                            var level_3_node = level_3_list[k];
+                            var title_sub_sub = $('<a></a>').attr({
+                                href: '/search/category/code/'+level_1_node.code + '/' + level_2_node.code + '/' + level_3_node.code,
+                                target: '_self'
+                            }).text(level_3_node.title);
+
+                            navson_classify_subtitle.append(title_sub_sub);
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+
+});
 $(".nav .nav-classify").addClass("nav-classifyopaity");
  			$(function () {
  				loadLayer();
@@ -1120,4 +1185,8 @@ $(".time-limit .slide-timeslimit .bd li:nth-child(6n)").children(" .nr").css("bo
 </script>
 
 
-<script src="view/default/js/layer.min.js"></script><div id="XIANKEFU-BAR" class="XIANKEFU-bar XIANKEFU-bar-style1"><img src="./view/default/images/icon-logo.png"><span>在线咨询</span></div><div id="XIANKEFU-PANEL" class="XIANKEFU-panel"><iframe allowtransparency="true" frameborder="0" scrolling="no" name="XIANKEFU_SELF" src="view/default/images/index/saved_resource.html"></iframe></div></body></html>
+<script src="view/default/js/layer.min.js"></script>
+<div id="XIANKEFU-BAR" class="XIANKEFU-bar XIANKEFU-bar-style1"><img src="./view/default/images/icon-logo.png"><span>在线咨询</span></div>
+<div id="XIANKEFU-PANEL" class="XIANKEFU-panel"><iframe allowtransparency="true" frameborder="0" scrolling="no" name="XIANKEFU_SELF" src="view/default/images/index/saved_resource.html"></iframe></div>
+</body>
+</html>

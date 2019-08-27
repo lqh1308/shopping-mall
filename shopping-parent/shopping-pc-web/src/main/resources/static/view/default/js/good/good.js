@@ -16,6 +16,17 @@ function getBannerWall() {
 		});
 }
 
+//获取购物车
+function getCart() {
+	$.getJSON(
+			"/getBrandWall", 
+			function(res) {
+				if(res != null) {
+					displayBannerWall(res);
+			}
+			});	
+}
+
 //商品分类展示板块
 /**
  * 查询前 num 个商品一级分类， num为空则查询所有
