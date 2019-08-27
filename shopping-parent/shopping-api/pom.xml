@@ -12,6 +12,5 @@
   	<module>shopping-api-pay</module>
   	<module>shopping-api-order</module>
   	<module>shopping-api-good</module>
-    <module>shopping-api-category</module>
   </modules>
 </project>
