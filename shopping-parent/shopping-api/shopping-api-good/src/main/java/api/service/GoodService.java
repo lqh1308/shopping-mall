@@ -1,5 +1,6 @@
 package api.service;
 
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -17,6 +18,20 @@ public interface GoodService {
 	@RequestMapping("/getGood")
 	public ResponseBase getGood(@RequestParam("num") Integer num, @RequestParam("topCategory") String topCategory);
 
-	@RequestMapping("/searchByCategoryCode")
-    ResponseBase searchByCategoryCode(@RequestParam("code1") String l1, @RequestParam("code2") String l2, @RequestParam("code3") String l3);
+	@RequestMapping("/searchByCategoryId")
+    ResponseBase searchByCategoryId(@RequestParam("offset") Integer offset,
+									@RequestParam("count") Integer count,
+									@RequestParam("id1") Long c1,
+									@RequestParam("id2") Long c2,
+									@RequestParam("id3") Long c3);
+	@RequestMapping("/searchByCategoryTitle")
+	ResponseBase searchByCategoryTitle(@RequestParam("offset") Integer offset,
+									   @RequestParam("count") Integer count,
+									   @RequestParam("t1") String t1,
+									   @RequestParam("t2") String t2,
+									   @RequestParam("t3") String t3);
+
+	@RequestMapping(value = "/searchById",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
+    ResponseBase searchById(@RequestParam("id") Long id);
+
 }

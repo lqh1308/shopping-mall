@@ -11,7 +11,9 @@ public class Good {
 	private Integer id;
 	private String name;
 	private String subName;			//副名称
-	private Integer category;		//商品类目id
+	private Long category;		//商品类目id
+	private String logo;		//商品流览图url
+	private String detailPic;   //细节图片
 	private Integer brand;			//品牌id
 	private Integer stock;			//库存
 	private Integer warningStock;	//预警库存
