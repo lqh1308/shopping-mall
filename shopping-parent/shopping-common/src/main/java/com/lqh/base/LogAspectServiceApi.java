@@ -24,10 +24,9 @@ import lombok.extern.slf4j.Slf4j;
 public class LogAspectServiceApi {
  
     // 申明一个切点 里面是 execution表达式
-    @Pointcut("execution(public * com.lqh.api.service.*.*(..))")
+    @Pointcut("execution(public * com.lqh.api.service.*.*.*(..))")
     private void controllerAspect() {
     }
- 
     // 请求method前打印内容
     @Before(value = "controllerAspect()")
     public void methodBefore(JoinPoint joinPoint) {

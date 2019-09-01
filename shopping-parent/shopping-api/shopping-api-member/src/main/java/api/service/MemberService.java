@@ -5,6 +5,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.lqh.base.ResponseBase;
+
+import entity.Address;
 import entity.User;
 
 @RequestMapping("/member")
@@ -31,4 +33,24 @@ public interface MemberService {
 	//qq 关联登陆
 	@RequestMapping("/findByOpenIdUser")
 	public ResponseBase findByOpenIdUser(@RequestParam("openId") String openId);
+	
+	
+	/**
+	 * 收获地址
+	 */
+	@RequestMapping("/addAddress")
+	public ResponseBase addAddress(@RequestBody Address address);
+	
+	@RequestMapping("/updateAddress")
+	public ResponseBase updateAddress(@RequestBody Address address);
+	
+	@RequestMapping("/delAddress")
+	public ResponseBase delAddress(@RequestParam("addressId") Integer id);
+	
+	@RequestMapping("getAddresses")
+	public ResponseBase getAddresses(@RequestParam("userId") Integer userId);
+	
+	@RequestMapping("/getAddressById")
+	public ResponseBase getAddressById(@RequestParam("addressId") Integer id);
+	
 }

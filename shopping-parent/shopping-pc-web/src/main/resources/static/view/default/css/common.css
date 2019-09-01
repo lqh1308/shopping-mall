@@ -49,6 +49,7 @@ input:-webkit-autofill {
 .rside{float: right;}
 .header{background-color:#fff;}
 .header .head-top{background-color:#f7f7f7;height: 40px;padding:12px 0;*height: auto;}
+.head-ul{float: right;}
 .head-ul li{float: left;padding:0 18px;position: relative;}
 .head-ul li:after{content: '';position: absolute;width: 1px;height: 16px;background-color:#e2e2e2;display: block;top: 0;right: 0;}
 .head-ul li:last-child:after{display: none;}
@@ -64,12 +65,12 @@ input:-webkit-autofill {
 .title-ab h4:after,.title-ab h4:before{position: absolute;width: 40px;height: 1px;background-color:#c5c5c5;display: block;content: '';top: 50%;}
 .title-ab h4:after{right: -55px;}
 .title-ab h4:before{left: -55px;}
-/*搜索框*/
+/*鎼滅储妗�*/
 .searchbox{position: relative;width: 594px;height: 40px;display: inline-block;vertical-align: middle;margin-top:6px;border:2px solid #007cc3;border-right: none;*float:left;*margin-left:140px;*height:38px;}
 .searchbox input{border:none;background:none;}
 .searchbox .txt-search{width: 478px;height: 36px;left: 10px;position: absolute;}
 .searchbox .btn-submit{width: 96px;background-color:#007cc3;height: 38px;position: absolute;right: 0;top: 0;color:#fff;font-size: 16px;}
-/*购物车*/
+/*璐墿杞�*/
 .cartbox{float: right;width: 130px;height: 40px;margin-top:6px;position: relative;*width: auto;*z-index: 99;}
 .cartbox .cartbtn{width: 100%;height: 40px;line-height: 40px;border:1px solid #dcdcdc;padding:0 10px 0 45px;background:url(../images/yec_icon_cart.png) no-repeat 10px 12px;/*color:#b4b4b4;*/cursor: pointer;}
 .cart-slidedownbox{width: 350px;position: absolute;z-index: 99;background-color:#fff;right: 0;top: 39px;border:1px solid #dcdcdc;display: none;}
@@ -155,7 +156,7 @@ input:-webkit-autofill {
 .foot-authentication .authen5{background-position: 0px -206px;}
 .foot-authentication .authen6{background-position: 0px -236px;}
 
-/*注册登录页面简约版头部*/
+/*娉ㄥ唽鐧诲綍椤甸潰绠�绾︾増澶撮儴*/
 .ny-header{height:79px;border-bottom:1px solid #ebebeb;box-shadow: 0 0 4px #ebebeb;position: relative;z-index:999;}
 .ny-header .nb{max-width:1300px;margin:0 auto;overflow: hidden;clear: both;width:100%;}
 .ny-header .logo{float: left;height:79px;line-height:79px;}
@@ -178,7 +179,7 @@ input:-webkit-autofill {
     display: none;
 }
 
-/*侧边浮动*/
+/*渚ц竟娴姩*/
 .celan-float{position: fixed;right:0;top:220px;z-index:999999;}
 .celan-float ul li{width:39px;height:39px;border:1px solid #dddddd;background:url(../images/icon-right.png) no-repeat #fff;margin-top:2px;}
 .celan-float ul li:hover{background:url(../images/icon-right-w.png) no-repeat #007cc3;border-color:#007cc3;}
@@ -205,7 +206,7 @@ input:-webkit-autofill {
 .pages a{padding:0 12px;height: 30px;line-height: 30px;margin:0 2px;background-color:#fff;display: inline-block;}
 .pages a:hover,.pages .current{background-color:#007cc3;color:#fff;}
 
-/*未知*/
+/*鏈煡*/
 .modbox {
     width: 750px;
     height: 420;
@@ -243,9 +244,9 @@ i.icon-check-zf {
     bottom: 0;
     right: 0;
     z-index: 99;
-    background: url(../images/icon-zf-check.png) no-repeat;
+    background: url(../../images/icon-zf-check.png) no-repeat;
 }
-/*产品*/
+/*浜у搧*/
 .yourlike li{float: left;width: 19.6%;margin-right: 0.5%;background-color:#fff;padding-bottom:16px;margin-bottom:10px;border:2px solid #fff;}
 .yourlike li:nth-child(5n){margin-right: 0;}
 .yourlike li img{width: 100%;}
@@ -303,3 +304,5 @@ i.icon-check-zf{display: none;width: 17px;height: 17px;position: absolute;bottom
 .quan-used{background-position: 0px -168px !important;}
 .quan-todayrunout{background-position: 0px -224px !important;}
 .quan-todaygeted{background-position: 0px -280px !important;}
+
+

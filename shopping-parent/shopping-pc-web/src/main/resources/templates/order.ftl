@@ -20,12 +20,16 @@
 .XIANKEFU-panel iframe{display: none; position: absolute; left: 0; top: 0; width: 100%; height: 100%; margin: 0; padding: 0;}
 .XIANKEFU-panel-show iframe{display: block;}
 @media screen and (max-width: 768px) {
-}</style><link rel="stylesheet" href="/view/default/css/layer.css" id="layui_layer_skinlayercss" style=""></head>
+}</style>
+<link rel="stylesheet" href="/view/default/css/layer.css" id="layui_layer_skinlayercss" style="">
+<link rel="stylesheet" href="/view/default/css/myPage.css" style="">
+</head>
+
 
 <body><div class="header">
 <div class="head-top">
 <div class="nb">
-<span style="color:#e01;font-size:14px;">演示站，请勿购物！！&nbsp; 前台账号 yunec&nbsp; &nbsp; <span style="color: rgb(238, 0, 17); font-size: 14px;">密码&nbsp;</span>666666&nbsp; &nbsp;后台地址：&nbsp;<a href="https://demo.yunec.cn/admin.html" target="_self" title="https://demo.yunec.cn/admin.html">https://demo.yunec.cn/admin.html</a></span><div class="rside" style="float:right">
+<!--<span style="color:#e01;font-size:14px;">演示站，请勿购物！！&nbsp; 前台账号 yunec&nbsp; &nbsp; <span style="color: rgb(238, 0, 17); font-size: 14px;">密码&nbsp;</span>666666&nbsp; &nbsp;后台地址：&nbsp;<a href="https://demo.yunec.cn/admin.html" target="_self" title="https://demo.yunec.cn/admin.html">https://demo.yunec.cn/admin.html</a></span><div class="rside" style="float:right">-->
 <ul class="head-ul"><li><a href="https://demo.yunec.cn/user.html">流火如夏</a></li>
 <li><a href="https://demo.yunec.cn/user.html?act=logout">退出</a></li>
 <li><a href="https://demo.yunec.cn/myorder.html">我的订单</a></li>
@@ -51,7 +55,20 @@
 </div>
 <div class="cart-slidedownbox">
 <h3>最近加入</h3>
-<ul class="cart-slidedown" id="cart-list"></ul>
+<ul class="cart-slidedown" id="cart-list">
+<li id="[goods_id]" data-spec = "[spec_name]">
+<div class="cart-pro">
+<a href="[url]" class="pic-box"><img src="[thumb]" alt="60*60"></a>
+<div class="cart-pro-num elli">
+<a href="[url]">[name]</a>
+</div>
+<div class="close-price">
+<button class="close delgoods"></button>
+<p class="red">￥<span class="mincart-price">[price]</span>x<span class="mincart-num">[num]</span></p>
+</div>
+</div>
+</li>
+</ul>
 <div class="sum-box">
 <a class="slidecart-js" href="https://demo.yunec.cn/cart.html">立即结算(<span class="cartinfo">0</span>)</a>
 <div class="sum">合计：￥<span class="red" id="cart-total">0.00</span></div>
@@ -63,6 +80,7 @@
 </div>
 </div>
 <div class="clearfix"></div>
+<!--
 <div class="nav">
 <div class="nav-classify">
 <h3 class="nav-all-btn">全部分类</h3>
@@ -229,6 +247,8 @@
 	
 </ul>
 </div>
+-->
+
 </div>
 </div>
 </div><div class="center-body">
@@ -242,7 +262,7 @@
 </div>
 <ul>
 <li>
-<a href="https://demo.yunec.cn/myorder.html">我的订单</a>
+<a href="/myOrder">我的订单</a>
 </li>
 <li>
 <a href="https://demo.yunec.cn/mycomment.html">我的评价</a>
@@ -294,28 +314,94 @@
 <div class="centerbar">
 <div class="lside">
 <ul>
-<li><a href="https://demo.yunec.cn/myorder.html" class="cur">全部订单</a><i class="line-grey"></i></li>
-<li><a href="https://demo.yunec.cn/myorder.html?t=1">待付款</a><i class="line-grey"></i></li>
-<li><a href="https://demo.yunec.cn/myorder.html?t=2">待收货</a><i class="line-grey"></i></li>
-<li><a href="https://demo.yunec.cn/myorder.html?t=3">待评价</a><i class="line-grey"></i></li>
+<li><a href="/myOrder" class="<#if (state??)><#else>cur</#if>">全部订单</a ><i class="line-grey"></i></li>
+<li><a href="/myOrder?state=0" class="<#if (state?? &&state == 0)>cur<#else></#if>">待付款</a ><i class="line-grey"></i></li>
+<li><a href="/myOrder?state=1" class="<#if (state?? && state == 1)>cur<#else></#if>">待发货</a><i class="line-grey"></i></li>
+<li><a href="/myOrder?state=2" class="<#if (state?? && state == 2)>cur<#else></#if>">待收货</a><i class="line-grey"></i></li>
+<li><a href="/myOrder?state=3" class="<#if (state?? && state == 3)>cur<#else></#if>">待评价</a><i class="line-grey"></i></li>
 </ul>
 </div>
 <form action="https://demo.yunec.cn/myorder.html" method="post">
 <div class="rside">
-下单时间 <input type="text" name="trade_start_date" value="" maxlength="10" readonly="readonly" class="time hasDatepicker" id="dp1566374341620">-<input type="text" name="trade_end_date" value="" readonly="readonly" maxlength="10" class="time hasDatepicker" id="dp1566374341621">
-<div class="set-box">
-<div class="search-box">								
-<input type="txt" name="keyword" id="" value="" placeholder="订单号/商品名称" class="btn-search">
-<input type="submit" value="" class="btn-sub">										
-</div>
-</div>
+下单时间 <input type="text" name="trade_start_date" value="" maxlength="10" readonly="readonly" class="time hasDatepicker" id="dp1566374341620">-<input type="text" name="trade_end_date" value="" readonly="readonly" maxlength="10" class="time hasDatepicker" id="dp1566374341621">						
+<input type="txt" name="keyword" id="" value="" placeholder="订单号/商品名称" class="btn-search">									
+<input type="submit" value="" class="btn-sub">	
 </div>							
 </form>
 </div>
-<div class="dingdan">                    	<div style="width: 100%; height: 200px;padding-top: 50px; background-color: #FFF;text-align: center;font-size: 16px;">
-                    		没有符合条件的订单。
-                    	</div>
-                    	                    	<div class="pages"></div>
+<div style="display:none">
+	<input id="total" value=${totalOrderSize}></input>
+	<input id="page" value=${page}></input>
+	<input id="state" value=<#if (state??)>${state}<#else>null</#if>></input>
+</div>
+<div class="dingdan">  
+<#if (orderList?size > 0)>
+<#list orderList as order>
+<div class="dd-list">
+	<div class="dd-title">
+		<p>下单时间 <span>${order.order.created?string('yyyy-MM-dd HH:mm:ss')}</span></p>
+		<#if (order.order.payId ??)>
+			<p>订单编号 <span>${order.order.payId}</span></p>
+		</#if>
+		<p style="float: right;">
+			<#if (order.order.state == 0)>
+				等待买家付款
+			<#elseif (order.order.state == 1)>
+				等待卖家发货
+			<#elseif (order.order.state == 2)>
+				待收货
+			<#elseif (order.order.state == 3)>
+				待评价
+			<#elseif (order.order.state == 4)>
+				退换货
+			<#else>
+				交易成功
+			</#if>
+		</p>
+	</div>
+	<#list order.cart as c>
+		<div class="dd-detail" style="display:flex">
+			<div style="width:12%;">
+				<img src="${c.goodLogo}" style="width:80px;height:80px;"></img>
+			</div>
+			<div style="width:63%;">
+				<a href="${c.goodId}">
+					<h3>${c.goodName}</h3>
+				</a>
+			</div>
+			<div style="width:15%;">
+				￥${c.price/100} × ${c.num}
+			</div>
+			<div>
+				￥${c.price * c.num/100}
+			</div>
+		</div>	
+	</#list>
+	<div class="dd-root">
+		<!--<button>删除订单</button>-->
+		<#if (order.order.state == 0)>
+			<button>付款</button>
+			<button>取消订单</button>
+			<#elseif (order.order.state == 1)>
+				<button>查看订单</button>
+			<#elseif (order.order.state == 2)>
+				<button>确认收货</button>
+			<#elseif (order.order.state == 3)>
+				<button>评价</button>
+			<#elseif (order.order.state == 4)>
+				<button>查看订单</button>
+			<#else>
+				<button>再次购买</button>
+			</#if>
+	</div>
+</div>
+</#list>
+<#else>
+<div style="width: 100%; height: 200px;padding-top: 50px; background-color: #FFF;text-align: center;font-size: 16px;">
+没有符合条件的订单。
+</div>
+</#if>
+<div class="page" id="Page"></div>
 </div>
 </div>
 
@@ -370,6 +456,7 @@
     x.charset = 'utf-8';
     x.src = 'https://cdn.xiankefu.com/dist/xiankefu.js';
     s.parentNode.insertBefore(x, s);
+    
   })(window, document, 'script', 'XIANKEFU_GLOBAL', {
     bid: '2e0f758b6ebc4dcb2fba6d78818204ad'
   });
@@ -408,11 +495,30 @@
       		$("input[name='trade_start_date'],input[name='trade_end_date']" ).datetimepicker();
  			loadLayer();
  		});
+ 		
+ 		//加载购物车
+		show_cartinfo();
+		var state;
+		var page;
+		$(function() {
+			var total = $("#total").val();
+			page = parseInt($("#page").val());
+			state = $("#state").val();
+			P.initMathod({
+		        params: {elemId: '#Page',total:total, pageNum:'5', pageSize:'4'},
+		        requestFunction: function () {
+		           // P.config.total = parseInt(Math.random() * 10 + 85);//此处模拟总记录变化
+		            //TODO ajax异步请求过程,异步获取到的数据总条数赋值给 P.config.total
+		            //列表渲染自行处理
+		        }
+	    	});
+		});
       </script>
 
 
 
 <div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
 <script src="/view/default/js/layer.min.js"></script>
+<script src="/view/default/js/MyPage.js"></script>
 </body>
 </html>

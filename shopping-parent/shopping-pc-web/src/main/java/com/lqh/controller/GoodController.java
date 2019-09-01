@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lqh.base.BaseApiService;
 import com.lqh.base.ResponseBase;
 import com.lqh.contants.Constans;
 import com.lqh.feign.GoodServiceFeign;
@@ -14,13 +15,13 @@ import com.lqh.feign.GoodServiceFeign;
 import entity.Banner;
 
 @RestController
-public class GoodController {
+public class GoodController extends BaseApiService {
 	
 	@Autowired
 	private GoodServiceFeign goodServiceFeign;
 	
 	@RequestMapping("/getBrandWall")
-	public List<Banner> getBrandWall() {
+	public ResponseBase getBrandWall() {
 		//获取背景墙
 		ResponseBase responseBase = goodServiceFeign.getBrandWall();
 		if(!responseBase.getStatusCode().equals(Constans.HTTP_RES_CODE_200)) {
@@ -32,7 +33,7 @@ public class GoodController {
 		@SuppressWarnings("unchecked")
 		List<Banner> banners = (List<Banner>) map.get("banners");
 		
-		return banners;
+		return setResponseSuccess(banners);
 	}
 	
 }

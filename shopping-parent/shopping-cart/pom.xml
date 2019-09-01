@@ -18,6 +18,11 @@
 	    <artifactId>shopping-api-cart</artifactId>
 	    <version>0.0.1-SNAPSHOT</version>
   	</dependency>
+  	<dependency>
+	    <groupId>com.lqh</groupId>
+	    <artifactId>shopping-api-good</artifactId>
+	    <version>0.0.1-SNAPSHOT</version>
+  	</dependency>
   	
     <!-- springboot整合mybatis -->
     <dependency>
@@ -25,6 +30,31 @@
         <artifactId>mybatis-spring-boot-starter</artifactId>
         <version>1.3.0</version>
     </dependency>
+    
+     <!-- 整合LCN -->
+   	 <dependency>
+          <groupId>com.codingapi</groupId>
+          <artifactId>transaction-springcloud</artifactId>
+          <version>${lcn.last.version}</version>
+          <exclusions>
+              <exclusion>
+                  <groupId>org.slf4j</groupId>
+                  <artifactId>*</artifactId>
+              </exclusion>
+          </exclusions>
+      </dependency>
+
+      <dependency>
+          <groupId>com.codingapi</groupId>
+          <artifactId>tx-plugins-db</artifactId>
+          <version>${lcn.last.version}</version>
+          <exclusions>
+              <exclusion>
+                  <groupId>org.slf4j</groupId>
+                  <artifactId>*</artifactId>
+              </exclusion>
+          </exclusions>
+      </dependency>
    </dependencies>
    
 </project>

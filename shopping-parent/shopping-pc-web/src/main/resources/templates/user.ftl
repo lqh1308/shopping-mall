@@ -26,11 +26,18 @@
 <body><div class="header">
 <div class="head-top">
 <div class="nb">
-<span style="color:#e01;font-size:14px;">演示站，请勿购物！！&nbsp; 前台账号 yunec&nbsp; &nbsp; <span style="color: rgb(238, 0, 17); font-size: 14px;">密码&nbsp;</span>666666&nbsp; &nbsp;后台地址：&nbsp;<a href="https://demo.yunec.cn/admin.html" target="_self" title="https://demo.yunec.cn/admin.html">https://demo.yunec.cn/admin.html</a></span><div class="rside" style="float:right">
-<ul class="head-ul"><li><a href="https://demo.yunec.cn/user.html">流火如夏</a></li>
-<li><a href="https://demo.yunec.cn/user.html?act=logout">退出</a></li>
-<li><a href="https://demo.yunec.cn/myorder.html">我的订单</a></li>
-<li><a href="https://demo.yunec.cn/user.html">会员中心</a></li>
+<!--<span style="color:#e01;font-size:14px;">演示站，请勿购物！！&nbsp; 前台账号 yunec&nbsp; &nbsp; <span style="color: rgb(238, 0, 17); font-size: 14px;">密码&nbsp;</span>666666&nbsp; &nbsp;后台地址：&nbsp;<a href="https://demo.yunec.cn/admin.html" target="_self" title="https://demo.yunec.cn/admin.html">https://demo.yunec.cn/admin.html</a></span><div class="rside" style="float:right">-->
+<ul class="head-ul">
+<#if isLogin==true>
+<li><a href="/user">${username}</a></li>
+<li><a href="logout">退出</a></li>
+<#else>
+<li><a href="login">登录</a></li>
+<li><a href="register">注册</a></li>
+</#if>
+
+<li><a href="myOrder">我的订单</a></li>
+<li><a href="/user">会员中心</a></li>
 </ul>
 </div>
 </div>
@@ -48,11 +55,24 @@
 </div>
 <div class="cartbox">
 <div class="cartbtn">
-<a href="https://demo.yunec.cn/cart.html" class="radv-nav"><span>购物车</span>(<span class="cartinfo">0</span>)</a>
+<a href="/toCart" class="radv-nav"><span>购物车</span>(<span class="cartinfo">0</span>)</a>
 </div>
 <div class="cart-slidedownbox">
 <h3>最近加入</h3>
-<ul class="cart-slidedown" id="cart-list"></ul>
+<ul class="cart-slidedown" id="cart-list">
+<li id="[goods_id]" data-spec = "[spec_name]">
+<div class="cart-pro">
+<a href="[url]" class="pic-box"><img src="[thumb]" alt="60*60"></a>
+<div class="cart-pro-num elli">
+<a href="[url]">[name]</a>
+</div>
+<div class="close-price">
+<button class="close delgoods"></button>
+<p class="red">￥<span class="mincart-price">[price]</span>x<span class="mincart-num">[num]</span></p>
+</div>
+</div>
+</li>
+</ul>
 <div class="sum-box">
 <a class="slidecart-js" href="https://demo.yunec.cn/cart.html">立即结算(<span class="cartinfo">0</span>)</a>
 <div class="sum">合计：￥<span class="red" id="cart-total">0.00</span></div>
@@ -222,11 +242,12 @@
 </li></ul>
 </div>
 <ul class="nav-othder">
-<li><a href="/">首页</a></li><li><a href="https://demo.yunec.cn/17rec.html" target="_blank">数码电器</a></li>
+<li><a href="/">首页</a></li>
+<li><a href="https://demo.yunec.cn/17rec.html" target="_blank">数码电器</a></li>
 <li><a href="https://demo.yunec.cn/PQscH.html" target="_blank">美妆个护</a></li>
-<li><a href="https://demo.yunec.cn/timespike.html" target="_blank">限时抢购</a></li>
-<li><a href="https://demo.yunec.cn/quan.html" target="_blank">优惠券</a></li>
 <li><a href="https://demo.yunec.cn/NSlFz.html" target="_blank">时尚服装</a></li>
+<li><a href="toTimespick" target="_blank">限时抢购</a></li>
+<li><a href="toDiscount" target="_blank">优惠券</a></li>
 	
 </ul>
 </div>
@@ -295,9 +316,9 @@
 <div class="user-cart">
 <div class="user-detail">
 <div class="headvsname">
-<a class="touxiang" href="https://demo.yunec.cn/userinfo.html"><img src="./我的账户 - 云EC电商系统_files/32ec1bb1bf966d6641fa6da7c6019944.jpg" alt="流火如夏" width="80" height="80">
+<a class="touxiang" href="https://demo.yunec.cn/userinfo.html"><img src="/view/default/images/userDefaultPic.jpg" alt="${username}" width="80" height="80">
 </a>
-<p class="username">您好！流火如夏</p>
+<p class="username">您好！${username}</p>
 </div>
 <div class="user-info">
 <div class="left">
@@ -313,27 +334,27 @@
 <div class="user-function">
 <ul>
 <li class="odd marbot">
-<a href="https://demo.yunec.cn/myorder.html?t=1">
+<a href="/myOrder?state=0">
 <i class="icon-payment"></i>
-<span>待付款 0</span>
+<span>待付款 <#if (unPay?size>0)>${unPay?size}<#else>0</#if></span>
 </a>
 </li>
 <li class="marbot">
-<a href="https://demo.yunec.cn/myorder.html?t=4">
+<a href="/myOrder?state=1">
 <i class="icon-shipments"></i>
-<span>待发货 0</span>
+<span>待发货<#if (unDeliver?size>0)>${unDeliver?size}<#else>0</#if></span>
 </a>
 </li>
 <li class="odd">
 <a href="https://demo.yunec.cn/myorder.html?t=2">
 <i class="icon-receipt"></i>
-<span>待收货 0</span>
+<span>待收货 <#if (unReceive?size>0)>${unReceive?size}<#else>0</#if></span>
 </a>
 </li>
 <li>
 <a href="https://demo.yunec.cn/myorder.html?t=3">
 <i class="icon-evaluate"></i>
-<span>待评价 0</span>
+<span>待评价 <#if (unEvaluate?size>0)>${unEvaluate?size}<#else>0</#if></span>
 </a>
 </li>
 </ul>
@@ -406,7 +427,7 @@
   });
 </script><div class="celan-float">
 <ul>
-<li class="shop"><a href="https://demo.yunec.cn/cart.html" title="购物车"><span class="cartinfo">0</span></a></li>
+<li class="shop"><a href="toCart" title="购物车"><span class="cartinfo">0</span></a></li>
 <li class="ecode">
 <a href="https://demo.yunec.cn/user.html#">二维码</a>
 <div class="ecode-box radius">
@@ -428,9 +449,11 @@
       		
       		});
       	});
-$(function () {
-loadLayer();
-});
+		$(function () {
+		loadLayer();
+		//加载购物车
+		show_cartinfo();
+		});
       	$("#slide-coupon").slide({titCell:".hd ul",mainCell:".bd ul",autoPage:true,effect:"left",vis:1});
       	$("#slide-change").slide({ mainCell:".dlList", effect:"leftLoop",autoPage:true,scroll:5,vis:5});	
       </script>

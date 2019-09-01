@@ -1,26 +1,29 @@
 package com.lqh.api.service.impl;
 
 import java.util.Date;
+import java.util.List;
 
 import org.apache.activemq.command.ActiveMQQueue;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSONObject;
-import api.service.MemberService;
 import com.lqh.base.BaseApiService;
 import com.lqh.base.ResponseBase;
 import com.lqh.contants.Constans;
 import com.lqh.dao.UserDao;
-import entity.User;
 import com.lqh.mq.RegisterMailBoxProducer;
 import com.lqh.utils.MD5Util;
 import com.lqh.utils.TokenUtil;
 
+import api.service.MemberService;
+import entity.Address;
+import entity.User;
 import lombok.extern.slf4j.Slf4j;
 
 
@@ -175,6 +178,53 @@ public class MemberServiceImpl extends BaseApiService implements MemberService{
 	public ResponseBase logout(@RequestParam("token") String token) {
 		baseRedisService.dealKey(token);
 		return setResponseSuccess();
+	}
+
+	@Override
+	@Transactional
+	public ResponseBase addAddress(@RequestBody Address address) {
+		if(address == null) {
+			return setResponseError("地址信息不能为空");
+		}
+		if(address.getIsDefault() == 1) {
+			//将其它地址设置为非默认地址
+			userDao.setAllUnDefaultAddress(address.getUserId());
+		}
+		if(userDao.addAddress(address) <= 0)
+			return setResponseError("添加地址信息失败！");
+		return setResponseSuccess();
+	}
+
+	@Override
+	@Transactional
+	public ResponseBase updateAddress(@RequestBody Address address) {
+		if(address == null) {
+			return setResponseError("地址信息不能为空");
+		}
+		if(address.getIsDefault() == 1) {
+			//将其它地址设置为非默认地址
+			userDao.setAllUnDefaultAddress(address.getUserId());
+		}
+		userDao.updateAddress(address);
+		return setResponseSuccess();
+	}
+
+	@Override
+	public ResponseBase delAddress(@RequestParam("addressId") Integer id) {
+		userDao.delAddress(id);
+		return setResponseSuccess();
+	}
+
+	@Override
+	public ResponseBase getAddresses(@RequestParam("userId") Integer userId) {
+		List<Address> addresses = userDao.getAddresses(userId);
+		return setResponseSuccess(addresses);
+	}
+
+	@Override
+	public ResponseBase getAddressById(@RequestParam("addressId") Integer id) {
+		Address address = userDao.getAddressById(id);
+		return setResponseSuccess(address);
 	}
 
 	

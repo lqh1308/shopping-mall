@@ -47,8 +47,8 @@ body{background-color: #f8f8f8;}
 .cen-top .user-cart .user-detail .touxiang{width:55px;height: 55px;border-radius: 50%;box-shadow: 0px 0px 1px #000;margin:0 auto;display: block;overflow: hidden;}
 .cen-top .user-cart .user-detail .touxiang:hover{box-shadow: 0 0 1px #fff;cursor: pointer;}
 .cen-top .user-cart .user-detail .touxiang img{width: 55px;height: 55px;}
-.cen-top .user-cart .user-detail .username{color:#fff;font-size: 14px;margin:7px 20px;}
-.cen-top .user-cart .user-detail .user-info{width: 65%;float: right;padding:17px 0;}
+.cen-top .user-cart .user-detail .username{color:#fff;font-size: 13px;margin:7px 20px;}
+.cen-top .user-cart .user-detail .user-info{width: 65%;float: right;padding:10px 0;}
 .cen-top .user-cart .user-detail .headvsname{float: left;width: 30%;}
 .user-info .left,.user-info .right{float: left;text-align: left;width: 50%;}
 .user-info p{color:#c8f0fe;line-height: 26px;}
@@ -95,7 +95,7 @@ body{background-color: #f8f8f8;}
 .cen-center{padding:10px 10px 0;background-color:#fff;border:1px solid #eee;margin-top:1px;}
 .cen-center .dingdan .dd-list{border:1px solid #eee;margin:20px 8px;}
 .cen-center .dingdan .dd-title{padding:0 10px 0 14px;height: 38px;line-height: 38px;background-color:#f5f5f5;}
-.cen-center .dingdan .dd-title p{display: inline-block;margin-right:45px;color: #828282;}
+.cen-center .dingdan .dd-title p{display: inline-block;margin-right:25px;color: #828282;}
 .cen-center .dingdan .dd-title p span{color: #424242;}
 .cen-center .dingdan .dd-title i{display: inline-block;width:14px;height: 15px;background-position: 0px -302px;float: right;margin-top:12px;cursor: pointer;}
 .cen-center .dingdan .dd-detail {display: table;}
@@ -132,12 +132,20 @@ body{background-color: #f8f8f8;}
 .center1 .centerbar .lside ul li a{padding:0 18px;color:#323232;}
 .center1 .centerbar .lside ul li  i{display: block;float: right;width:1px;height: 14px;background-color:#eee;margin:17px 0;}
 .center1 .centerbar .lside ul li a:hover,.center1 .centerbar .lside ul li a.cur{color:#007cc3;}
-.center1 .centerbar .rside{float: right;margin:8px 20px 0 0;}
-.center1 .centerbar .rside input[type=text]{width: 130px;height: 30px;line-height: 30px;padding-left: 7px;border: 1px solid #c9c9c9;}
+.center1 .centerbar .rside{float: right; margin: 8px 8px 0 0;display: flex;align-items: center;}
+.center1 .centerbar .rside input[type=text]{width: 130px;height: 30px;line-height: 30px;padding-left: 7px;border: 1px solid #c9c9c9;margin: 0 5px;}
 .center1 .centerbar .rside .set-box{border:1px solid #c9c9c9;width:200px;height: 30px;margin-left: 20px;float: right;}
 .center1 .centerbar .rside .set-box .search-box{width:198px;position: relative;height: 28px;display: block;float: left;} 
-.center1 .centerbar .rside .set-box .search-box input.btn-search{display: block;width:90%;padding:0 5%;position: absolute;border: none;left: 0;top: 0;height: 28px;}
-.center1 .centerbar .rside .set-box .search-box input.btn-sub{display: block;width:32px;height: 28px;position: absolute;right: 0;background: url(../images/icon-search.jpg) no-repeat 1px -1px;border:none;background-size: 90%;cursor: pointer;}
+input.btn-search{
+	border: 1px solid #c9c9c9;
+    left: 0;
+    top: 0;
+    height: 28px;
+    text-align: center;
+    padding: 14px 5px;
+    display: block;
+}
+input.btn-sub{display: block;width:32px;height: 28px;right: 0;background: url(../images/icon-search.jpg) no-repeat 1px -1px;border:none;background-size: 90%;cursor: pointer;}
 .center1 .centerbar .rside .set-box .advance{width:58px;height: 28px;line-height: 28px;float: right;border-left:1px solid #c9c9c9;}
 .center1 .centerbar .rside .set-box .advance h5{font-size: 12px;text-align: center;}
 .advance i.icon-down{background-position: -20px -352px;width: 11px;height: 6px;float: right;margin:12px 10px 0 0;}
@@ -371,4 +379,25 @@ i.i-del:after{content: "X";}
 
 .favul li .elli{height: 1.5em;}
 .favul li .price{font-size: 14px;display: block;padding-bottom:0.5em}
-
+.dingdan{
+	padding-bottom: 10px;
+}
+.dd-detail{
+	display: flex;
+    flex-direction: row;
+    padding: 10px 20px;
+    align-items: center;
+}
+.dd-root{
+	display: flex;
+    padding: 10px 40px;
+    justify-content: flex-end;
+}
+.dd-root button{
+    padding: 8px 0;
+    border-radius: 40px;
+    background: white;
+    border: 1px solid gray;
+    margin-left: 20px;
+    width: 90px;
+}

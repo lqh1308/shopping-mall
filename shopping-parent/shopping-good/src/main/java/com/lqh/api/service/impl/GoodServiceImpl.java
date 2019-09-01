@@ -12,6 +12,7 @@ import com.lqh.dao.GoodDao;
 
 import api.service.GoodService;
 import entity.Banner;
+import entity.Good;
 
 @RestController
 public class GoodServiceImpl extends BaseApiService implements GoodService{
@@ -39,6 +40,14 @@ public class GoodServiceImpl extends BaseApiService implements GoodService{
 	public ResponseBase getGood(Integer num, String topCategory) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public ResponseBase getGoodById(Integer goodId) {
+		Good good = goodDao.getGoodById(goodId);
+		JSONObject json = new JSONObject();
+		json.put("good", good);
+		return setResponseSuccess(json);
 	}
 
 }

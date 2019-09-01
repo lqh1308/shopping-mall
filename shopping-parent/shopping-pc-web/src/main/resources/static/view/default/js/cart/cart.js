@@ -5,38 +5,38 @@ $(function() {
 	$(".good-num:last-child").css("border-bottom", "none");
 	$(".goods-price:last-child").css("border-bottom", "none");
 	$(".xiaoji:last-child").css("border-bottom", "none");
+
 	//购物数量改变时
-	$("#list .result").each(function() {
-		$(this).change(function() {
-			var n = parseInt($(this).val());
-			var p = $(this).parent();
-			var chk = p.siblings(".cart-one").children("input");
-			var price = p.prev().children(".g-price").html();
-			p.next().children(".subtotal").html((n * price).toFixed(2));
-			updateCart(p.parent().attr("id"), p.parent().data("spec"), n);
-			chk.prop("checked", "checked");
-			if(chk.parents(".cart-tr").hasClass("it-selected") == false) {
-				chk.parents(".cart-tr").addClass("it-selected");
-			}
-			sumShopping();
-		});
-	});		
+	$("#list").on("change", ".result", function() {
+		var n = parseInt($(this).val());
+		var p = $(this).parent();
+		var chk = p.siblings(".cart-one").children("input");
+		var price = p.prev().children(".g-price").html();
+		p.next().children(".subtotal").html((n * price).toFixed(2));
+		updateCart(p.parent().attr("id"), p.parent().data("spec"), n);
+		chk.prop("checked", "checked");
+		if(chk.parents(".cart-tr").hasClass("it-selected") == false) {
+			chk.parents(".cart-tr").addClass("it-selected");
+		}
+		sumShopping();
+	})
+	
+	//得到商品
+	var carthtml= $("#cartTemplate").html();
+	$("#list").html("");
+	show_cartinfo(carthtml);
 	
 	//移除商品
-	$(".removeGoods").each(function() {
-		$(this).click(function() {
-			var p = $(this).parent().parent();
-			var ids = p.attr("id"),
-				spec = p.data("spec");
-			layer.confirm('确定要删除吗', function(index) {
-				removeGoods(ids, spec);
-				top.layer.close(index);
-			});
+	$("#list").on("click", ".removeGoods", function() {
+		var p = $(this).parent().parent();
+		var ids = p.attr("id");
+		layer.confirm('确定要删除吗', function() {
+			removeGoods(ids);
 		});
-	});
+	})
 	
 	//批量移除商品
-	$("#removebatch").click(function() {
+	$(".account").on("click", "#removebatch", function(){
 		var ids = '';
 		var spec = '';
 		$("#list input[name='chk_list']:checked").each(function() {
@@ -51,66 +51,103 @@ $(function() {
 			removeGoods(ids, spec);
 			top.layer.close(index);
 		});
-	});	
+	})
 	
 	//更新商品选择状态
-	$("#list input[name='chk_list']").each(function() {
-		$(this).click(function() {
-			updateStatus($(this));
-			setall(".btn-checkall", "#list");
-		});
-	});
+	$("#list").on("click", "input[name='chk_list']", function() {
+		updateStatus($(this));
+		setall(".btn-checkall", "#list");
+	})
 		
 });
 
-//商品加入收藏
-	$(".addfav").each(function() {
+
+
+function show_cartinfo(carthtml) {
+	$.getJSON("/getUserCart", function(res) {
+		if(res.statusCode != 200) {
+		} else {
+			$("#selectnum").html(res.data.nmount);
+			$("#total").html(res.data.pmount);
+			var $html='';	
+			if (res.data !=false) {					
+				$.each(res.data.carts, function(k, v) {
+					$html += carthtml;
+					if(v.isCollected == "1") {
+						v.collectState = "取消收藏";
+						v.collectClass = "delfav";
+					}
+					if(v.isCollected == "0") {
+						v.collectState = "加入收藏";
+						v.collectClass = "addfav";
+					}
+					$html = $html.replace(/\[id\]/g, v.id).replace(/\[goods_id\]/g, v.goodId).replace(/\[spec_name\]/g, v.goodName).replace(/\[url\]/g, "#").replace(/\[name\]/g, v.goodName).replace(/\[thumb\]/g, v.goodLogoUrl).replace(/\[price\]/g, v.showPrice)
+								 .replace(/\[sumPrice\]/g, v.totalPrice).replace(/\[num\]/g, v.purchaseNum).replace(/\[isCollected\]/g, v.isCollected).replace(/\[collectState\]/g, v.collectState).replace(/\[collectClass\]/g, v.collectClass);
+				}); 
+			}
+			
+			$("#list").html($html); 
+		}
+	});
+}
+
+	//商品加入收藏
+	$("#list").on("click", ".addfav", function() {
 		$(this).click(function() {
 			var t =$(this);
 			var p = $(this).parent().parent();
-			var ids = p.attr("id"),
-				spec = p.data("spec");
-			$.getJSON("/user.html", {
-				act: 'addfav',
-				gid: ids,
-				spec: spec
-			}, function(res) {
-				if(res.err != '') {
-					msg("收藏失败，" + res.err);
-				} 
-				else if( (res.url && res.url != '')) {
-					msg('操作失败，请先登陆。');
-					setTimeout("window.location.href="+res.url, 3000);
-				}
-				else {
-					msg("收藏成功");
-					t.replaceWith('<span style="color: #999;">已收藏</span>')
-				}
+			var ids = p.attr("id");
+			var goodId = p.data("goodid");
+			$.getJSON(
+				"/addfav", 
+				{
+					id: ids,
+					goodId: goodId
+				}, 
+				function(res) {
+					if(res.statusCode == 200) {
+						msg("收藏成功");
+						t.replaceWith('<a href="javascript:void(0);" class="delfav" data-isCollected="1">取消收藏</a>')
+					} 
+					else if( (res.url && res.url != '')) {
+						msg('操作失败，请先登陆。');
+						setTimeout("window.location.href="+res.url, 3000);
+					}
+					else {
+						msg("收藏失败，" + res.err);
+					}
 			});
 		});
-	});
+	})
 	
 	//取消收藏
-	function delFav(gid, spec,th) {
-		var t =$(th);
-		$.getJSON("/user.html", {
-				act: 'del_fav',
-				gid: gid,
-				spec: spec
-			}, function(res) {
-				if(res.err != '') {
-					msg("取消失败，" + res.err);
-				} 
-				else if( (res.url && res.url != '')) {
-					msg('操作失败，请先登陆。');
-					setTimeout("window.location.href="+res.url, 3000);
-				}
-				else {
-					msg("取消成功");
-					t.parents("li").eq(0).remove();
-				}
+	$("#list").on("click", ".delfav", function() {
+		$(this).click(function() {
+			var t =$(this);
+			var p = $(this).parent().parent();
+			var ids = p.attr("id");
+			var goodId = p.data("goodid");
+			$.getJSON(
+				"/delfav",
+				{
+					id: ids,
+					goodId: goodId
+				}, 
+				function(res) {
+					if(res.statusCode == 200) {
+						msg("取消收藏成功");
+						t.replaceWith('<a href="javascript:void(0);" class="addfav" data-isCollected="0">加入收藏</a>')
+					} 
+					else if( (res.url && res.url != '')) {
+						msg('取消收藏操作失败，请先登陆。');
+						setTimeout("window.location.href="+res.url, 3000);
+					}
+					else {
+						msg("取消收藏失败，" + res.err);
+					}
+				});
 		});
-	};
+	});
 
 //去结算
 function gotoOrder() {
@@ -119,7 +156,16 @@ function gotoOrder() {
 		msg("请选择要结算的商品");
 		return;
 	}
-	window.location.href = '/order.html';
+	//获取选中商品id和商品数量
+	var cartIds = getCheckedCarts();
+	$.getJSON("/calculateCarts", {'cartIds':cartIds}, function(res) {
+		if(res.url != null && res.url != '') {
+			window.location.href = res.url;
+		}
+	})
+	
+	//var a = "<a href='/gOrder?cartIds=" + cartIds + "'><p></p></a>";
+	//window.location.href = $(a)[0];
 };
 	
 //更新购物车商品状态
@@ -150,16 +196,15 @@ function updateStatus(t) {
 //更新购物车
 function updateCart(gid, spec, total) {
 	var data = {
-		act: 'addtocart',
-		gid: gid,
-		spec: spec,
-		total: total
+		id: gid,
+		purchaseNum: total
 	};
-	$.getJSON("/cart.html", data, function(res) {
-		if(res.err && res.err != '') {
-			msg('操作失败，' + res.err);
+	$.getJSON("/addToCart", data, function(res) {
+		if(res.statusCode == 200) {
+			//$(".cartinfo").html($.cookie("cnum"));
+			msg('操作成功');
 		} else {
-			$(".cartinfo").html($.cookie("cnum"));
+			msg('操作失败，' + res.err);
 		}
 	});
 }
@@ -170,8 +215,8 @@ function saveconsignee() {
 	name = $.trim($("#sh-name").val()),
 	mobile = $.trim($("#sh-phone").val()),
 	tel = $.trim($("#sh-tel").val()),
-	district = $.trim($("#district").val()),
-	address = $.trim($("#sh-address").val()),
+	address = $("#province").val() + " " + $("#city").val() + " " + $("#district").val();
+	detailAddress = $.trim($("#sh-address").val()),
 	isdefault = $("#isdefault").is(":checked")? 1:0;
 
 	if (name=='') {
@@ -203,28 +248,27 @@ function saveconsignee() {
 		msg("固定电话格式不正确");
 		return;
 	}
-	if (district=='' || district.length < 3) {
+	if (address=='' || address.length < 3) {
 		msg("请选择所在地区");
 		return;
 	}
-	if (address =='') {
+	if (detailAddress =='') {
 		msg("请填写详细地址");
 		return;
 	}
 	var data={
-		act:"edit_consignee",
 		id:id,
-		name:name,
-		mobile:mobile,
-		tel:tel,
-		district:district,
-		address:address,
-		isdefault:isdefault
+		username:name,
+		phone:mobile,
+		fixPhone:tel,
+		location:address,
+		detailAddress:detailAddress,
+		isDefault:isdefault
 	}
 	$("#saveconsignee").attr("disabled", "disabled");
-	$.getJSON("/order.html", data, function(res) {
+	$.getJSON("/addAddress", data, function(res) {
 		$("#saveconsignee").removeAttr("disabled");
-		if(res.err && res.err != '') {
+		if(res.statusCode != 200) {
 			msg('操作失败，' + res.err);return;
 		}
 		else if( (res.url && res.url != '')) {
@@ -235,7 +279,7 @@ function saveconsignee() {
 		{
 			msg("保存成功");			
 			$("#mask,.edit-address").hide();
-			address = $("#store-selector .text>div").html()+address;
+			//address = $("#store-selector .text>div").html()+address;
 			if (isdefault==1) {
 				$("li.other-add").find(".moblie").siblings("span").html('');
 			}
@@ -245,7 +289,7 @@ function saveconsignee() {
 				var html= '<li class="other-add default-add" id="'+ id+'" data-cityid="'+curArea.curCityId+'">';
 				html += '<div class="add-box"><span class="remove vivi-blue" onclick="removeAddr('+id+');">X</span>';
 				html += '<div class="name-add"><span class="name">'+name+'</span><span class="add-rside"></span></div>';
-				html += '<div class="elli add-detail"><p title="'+address+'">'+address+'</p></div>';
+				html += '<div class="elli add-detail"><p title="'+address+detailAddress+'">'+address+detailAddress+'</p></div>';
 				html += '<div><span class="moblie">'+mobile+'</span><span style="margin-left: 30px;">'+(isdefault==1?'默认地址':'')+'</span>';
 				html += '<a href="javascript:void(0);" onclick="editAddr('+id +');" class="chang-default change vivi-blue">修改</a></div></div><i class="icon-check"></i></li>';
 				$(".sh-address .add-add").before(html);
@@ -254,9 +298,11 @@ function saveconsignee() {
 				$("#"+id).find(".moblie").html(mobile);
 				if (isdefault==1) {
 					$("#"+id).find(".moblie").siblings("span").html('默认地址');
+				} else {
+					$("#"+id).find(".moblie").siblings("span").html('');
 				}
 				
-				$("#"+id).find(".add-detail").children().attr("title", address).html(address);
+				$("#"+id).find(".add-detail").children().attr("title", address+" "+detailAddress).html(address+" "+detailAddress);
 			}			
 		}		
 	});
@@ -267,8 +313,13 @@ function saveconsignee() {
 $("i.close-modbox").click(function(){
 	$("#mask,.modbox").hide();
 });
+
+
 //新增地址
 function addAddr(){
+	$("#edit-box-title").text("新增配送信息");
+	//初始化地址信息
+	$distpicker.distpicker('initData', {});
 	$("#mask").show();$(".edit-address").slideDown(200);
 	
 	$("#id").val('');
@@ -278,6 +329,7 @@ function addAddr(){
 	$("#district").val('');
 	$("#sh-address").val('');
 	$("#isdefault").removeAttr("checked");	
+	
 	location_init();
 };
 
@@ -286,32 +338,37 @@ function editAddr(id){
 	if (id ==undefined || id==0) {
 		return;
 	}
+	$("#edit-box-title").text("修改配送信息");
 	$("#mask").show();$(".edit-address").slideDown(200);
 	$("#saveconsignee").attr("disabled", "disabled");
 	
-	$.getJSON("/order.html", {id:id,act:'get_consignee'}, function(res) {
-		if( (res.err && res.err != '') || res.data.length==0) {
-			msg('加载地址失败，' + res.err);return;
-		}
-		else if( (res.url && res.url != '')) {
-			msg('操作失败，您还未登陆');
-			setTimeout("window.location.href="+res.url,3000);
-		}
-		else
-		{
+	$.getJSON("/getAddress", {addressId:id}, function(res) {
+		if( res.statusCode != 200 ) {
+			msg('加载地址失败，' + res.err);
+			return;
+		} else {
 			$("#id").val(id);
-			$("#sh-name").val(res.data[0].name);
-			$("#sh-phone").val(res.data[0].mobile);
-			$("#sh-tel").val(res.data[0].tel);
-			$("#district").val(res.data[0].name);
-			$("#sh-address").val(res.data[0].address);
-			$("#isdefault").attr("checked",res.data[0].is_default==1);	
+			$("#sh-name").val(res.data.username);
+			$("#sh-phone").val(res.data.phone);
+			$("#sh-tel").val(res.data.fixPhone);
+			//$("#district").val(res.data.location);
+			$("#sh-address").val(res.data.detailAddress);
+			$("#isdefault").prop("checked",res.data.isDefault==1);	
+			var addressArr = res.data.location.split(" ");
+			var data = {
+		        province: addressArr[0],
+		        city: addressArr[1],
+		        district: addressArr[2]	
+			}
+			$distpicker.distpicker('initData', data);
+			/*
 			curArea.curProvinceId = res.data[0].province;
 			curArea.curCityId = res.data[0].city;
 			curArea.curAreaId = res.data[0].area;
 			curArea.curTownId= res.data[0].town;
+			*/
+			//chooseProvince(curArea.curProvinceId);
 			page_load=true, edit_init=true;
-			chooseProvince(curArea.curProvinceId);
 		}
 		$("#saveconsignee").removeAttr("disabled");
 	});
@@ -321,8 +378,8 @@ function editAddr(id){
 function removeAddr(id) {
 	layer.confirm('确定要删除吗', function(index) {	
 		var d= $("li.default-add");
-		$.getJSON("/order.html", {id:id,act:'del_consignee'}, function(res) {
-			if( (res.err && res.err != '')) {
+		$.getJSON("/delAddress", {addressId:id}, function(res) {
+			if( res.statusCode != 200 ) {
 				msg('操作失败，' + res.err);return;
 			}
 			else if( (res.url && res.url != '')) {
@@ -434,7 +491,7 @@ function calcTotal() {
 	}	
 		
 	$(".txtmoney b").each(function() {
-		sum+= parseFloat($.trim($(this).html()));
+		sum+= parseFloat($.trim($(this).html()).replace(/,/g, ""));
 	});
 	$("#payAmount").html(sum);
 	if (sum == 0)

@@ -17,5 +17,6 @@ public interface GoodService {
 	@RequestMapping("/getGood")
 	public ResponseBase getGood(@RequestParam("num") Integer num, @RequestParam("topCategory") String topCategory);
 	
-	
+	@RequestMapping("/getGoodById")
+	public ResponseBase getGoodById(@RequestParam("/goodId") Integer goodId);
 }

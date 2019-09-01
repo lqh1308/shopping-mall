@@ -32,19 +32,19 @@
 <body class="greybg"><div class="header">
 <div class="head-top">
 <div class="nb">
-<span style="color:#e01;font-size:14px;">演示站，请勿购物！！&nbsp; 前台账号 yunec&nbsp; &nbsp; <span style="color: rgb(238, 0, 17); font-size: 14px;">密码&nbsp;</span>666666&nbsp; &nbsp;后台地址：&nbsp;<a href="https://demo.yunec.cn/admin.html" target="_self" title="https://demo.yunec.cn/admin.html">https://demo.yunec.cn/admin.html</a></span><div class="rside" style="float:right">
+<!--<span style="color:#e01;font-size:14px;">演示站，请勿购物！！&nbsp; 前台账号 yunec&nbsp; &nbsp; <span style="color: rgb(238, 0, 17); font-size: 14px;">密码&nbsp;</span>666666&nbsp; &nbsp;后台地址：&nbsp;<a href="https://demo.yunec.cn/admin.html" target="_self" title="https://demo.yunec.cn/admin.html">https://demo.yunec.cn/admin.html</a></span><div class="rside" style="float:right">-->
 <ul class="head-ul">
 
 <#if isLogin==true>
-<li><a href="user/toUserPage">${username}</a></li>
+<li><a href="/user">${username}</a></li>
 <li><a href="logout">退出</a></li>
 <#else>
 <li><a href="login">登录</a></li>
 <li><a href="register">注册</a></li>
 </#if>
 
-<li><a href="toMyOrder">我的订单</a></li>
-<li><a href="user/toUserPage">会员中心</a></li>
+<li><a href="myOrder">我的订单</a></li>
+<li><a href="/user">会员中心</a></li>
 </ul>
 </div>
 </div>
@@ -66,7 +66,20 @@
 </div>
 <div class="cart-slidedownbox">
 <h3>最近加入</h3>
-<ul class="cart-slidedown" id="cart-list"></ul>
+<ul class="cart-slidedown" id="cart-list">
+<li id="[goods_id]" data-spec = "[spec_name]">
+<div class="cart-pro">
+<a href="[url]" class="pic-box"><img src="[thumb]" alt="60*60"></a>
+<div class="cart-pro-num elli">
+<a href="[url]">[name]</a>
+</div>
+<div class="close-price">
+<button class="close delgoods"></button>
+<p class="red">￥<span class="mincart-price">[price]</span>x<span class="mincart-num">[num]</span></p>
+</div>
+</div>
+</li>
+</ul>
 <div class="sum-box">
 <a class="slidecart-js" href="https://demo.yunec.cn/cart.html">立即结算(<span class="cartinfo">0</span>)</a>
 <div class="sum">合计：￥<span class="red" id="cart-total">0.00</span></div>
@@ -268,12 +281,12 @@
 </div>
 <div class="nb">
 <div class="lognew">
-<div class="login-quick"><a href="user/toUserPage" class="head"><img src="view/default/images/index/avatar.jpg" alt="70*70"></a>
+<div class="login-quick"><a href="/user" class="head"><img src="view/default/images/index/avatar.jpg" alt="70*70"></a>
 <!--<div class="login-quick"><a href="https://demo.yunec.cn/login.html" class="head"><img src="view/default/images/index/avatar.jpg" alt="70*70"></a>-->
 <p>Hi~您好！</p>
 <#if isLogin==true>
-<a href="user/toUserPage" class="btn-login">老铁</a>
-<a href="user/toUserPage" class="btn-regist">${username}</a></div>
+<a href="/user" class="btn-login">老铁</a>
+<a href="/user" class="btn-regist">${username}</a></div>
 <#else>
 <a href="login" class="btn-login">请登录</a>
 <a href="register" class="btn-regist">免费注册</a></div>
@@ -1057,6 +1070,9 @@
 
 <script>
 $(function() {
+	//加载购物车
+	show_cartinfo();
+	
     var isDev = true;
     function out(msg) { if(isDev) console.log(msg); }
 
@@ -1183,7 +1199,7 @@ $(".cont-item a:last-child").css("margin-right","0px");
 $(".time-limit .slide-timeslimit .bd li:nth-child(6n)").children(" .nr").css("border-right","none");
 }
 </script>
-
+<script src="view/default/js/good/goods.js"></script>
 
 <script src="view/default/js/layer.min.js"></script>
 <div id="XIANKEFU-BAR" class="XIANKEFU-bar XIANKEFU-bar-style1"><img src="./view/default/images/icon-logo.png"><span>在线咨询</span></div>

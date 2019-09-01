@@ -29,8 +29,16 @@
 <div class="logo">
 <!--<a href="/"><img src="/view/default/images/logo.png" alt=""></a>-->
 </div>
-<div class="right cart-center"><a href="user/toUserPage" class="red">流火如夏</a>&nbsp;&nbsp;<a href="https://demo.yunec.cn/user.html?act=logout">退出</a> 
-<a href="/toMyOrder">我的订单</a>
+<div class="right cart-center">
+<#if isLogin == true > 
+<a href="user/toUserPage" class="red">${username}</a>
+<a href="logout">退出</a> 
+<#else>
+<li><a href="login">登录</a></li>
+<li><a href="register">注册</a></li>
+</#if>
+
+<a href="/myOrder">我的订单</a>
 <a href="https://demo.yunec.cn/help.html">客户服务</a>
 </div>
 </div>
@@ -67,7 +75,37 @@
 操作
 </div>
 </div>
-<div class="cart-tbody" id="list"> </div>
+<div id="cartTemplate" style="display:none">
+	<div class="cart-tr it-selected" id="[id]" data-goodId=[goods_id] data-spec="">
+	<div class="cart-td checksingle  cart-one">
+	<input type="checkbox" name="chk_list" checked="checked" />
+	</div>
+	<div class="cart-td pro-details  cart-two">
+	<div class="pic-box">
+	<a href="#" target="_blank"><img src="[thumb]" width="80" height="80" alt="商品图片未上传"/></a>
+	</div>
+	<div class="pro-describ">
+	<a href="#" target="_blank">[name]</a>
+	<p></p>
+	</div>
+	</div>
+	<div class="cart-td  cart-three">
+	￥<b class="g-price">[price]</b>
+	</div>
+	<div class="cart-td  cart-four btn-add-reduce">
+	<a class="reduce" href="javascript:void(0);">-</a><input type="text" data-max="999" value="[num]" class="pro-number result" maxlength="3"/><a class="add" href="javascript:void(0);">+</a>
+	</div>
+	<div class="cart-td orange-bold  cart-five">
+	￥<b class="subtotal">[sumPrice]</b>
+	</div>
+	<div class="cart-td  cart-six"><a href="javascript:void(0);" class="[collectClass]" data-isCollected="[isCollected]">[collectState]</a>
+	<a href="javascript:void(0);" class="removeGoods">删除</a>
+	</div>
+	</div>
+</div>
+<div class="cart-tbody" id="list">
+
+</div>
 </div>
 <div class="account">
 <div class="left">
