@@ -4,7 +4,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.lqh.base.ResponseBase;
 import com.lqh.feign.CategoryServiceFeign;
 import com.lqh.feign.GoodServiceFeign;
-import com.sun.istack.internal.Nullable;
 import entity.Good;
 import lombok.Getter;
 import lombok.Setter;
@@ -13,12 +12,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 @Controller
@@ -102,7 +99,7 @@ public class SearchController {
             good = goods.get(0);
         }
         request.setAttribute("good", good);
-        setNavRightWithCategoryAndGood(request, good.getCategory(), good);
+        setNavRightWithCategoryAndGood(request, Long.parseLong(good.getCategory()), good);
         return GOOD;
     }
 
