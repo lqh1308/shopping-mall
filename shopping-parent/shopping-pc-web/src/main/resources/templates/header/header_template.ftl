@@ -101,6 +101,7 @@
             var cgyJson = null;
             $.getJSON("/category/getAll", function(json) {
                 cgyJson = json.data;
+                out(cgyJson);
                 // 初始化分类导航栏菜单
                 init_main_nav();
             });
@@ -111,9 +112,12 @@
                 $('.menu-mainnav').empty();
                 // cgyJson下标为1的是第一层结点的list json
                 var level_1_list = cgyJson['0'];
+                out(level_1_list);
+                out(level_1_list.length);
+                var len = level_1_list.length;
                 // list 下标为0的是父节点的Category bean，
                 // 之后的才是子节点的Category bean，所以要从index=1开始遍历
-                for(var i = 0; i < level_1_list.length; i++) {
+                for(var i = 0; i < len; i++) {
                     var level_1_node = level_1_list[i];
                     var li = $('<li>');
                     var sortmaintitle = $('<div>').addClass('sortmaintitle');
