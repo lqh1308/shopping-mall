@@ -1,16 +1,14 @@
 package com.lqh.api.service;
 
+import com.alibaba.fastjson.JSONObject;
+import com.lqh.adapter.MessageAdapter;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Service;
-
-import com.alibaba.fastjson.JSONObject;
-import com.lqh.adapter.MessageAdapter;
-
-import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @Service

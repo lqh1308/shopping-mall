@@ -227,6 +227,6 @@ public class MemberServiceImpl extends BaseApiService implements MemberService{
 		return setResponseSuccess(address);
 	}
 
-	
+
 
 }

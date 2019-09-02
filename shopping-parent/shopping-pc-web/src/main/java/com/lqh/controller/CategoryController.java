@@ -1,5 +1,6 @@
 package com.lqh.controller;
 
+import com.lqh.base.BaseApiService;
 import com.lqh.base.ResponseBase;
 import entity.Category;
 import com.lqh.feign.CategoryServiceFeign;
@@ -13,14 +14,14 @@ import java.util.Map;
 
 @RestController
 @RequestMapping(value = "/category", produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-public class CategoryController {
+public class CategoryController extends BaseApiService {
     @Autowired
     private CategoryServiceFeign cgyServFeign;
 
     @RequestMapping("/getAll")
-    public Map<Long, List<Category>> getAll() {
+    public ResponseBase getAll() {
         ResponseBase rb = cgyServFeign.getCategoryMap();
 
-        return (Map<Long, List<Category>>) rb.getData();
+        return setResponseSuccess((Map<Long, List<Category>>) rb.getData());
     }
 }

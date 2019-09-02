@@ -18,11 +18,13 @@ import java.util.*;
 @Order(1)
 @Slf4j
 public class InitCategoryProcesses implements CommandLineRunner {
-    public static final String CATEGORY_REDIS_KEY = "ALL_CATEGORY_CACHE";
+//    （category和goods合并后没必要放到Redis服务器）
+//    public static final String CATEGORY_REDIS_KEY = "ALL_CATEGORY_CACHE";
     @Autowired
     private CategoryDao dao;
-    @Autowired
-    private RedisTemplate redisTemplate;
+//    （category和goods合并后没必要放到Redis服务器）
+//    @Autowired
+//    private RedisTemplate redisTemplate;
 
     @Override
     public void run(String... strings) throws Exception {
@@ -38,9 +40,17 @@ public class InitCategoryProcesses implements CommandLineRunner {
     public void initCategory() throws Exception {
         List<Category> categorys = dao.getAll();
         TreeMap<Long, List<Category>> map = coreProcesses(categorys);
-        log.info("所有数据:{}", map);
-        putMap(CATEGORY_REDIS_KEY, map);
-        log.info("使用RedisTemplate缓存到Redis服务器，key值为:{}", CATEGORY_REDIS_KEY);
+        log.info("所有数据: {}", map);
+
+        // 放到redis服务器
+//    （category和goods合并后没必要放到Redis服务器）
+//        putMap(CATEGORY_REDIS_KEY, map);
+//        log.info("使用RedisTemplate缓存到Redis服务器，key值为:{}", CATEGORY_REDIS_KEY);
+
+        // 放到SystemContext内
+        SystemContextHolder.getInstance().getContext().setCategoryMap(map);
+        log.info("已缓存类目Map到SystemContext。");
+
     }
 
     /**
@@ -93,11 +103,11 @@ public class InitCategoryProcesses implements CommandLineRunner {
         return null;
     }
 
-    public void putMap(String tableKey, Map map) {
-        redisTemplate.opsForHash().putAll(tableKey, map);
-    }
-
-    public Map getMap(String tableKey) {
-        return redisTemplate.opsForHash().entries(tableKey);
-    }
+//    public void putMap(String tableKey, Map map) {
+//        redisTemplate.opsForHash().putAll(tableKey, map);
+//    }
+//
+//    public Map getMap(String tableKey) {
+//        return redisTemplate.opsForHash().entries(tableKey);
+//    }
 }

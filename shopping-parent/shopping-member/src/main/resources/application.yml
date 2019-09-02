@@ -20,7 +20,7 @@ spring:
     #数据库连接信息   
   datasource:
         name: test
-        url: jdbc:mysql://127.0.0.1:3306/shopping_member?characterEncoding=utf-8
+        url: jdbc:mysql://127.0.0.1:3306/shopping_member?characterEncoding=utf-8&useSSL=false
         username: root
         password: 123456
         # 使用druid数据源
