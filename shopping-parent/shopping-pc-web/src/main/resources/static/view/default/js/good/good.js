@@ -10,22 +10,12 @@ function getBannerWall() {
 	$.getJSON(
 		"/getBrandWall", 
 		function(res) {
-			if(res != null) {
-				displayBannerWall(res);
-		}
+			if(res.statusCode == 200) {
+				displayBannerWall(res.data);
+			}
 		});
 }
 
-//获取购物车
-function getCart() {
-	$.getJSON(
-			"/getBrandWall", 
-			function(res) {
-				if(res != null) {
-					displayBannerWall(res);
-			}
-			});	
-}
 
 //商品分类展示板块
 /**

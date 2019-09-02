@@ -15,6 +15,21 @@
   	</dependency>
   	<dependency>
 	   <groupId>com.lqh</groupId>
+	   <artifactId>shopping-api-pay</artifactId>
+	   <version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+	   <groupId>com.lqh</groupId>
+	   <artifactId>shopping-api-good</artifactId>
+	   <version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+	   <groupId>com.lqh</groupId>
+	   <artifactId>shopping-api-cart</artifactId>
+	   <version>0.0.1-SNAPSHOT</version>
+  	</dependency>
+  	<dependency>
+	   <groupId>com.lqh</groupId>
 	   <artifactId>shopping-common</artifactId>
 	   <version>0.0.1-SNAPSHOT</version>
   	</dependency>

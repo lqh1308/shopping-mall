@@ -12,6 +12,9 @@ public class DateUtils {
  
     /** 年-月-日 显示格式 */
     public static String DATE_TO_STRING_SHORT_PATTERN = "yyyy-MM-dd";
+    
+    /** 年月日时分秒 显示格式 **/
+    public static String DATE_TO_NUMBER_DETAIL_PATTERN = "yyyyMMddHHmmss";
  
     private static SimpleDateFormat simpleDateFormat;
  

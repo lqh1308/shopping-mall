@@ -2,7 +2,6 @@ package com.lqh.api.service.impl;
 
 import java.util.List;
 
-import entity.Good;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,11 +14,12 @@ import com.lqh.dao.GoodDao;
 
 import api.service.GoodService;
 import entity.Banner;
+import entity.Good;
 
 @RestController
 @Slf4j
 public class GoodServiceImpl extends BaseApiService implements GoodService{
-
+	
 	@Autowired
 	private GoodDao goodDao;
 
@@ -29,20 +29,26 @@ public class GoodServiceImpl extends BaseApiService implements GoodService{
 		List<Banner> banners = goodDao.getBrandWall();
 		JSONObject obj = new JSONObject();
 		obj.put("banners", banners);
-
+		
 		return setResponseSuccess(obj);
 	}
 
 	@Override
-	public ResponseBase getBrand(@RequestParam("num") Integer num, @RequestParam("topCategory") String topCategory) {
+	public ResponseBase getBrand(Integer num, String topCategory) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResponseBase getGood(@RequestParam("num") Integer num, @RequestParam("topCategory") String topCategory) {
+	public ResponseBase getGood(Integer num, String topCategory) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public ResponseBase getGoodById(@RequestParam("goodId") Integer goodId) {
+		Good good = goodDao.getGoodById(goodId);
+		return setResponseSuccess(good);
 	}
 
 	@Override

@@ -52,9 +52,9 @@ alipay:
   #支付宝公钥,查看地址：https://openhome.alipay.com/platform/keyManage.htm 对应APPID下的支付宝公钥。 
   alipay_public_key: MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyD7RgM1E+Q4YR9dKgYyaIRXA2RUzXkwGOjPMGPhsdnVITM9yVdqBclPAHv/R5UMTgo+AKM/57HYRMmhr8Kte8fxYEDs84v6y1J5W4qo8Z7p9rCZdEt/oBU70NLdBNlWITr0df3zW58nSm90wLTgXPqrXr2yQ28XGCih8Oqb92n8jbdJmyxQ3LObnj5YtKfHJ6hh+XzJWIIeT6aQW+ENiYvfbLUBW6tRKcm8WusORiM1KoghbeaahTru16FIPgdHl98rOPbHT3iJAGJzXRs0gvOKOJp+4lwpuOrMkHzm1KPHxiQOXTBPY73FMA1snTadwisVKO7YqDCXP0JJvRmuJ1QIDAQAB
   #服务器异步通知页面路径  需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-  notify_url: http://2614f7r713.wicp.vip/alibaba/notifyUrl
+  notify_url: http://2614f7r713.wicp.vip/payNotifyUrl
   #页面跳转同步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-  return_url: http://2614f7r713.wicp.vip/alibaba/returnUrl
+  return_url: http://2614f7r713.wicp.vip/payReturnUrl
   #签名方式
   sign_type : RSA2
   #字符编码格式

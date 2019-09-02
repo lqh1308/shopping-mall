@@ -13,15 +13,18 @@ public class ResponseBase {
 	private String msg;
 	//返回参数
 	private Object data;
+	//返回url
+	private String url;
 	
 	public ResponseBase() {
 		// TODO Auto-generated constructor stub
 	}
-	public ResponseBase(Integer statusCode, String msg, Object data) {
+	public ResponseBase(Integer statusCode, String msg, Object data, String url) {
 		super();
 		this.statusCode = statusCode;
 		this.msg = msg;
 		this.data = data;
+		this.url = url;
 	}
 	
 }

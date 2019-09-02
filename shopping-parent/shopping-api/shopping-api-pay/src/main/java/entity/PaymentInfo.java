@@ -12,7 +12,7 @@ public class PaymentInfo {
     /**
      * 支付类型
      */
-    private Long typeId;
+    private Integer typeId;
     /**
      * 订单编号
      */
@@ -28,7 +28,7 @@ public class PaymentInfo {
     /**
      * 价格 以分为单位
      */
-    private Long price;
+    private Integer price;
     /**
      * 订单描述
      */
@@ -49,7 +49,7 @@ public class PaymentInfo {
     /**
      * 用户userId
      */
-    private String userId;
+    private Integer userId;
     private Date created;
     private Date updated;
 

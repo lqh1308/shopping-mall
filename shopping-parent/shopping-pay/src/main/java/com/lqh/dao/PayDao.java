@@ -2,9 +2,9 @@ package com.lqh.dao;
 
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 import entity.PaymentInfo;
 
@@ -12,10 +12,9 @@ import entity.PaymentInfo;
 public interface PayDao {
 	@Select("select * from payment_info where id = #{id}")
 	public PaymentInfo getPaymentInfoById(@Param("id") Integer id);
-
-	@Insert("insert into payment_info(userId,typeId,orderId,platformorderId,price,orderTitle,orderDescription,source,state,created,updated) "
-			+ "values (#{userId},#{typeId},#{orderId},#{platformorderId},#{price},#{orderTitle},#{orderDescription},#{source},#{state},#{created},#{updated})")
-	@Options(useGeneratedKeys=true, keyProperty="id")
+	
+	@Insert("insert into payment_info(typeId, orderId, userId, orderTitle, orderDescription, source, state, price) "
+			+ "values(#{typeId}, #{orderId}, #{userId}, #{orderTitle}, #{orderDescription}, #{source}, #{state}, #{price})")
 	public Integer savePaymentInfo(PaymentInfo paymentInfo);
 	
 	@Select("select * from payment_info where orderId = #{orderId}")
@@ -23,4 +22,7 @@ public interface PayDao {
 	
 	@Select("update payment_info set state =#{state},payMessage=#{payMessage},platformorderId=#{platformorderId},updated=#{updated} where orderId=#{orderId}")
 	public Integer updatePaymentInfo(PaymentInfo paymentInfo);
+	
+    @Update("update payment_info set state = #{state} where orderId=#{orderId})")
+    public void upateOrderState(@Param("state") Integer state, @Param("orderId") String orderId);
 }

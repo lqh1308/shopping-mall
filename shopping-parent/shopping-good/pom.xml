@@ -25,5 +25,30 @@
         <artifactId>mybatis-spring-boot-starter</artifactId>
         <version>1.3.0</version>
     </dependency>
+    <!-- 整合LCN -->
+   	 <dependency>
+          <groupId>com.codingapi</groupId>
+          <artifactId>transaction-springcloud</artifactId>
+          <version>${lcn.last.version}</version>
+          <exclusions>
+              <exclusion>
+                  <groupId>org.slf4j</groupId>
+                  <artifactId>*</artifactId>
+              </exclusion>
+          </exclusions>
+      </dependency>
+
+      <dependency>
+          <groupId>com.codingapi</groupId>
+          <artifactId>tx-plugins-db</artifactId>
+          <version>${lcn.last.version}</version>
+          <exclusions>
+              <exclusion>
+                  <groupId>org.slf4j</groupId>
+                  <artifactId>*</artifactId>
+              </exclusion>
+          </exclusions>
+      </dependency>
+      
   </dependencies>
 </project>

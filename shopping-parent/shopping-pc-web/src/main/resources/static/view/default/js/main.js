@@ -155,7 +155,7 @@ function is_enAndnum(v) {
 
 //手机号码
 function is_mobile(v) {
-	return /^(13|14|15|17|18)[0-9]{9}$/.test(v);
+	return /^(13|14|15|16|17|18)[0-9]{9}$/.test(v);
 }
 
 //email
@@ -295,12 +295,10 @@ function addCart(gid, direct, num, spec) {
 }
 
 function removeGoods(ids, spec) {
-		$.getJSON("/cart.html", {
-			act: 'remove_goods',
-			gid: ids,
-			spec: spec
+		$.getJSON("/removeCart", {
+			id: ids
 		}, function(res) {
-			if(res.err != '') {
+			if(res.statusCode != 200) {
 				msg("删除失败，" + res.err);
 			} else {
 				msg("删除成功");
@@ -321,7 +319,7 @@ function sumShopping() {
 	if ($("#list input[name='chk_list']").length>0) {				
 		$("#list input[name='chk_list']:checked").each(function() {
 			n += parseFloat($(this).parent().siblings(".btn-add-reduce").children(".result").val());
-			p += parseFloat($(this).parent().siblings(".cart-five").children(".subtotal").html())
+			p += parseFloat($(this).parent().siblings(".cart-five").children(".subtotal").html());
 		});	
 	} 
 	else{
@@ -334,6 +332,17 @@ function sumShopping() {
 	$("#selectnum").html(n);
 	$("#total").html(p.toFixed(2));	
 	$("#cart-total").html(p.toFixed(2));
+}
+
+function getCheckedCarts() {
+	var cartIds = "";
+	if ($("#list input[name='chk_list']").length>0) {				
+		$("#list input[name='chk_list']:checked").each(function() {
+			cartIds += $(this).parent().parent().attr("id") + ",";
+		});	
+	} 
+	cartIds = (cartIds.length == 0 ? '' : cartIds.substring(0, cartIds.length - 1));
+	return cartIds;
 }
 
 //计算=数量
@@ -360,15 +369,19 @@ function computeNum(obj, isPlus) {
 
 $(function() {
 	//购买数量
-	$(".add").click(function() {
+	//$(".add").click(function() {
+	$("#list").on("click", ".add", function() {
 		computeNum($(this), "add");
 		$(this).siblings(".result").trigger("change");
 	});
-	$(".reduce").click(function() {
+	
+	//$(".reduce").click(function() {
+	$("#list").on("click", ".reduce", function() {
 		computeNum($(this), "reduce");
 		$(this).siblings(".result").trigger("change");
 	});
-	$(".result").keyup(function() {
+	//$(".result").keyup(function() {
+	$("#list").on("click", ".result", function() {
 		computeNum($(this), "");
 	});
 	
@@ -415,39 +428,39 @@ $(function() {
 		e.stopPropagation();	
 	});
 		
-	var carthtml= $(".cart-slidedownbox ul").html();
-	$(".cart-slidedownbox ul").html("");
-	function show_cartinfo(t) {
-		$.getJSON("/cart.html", {act: 'get_cart'}, function(res) {
-			if(res.err && res.err != '') {
-				
-			} else {
-				$(".cartinfo").html(res.data.num);
-				$("#cart-total").html(res.data.amount);
-				var $html='';	
-				if (res.data !=false) {					
-					$.each(res.data.goods, function(k, v) {
-						$html += carthtml;
-						$html = $html.replace(/\[goods_id\]/g, v.goods_id).replace(/\[spec_name\]/g, v.spec_name).replace(/\[url\]/g, v.url).replace(/\[name\]/g, v.name).replace(/\[thumb\]/g, v.thumb).replace(/\[price\]/g, v.price).replace(/\[num\]/g, v.num);
-					}); 
-				}
-				
-				$(".cart-slidedownbox ul").html($html); 
-				$(".slidecart-js").attr("href", res.data.num >0 ?"/cart.html":"javascript:void(0);")
-				 
-				//移除商品
-				$(".delgoods").each(function() {
-					$(this).click(function() {
-						var p = $(this).parents("li");
-						var ids = p.attr("id"),spec = p.data("spec");
-						removeGoods(ids, spec);
-					});
-				});
-			}
-		});
-	}
-	  
 });
+
+//显示购物车
+var carthtml= $(".cart-slidedownbox ul").html();
+$(".cart-slidedownbox ul").html("");
+function show_cartinfo(t) {
+	$.getJSON("/getUserCart", function(res) {
+		if(res.statusCode != 200) {
+		} else {
+			$(".cartinfo").html(res.data.nmount);
+			$("#cart-total").html(res.data.pmount);
+			var $html='';	
+			if (res.data !=false) {					
+				$.each(res.data.carts, function(k, v) {
+					$html += carthtml;
+					$html = $html.replace(/\[goods_id\]/g, v.goodId).replace(/\[spec_name\]/g, v.goodName).replace(/\[url\]/g, "#").replace(/\[name\]/g, v.goodName).replace(/\[thumb\]/g, v.goodLogoUrl).replace(/\[price\]/g, v.showPrice).replace(/\[num\]/g, v.purchaseNum);
+				}); 
+			}
+			
+			$(".cart-slidedownbox ul").html($html); 
+			$(".slidecart-js").attr("href", res.pmount >0 ?"/cart.html":"javascript:void(0);")
+			 
+			//移除商品
+			$(".delgoods").each(function() {
+				$(this).click(function() {
+					var p = $(this).parents("li");
+					var ids = p.attr("id"),spec = p.data("spec");
+					removeGoods(ids, spec);
+				});
+			});
+		}
+	});
+}
 
 $(".btn-search").click(function() {
 	if ($.trim($("#word").val()) =='') {

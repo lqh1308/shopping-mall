@@ -19,4 +19,6 @@ public class Cart {
 	
 	private String goodName;
 	private String goodLogoUrl;
+	private float showPrice;
+	private float totalPrice;
 }

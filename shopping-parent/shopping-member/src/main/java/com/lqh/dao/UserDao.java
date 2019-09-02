@@ -1,11 +1,15 @@
 package com.lqh.dao;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
+import entity.Address;
 import entity.User;
 
 @Mapper
@@ -24,4 +28,24 @@ public interface UserDao {
 	
 	@Update("update user set openId = #{openId} where id = #{id}")
 	public void updateUserOpenId(@Param("openId") String openId, @Param("id") Integer id);
+	
+	@Insert("insert into receiving_address(userId, username, phone, fixPhone, location, detailAddress, isDefault) "
+			+ "values(#{userId}, #{username}, #{phone}, #{fixPhone}, #{location}, #{detailAddress}, #{isDefault})")
+	public Integer addAddress(Address address);
+	
+	@Update("update receiving_address set username = #{username}, phone = #{phone}, fixPhone = #{fixPhone}, location = #{location}, detailAddress = #{detailAddress}, "
+			+ "isDefault = #{isDefault} where id = #{id} ")
+	public void updateAddress( Address address);
+	
+	@Delete("delete from receiving_address where id = #{id}")
+	public void delAddress(@Param("id") Integer id);
+	
+	@Select("select * from receiving_address where userId = #{userId}")
+	public List<Address> getAddresses(@Param("userId") Integer userId);
+	
+	@Update("update receiving_address set isDefault = 0 where userId = #{userId}")
+	public void setAllUnDefaultAddress(@Param("userId") Integer userId);
+	
+	@Select("select * from receiving_address where id = #{id}")
+	public Address getAddressById(@Param("id") Integer id);
 }

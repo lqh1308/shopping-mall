@@ -39,9 +39,9 @@ public interface Constans {
     // 支付
     // 支付token pay_token
     String PAY_TOKEN = "pay_token";
-    // 支付token 在redis保存期限
+    // 支付token 在redis保存期限 15分钟
     Long PAY_TOKEN_TIMEOUT = (long)15*60;
-    
-    
+    // 用户创建订单时选中的商品
+    String USER_GOODS = "user_goods";
     
 }

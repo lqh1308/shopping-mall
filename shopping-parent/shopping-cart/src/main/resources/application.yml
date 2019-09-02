@@ -39,3 +39,11 @@ spring:
         testOnReturn: false
         poolPreparedStatements: true
         maxOpenPreparedStatements: 20
+
+logging:
+  level:
+    com.lqh.dao: debug
+    
+tm: 
+  manager: 
+    url: http://127.0.0.1:8899/tx/manager/
