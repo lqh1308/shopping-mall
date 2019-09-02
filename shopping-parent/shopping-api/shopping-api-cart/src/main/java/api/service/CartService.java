@@ -29,6 +29,9 @@ public interface CartService {
 	@RequestMapping("/addIntoCollector")
 	public ResponseBase addIntoCollector(@RequestBody Cart cart);
 	
+	@RequestMapping("/getCollector")
+	public ResponseBase getCollector(@RequestParam("userId") String userId);
+	
 	@RequestMapping("/delFromCollector")
 	public ResponseBase delFromCollector(@RequestBody Cart cart);
 	

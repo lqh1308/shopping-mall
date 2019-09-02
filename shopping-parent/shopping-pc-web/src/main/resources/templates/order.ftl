@@ -23,6 +23,7 @@
 }</style>
 <link rel="stylesheet" href="/view/default/css/layer.css" id="layui_layer_skinlayercss" style="">
 <link rel="stylesheet" href="/view/default/css/myPage.css" style="">
+<link rel="stylesheet" href="/view/default/css/dateTime.css" style="">
 </head>
 
 
@@ -265,13 +266,13 @@
 <a href="/myOrder">我的订单</a>
 </li>
 <li>
-<a href="https://demo.yunec.cn/mycomment.html">我的评价</a>
+<a href="#">我的评价</a>
 </li>
 <li>
-<a href="https://demo.yunec.cn/fav.html">我的收藏</a>
+<a href="/myfav">我的收藏</a>
 </li>
 <li>
-<a href="https://demo.yunec.cn/service.html">退换货</a>
+<a href="#">退换货</a>
 </li>
 </ul>
 </div>
@@ -281,24 +282,24 @@
 </div>
 <ul>
 <li>
-<a href="https://demo.yunec.cn/mymoney.html">我的钱包</a>
+<a href="#">我的钱包</a>
 </li>
 <li>
-<a href="https://demo.yunec.cn/mypoint.html">积分</a>
+<a href="#">积分</a>
 </li>
 <li>
-<a href="https://demo.yunec.cn/myquan.html">优惠券</a>
+<a href="#">优惠券</a>
 </li>
 <li>
-<a href="https://demo.yunec.cn/userinfo.html">个人信息</a>
+<a href="#">个人信息</a>
 </li>
 <li>
-<a href="https://demo.yunec.cn/address.html">收货地址</a>
+<a href="/myAddress">收货地址</a>
 </li>
 <li>
-<a href="https://demo.yunec.cn/updatepwd.html">账户安全</a>
+<a href="#">账户安全</a>
 </li><li>
-<a href="https://demo.yunec.cn/dt.html">分销</a>
+<a href="#">分销</a>
 </li>	</ul>
 </div>
 </div>
@@ -309,7 +310,8 @@
 <a href="https://demo.yunec.cn/n-help.html">
 <i class="icon-question"></i>	<h3>帮助中心<span>Help Center</span></h3>  </a>
 </div></div>
-<div class="center-rside">					
+<div class="center-rside">
+<#if (totalOrderSize??)>					
 <div class="cen-center center1">
 <div class="centerbar">
 <div class="lside">
@@ -321,18 +323,31 @@
 <li><a href="/myOrder?state=3" class="<#if (state?? && state == 3)>cur<#else></#if>">待评价</a><i class="line-grey"></i></li>
 </ul>
 </div>
-<form action="https://demo.yunec.cn/myorder.html" method="post">
+<!--
+<form action="/myOrder" method="post">
 <div class="rside">
-下单时间 <input type="text" name="trade_start_date" value="" maxlength="10" readonly="readonly" class="time hasDatepicker" id="dp1566374341620">-<input type="text" name="trade_end_date" value="" readonly="readonly" maxlength="10" class="time hasDatepicker" id="dp1566374341621">						
-<input type="txt" name="keyword" id="" value="" placeholder="订单号/商品名称" class="btn-search">									
+下单时间 
+<input type="text" name="startDate" value="" maxlength="10" readonly="readonly" class="time hasDatepicker" id="startDate" placeholder="开始时间">-
+<input type="text" name="endDate" value="" readonly="readonly" maxlength="10" class="time hasDatepicker" id="endDate" placeholder="结束时间">						
+<input type="txt" name="keywords" id="" value="" placeholder="订单号/商品名称" class="btn-search">	
+<input type="txt" name="state" value="<#if (state??)>state<#else></#if>" style="display:none;">
+<input type="txt" name="page" value="${page}" style="display:none;"> 								
 <input type="submit" value="" class="btn-sub">	
 </div>							
 </form>
+-->
+<div class="rside">
+下单时间 
+<input type="text" name="startDate" value="<#if (startDate??)>${startDate?string('yyyy-MM-dd HH:mm')}<#else></#if>" maxlength="10" readonly="readonly" class="time hasDatepicker" id="startDate" placeholder="开始时间">-
+<input type="text" name="endDate" value="<#if (endDate??)>${endDate?string('yyyy-MM-dd HH:mm')}<#else></#if>" readonly="readonly" maxlength="10" class="time hasDatepicker" id="endDate" placeholder="结束时间">						
+<input type="txt" name="keywords" id="keywords" value="<#if (keywords??)>${keywords}<#else></#if>" placeholder="订单号/商品名称" class="btn-search">									
+<input type="submit" value="" class="btn-sub">	
+</div>
 </div>
 <div style="display:none">
 	<input id="total" value=${totalOrderSize}></input>
 	<input id="page" value=${page}></input>
-	<input id="state" value=<#if (state??)>${state}<#else>null</#if>></input>
+	<input id="state" value=<#if (state??)>${state}<#else></#if>></input>
 </div>
 <div class="dingdan">  
 <#if (orderList?size > 0)>
@@ -405,6 +420,31 @@
 </div>
 </div>
 
+</#if>
+
+<#if (favs??)>
+<div class="center-rside">
+	<ul class="yourlike favul nobottompad">
+		<#list favs as fav>
+			<li>
+				<a href="#" class="picbox">
+					<img src="${fav.logo}">
+				</a>
+				<div class="elli">
+					<a href="#">${fav.name}</a>
+				</div>
+				<a href="#" class="price">￥<span>${fav.salePrice/100}</span></a>
+				<div class="probottom">
+					<a href="#" onclick="delFav(${fav.id}, this)" class="buy">取消收藏</a>
+					<i class="line"></i>
+					<a href="#" onclick="addCart(${fav.id}, this)" class="addCart">加入购物车</a>
+				</div>
+			</li>
+		</#list>
+	</ul>
+	<div class="page" id="Page"></div>
+</div>
+</#if>
 </div>
 </div>
 </div>
@@ -481,9 +521,8 @@
 <script src="/view/default/js/jquery-ui-1.10.4.custom.min.js" type="text/javascript"></script>
 <script src="/view/default/js/jquery.ui.datepicker-zh-CN.js" type="text/javascript"></script>
 
-
-      <script type="text/javascript">
-      	$(".advance").click(function(){
+<script type="text/javascript">
+     	$(".advance").click(function(){
       		$(".slidedown-advance").slideToggle(300);
       	});
       	$(".i.icon-del").each(function(){
@@ -491,13 +530,16 @@
       			$(this).parentsUntil(".dd-list").hide();
       		});           
       	});
+      	/*
       	$(function () {
       		$("input[name='trade_start_date'],input[name='trade_end_date']" ).datetimepicker();
  			loadLayer();
  		});
+ 		*/
  		
  		//加载购物车
 		show_cartinfo();
+		//分页
 		var state;
 		var page;
 		$(function() {
@@ -513,12 +555,106 @@
 		        }
 	    	});
 		});
-      </script>
+		
+		
+		function initTimePicker() {
+			var now = new Date();
+			var year = now.getFullYear();
+			var month = now.getMonth() + 1;
+			var day = now.getDate();
+			var hour = now.getHours();
+			var minute = now.getMinutes();
+			
+			$("#startDate").datetime({
+				type:"datetime",
+				value:[year,month,day,hour,minute]
+			})
+			$("#endDate").datetime({
+				type:"datetime",
+				value:[year,month,day,hour,minute]
+			})
+		}
+		
+		$(function() {
+			//timepiker
+			initTimePicker();
+			
+			$("html").on("click", ".btn-sub", function(){
+				var state = $("#state").val();
+				var page = $("#page").val();
+				var startDate = $("#startDate").val();
+				var endDate = $("#endDate").val(); 
+				var keywords = $("#keywords").val();
+				
+				var url = "/myOrder?1=1";
+				if(state!=null&&state!='')
+					url += "&state=" + state;
+				if(page!=null&&page!='')
+					url += "&page=" + page;
+				if(startDate!=null&&startDate!='')
+					url += "&startDate=" + startDate;
+				if(endDate!=null&&endDate!='')
+					url += "&endDate=" + endDate;
+				if(keywords!=null&&keywords!='')
+					url += "&keywords=" + keywords;
+					
+				window.location.href = url;
+				
+				/*
+				$.ajax({
+				  type: 'get',
+				  url: "/myOrder",
+				  dataType: "html",
+				  data: {
+				  	  state: state,
+					  page: page,
+					  startDate: startDate,
+					  endDate: endDate,
+					  keywords: keywords
+				  },
+				  success: function(res) {
+					// 第一步：匹配加载的页面中是否含有js
+					  var regDetectJs = /<script(.|\n)*?>(.|\n|\r\n)*?<\/script>/ig;
+					  var jsContained = res.match(regDetectJs);
+					  // 第二步：如果包含js，则一段一段的取出js再加载执行
+					  if(jsContained) {
+					      // 分段取出js正则
+					      var regGetJS = /<script(.|\n)*?>((.|\n|\r\n)*)?<\/script>/im;
+					      // 按顺序分段执行js
+					      var jsNums = jsContained.length;
+					      for (var i=0; i<jsNums; i++) {
+					          var jsSection = jsContained[i].match(regGetJS);
 
+					          if(jsSection[2]) {
+					              if(window.execScript) {
+					                  // 给IE的特殊待遇
+					                  window.execScript(jsSection[2]);
+					              } else {
+					                  // 给其他大部分浏览器用的
+					                  window.eval(jsSection[2]);
+					              }
+					          }
+					      }
+					  }
+					setTimeout(function() {
+						initTimePicker();		
+					}, 1000);
+					//刷新页面
+					$("html").html(res);
+				  },
+				  error: function(res) {
+				  	console.log("err: " + res);
+				  }
+				});
+				*/
+			})
+		})
 
-
+</script>
 <div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all"></div>
 <script src="/view/default/js/layer.min.js"></script>
 <script src="/view/default/js/MyPage.js"></script>
+<script src="/view/default/js/cart/cart.js"></script>
+<script src="/view/default/js/dateTime.min.js"></script>
 </body>
 </html>

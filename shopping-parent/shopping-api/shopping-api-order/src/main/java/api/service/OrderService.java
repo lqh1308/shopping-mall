@@ -22,8 +22,7 @@ public interface OrderService {
 	public ResponseBase getOrderByOrderId(@RequestParam("orderId") String orderId);
 	
 	@RequestMapping("/getOrderByState")
-	public ResponseBase getOrderByState(@RequestParam(value="state", required=false) Integer state, @RequestParam("userId") String userId, 
-			@RequestParam(value="page", required=false) Integer page, @RequestParam(value="pageSize", required=false) Integer pageSize);
+	public ResponseBase getOrderByState(@RequestBody Order order, @RequestParam(value="page", required=false) Integer page, @RequestParam(value="pageSize", required=false) Integer pageSize);
 	
 	//使订单失效
 	@RequestMapping("/orderInvalid")

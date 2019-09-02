@@ -26,15 +26,25 @@ public interface OrderDao {
     @Select("select * from _order where orderId = #{orderId}")
     public Order getOrderByOrderId(@Param("orderId") String orderId);
     
-    @Select({"<script>select * from _order where userId = #{userId} ",
-    		"<when test='state != null'>",
-    		"and state = #{state}",
-    		"</when> order by updated desc ",
+    @Select({"<script>select * from _order where userId = #{order.userId} ",
+    		"<when test='order.state != null'>",
+    		"and state = #{order.state}",
+    		"</when>",
+    		"<when test='order.startDate != null'>",
+    		"and created &gt;= #{order.startDate} ",
+    		"</when>",
+    		"<when test='order.endDate != null'>",
+    		"and created &lt;= #{order.endDate} ",
+    		"</when>",
+    		"<when test='order.keywords != null'>",
+    		"and orderId like CONCAT('%',#{order.keywords},'%') ",
+    		"</when>",
+    		"order by updated desc ",
     		"<when test='start != null and pageSize != null'>",
     		"limit #{start}, #{pageSize}",
     		"</when></script>"
     		})
-    public List<Order> getOrderByState(@Param("state") Integer state, @Param("userId") String userId, @Param("start") Integer start, @Param("pageSize") Integer pageSize);
+    public List<Order> getOrderByState(@Param("order") Order order, @Param("start") Integer start, @Param("pageSize") Integer pageSize);
     
     @Update("update _order set state = #{state} where orderId=#{orderId})")
     public void upateOrderState(@Param("state") Integer state, @Param("orderId") String orderId);

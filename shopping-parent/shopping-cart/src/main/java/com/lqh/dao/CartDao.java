@@ -10,8 +10,8 @@ import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Component;
 
-
 import entity.Cart;
+import entity.Good;
 
 @Mapper
 @Component
@@ -52,6 +52,13 @@ public interface CartDao {
 	
 	@Delete("delete from collector where userId = #{userId} and goodId = #{goodId}")
 	public void delFromCollector(Cart cart);
+	
+	@Select("select c.goodId as id, g.name, g.logo, g.salePrice " + 
+			"from collector c left join good g " + 
+			"on c.goodId = g.id " + 
+			"where userId = #{userId} " + 
+			"order by c.createTime desc ")
+	public List<Good> getCollectors(String userId);
 	
 	@Select("select * from cart where goodId = #{goodId}")
 	public Cart getCartByGoodId(Integer goodId);

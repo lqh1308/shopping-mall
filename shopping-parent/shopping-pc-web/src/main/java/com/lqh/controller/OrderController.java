@@ -3,6 +3,7 @@ package com.lqh.controller;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,7 +11,6 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.alibaba.fastjson.JSONArray;
@@ -39,14 +39,15 @@ public class OrderController extends BaseApiService{
 	
 	//不同类型的订单
 	@RequestMapping("/myOrder")
-	public String toMyOrder(@RequestParam(value="state", required=false) Integer state, @RequestParam(value="page", required=false) Integer page, HttpServletRequest request) {
+	public String toMyOrder(Order orderParam, HttpServletRequest request) {
 		//获取用户信息
 		User user = getUserInfo(request);
+		orderParam.setUserId(user.getId());
 		//获取对应状态的订单
 		ResponseBase orderResult = null;
-		page = (page == null) ? 1 : page;	//当前页数
+		Integer page = (orderParam.getPage() == null) ? 1 : orderParam.getPage();	//当前页数
 		Integer pageSize = 4;				//每次返回的条数
-		orderResult = orderServiceFeign.getOrderByState(state, user.getId()+"", page, pageSize);
+		orderResult = orderServiceFeign.getOrderByState(orderParam, page, pageSize);
 		List<Order> orderList = JSONArray.parseArray(JSONArray.toJSONString(orderResult.getData()), Order.class);
 		List<JSONObject> result = new ArrayList<JSONObject>();
 		//获取订单列表里面的购物商品信息
@@ -58,12 +59,15 @@ public class OrderController extends BaseApiService{
 			result.add(json);
 		}
 		//获取对应状态的订单总条数
-		ResponseBase totalOrderResult = orderServiceFeign.getOrderByState(state, user.getId()+"", null, null);
+		ResponseBase totalOrderResult = orderServiceFeign.getOrderByState(orderParam, null, null);
 		List<Order> totalOrderList = JSONArray.parseArray(JSONArray.toJSONString(totalOrderResult.getData()), Order.class);
 		
  		request.setAttribute("orderList", result);
  		request.setAttribute("totalOrderSize", totalOrderList.size());
- 		request.setAttribute("state", state);
+ 		request.setAttribute("state", orderParam.getState());
+ 		request.setAttribute("startDate", orderParam.getStartDate());
+ 		request.setAttribute("endDate", orderParam.getEndDate());
+ 		request.setAttribute("keywords", orderParam.getKeywords());
  		if(page != null)
  			request.setAttribute("page", page);
 		

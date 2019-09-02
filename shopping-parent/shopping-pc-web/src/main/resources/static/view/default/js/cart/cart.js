@@ -69,6 +69,7 @@ function show_cartinfo(carthtml) {
 		} else {
 			$("#selectnum").html(res.data.nmount);
 			$("#total").html(res.data.pmount);
+			$(".cartinfo").text(res.data.nmount);
 			var $html='';	
 			if (res.data !=false) {					
 				$.each(res.data.carts, function(k, v) {
@@ -120,6 +121,9 @@ function show_cartinfo(carthtml) {
 		});
 	})
 	
+
+	
+	
 	//取消收藏
 	$("#list").on("click", ".delfav", function() {
 		$(this).click(function() {
@@ -167,6 +171,52 @@ function gotoOrder() {
 	//var a = "<a href='/gOrder?cartIds=" + cartIds + "'><p></p></a>";
 	//window.location.href = $(a)[0];
 };
+
+//取消收藏
+function delFav(goodId, t){
+	$.getJSON(
+		"/delfav",
+		{
+			goodId: goodId
+		}, 
+		function(res) {
+			if(res.statusCode == 200) {
+				msg("取消收藏成功");
+				//t.parent().parent().remove();
+				$(t).parent().parent().remove();
+			} 
+			else if( (res.url && res.url != '')) {
+				msg('取消收藏操作失败，请先登陆。');
+				setTimeout("window.location.href="+res.url, 3000);
+			}
+			else {
+				msg("取消收藏失败，" + res.err);
+			}
+	});
+}
+
+//将收藏的商品加入购物车
+function addCart(goodId, t) {
+	$.getJSON(
+		"/addToCart",
+		{
+			goodId: goodId,
+			isCollected: 1
+		}, 
+		function(res) {
+			if(res.statusCode == 200) {
+				msg("加入购物车成功");
+				show_cartinfo(carthtml);
+			} 
+			else if( (res.url && res.url != '')) {
+				msg('加入购物车失败，请先登陆。');
+				setTimeout("window.location.href="+res.url, 3000);
+			}
+			else {
+				msg("加入购物车失败，" + res.err);
+			}
+	});
+}
 	
 //更新购物车商品状态
 function updateStatus(t) {
@@ -199,7 +249,7 @@ function updateCart(gid, spec, total) {
 		id: gid,
 		purchaseNum: total
 	};
-	$.getJSON("/addToCart", data, function(res) {
+	$.getJSON("/changeCartGoodNum", data, function(res) {
 		if(res.statusCode == 200) {
 			//$(".cartinfo").html($.cookie("cnum"));
 			msg('操作成功');

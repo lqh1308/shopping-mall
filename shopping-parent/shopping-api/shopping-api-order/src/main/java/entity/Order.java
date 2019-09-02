@@ -2,6 +2,8 @@ package entity;
 
 import java.util.Date;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,6 +21,13 @@ public class Order {
 	  private Integer distributeMode;		//配送方式（0：商家配送）
 	  private Date created;
 	  private Date updated;
-	  private Integer state;				//订单状态（0:未支付 1:已支付未发货 2:发货 3:已收货未评价 4:退换货 5:已评价）
+	  private Integer state;				//订单状态（0:未支付 1:待发货 2:发货 3:已收货未评价 4:退换货 5:已评价 6:取消订单 7:超时失效订单）
 	  private String remarks;				//备注
+	  
+	  @DateTimeFormat(pattern="yyyy-MM-dd HH:mm")
+	  private Date startDate;				//开始时间
+	  @DateTimeFormat(pattern="yyyy-MM-dd HH:mm")
+	  private Date endDate;					//结束时间
+	  private String keywords;				//搜索关键字
+	  private Integer page;					//页数
 }

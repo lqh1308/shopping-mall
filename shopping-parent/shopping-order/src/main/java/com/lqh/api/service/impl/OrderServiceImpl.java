@@ -121,13 +121,12 @@ public class OrderServiceImpl extends BaseApiService implements OrderService, IT
 	}
 
 	@Override
-	public ResponseBase getOrderByState(@RequestParam(value="state", required=false) Integer state, @RequestParam("userId") String userId, 
-			@RequestParam(value="page", required=false) Integer page, @RequestParam(value="pageSize", required=false) Integer pageSize) {
+	public ResponseBase getOrderByState(@RequestBody Order order, @RequestParam(value="page", required=false) Integer page, @RequestParam(value="pageSize", required=false) Integer pageSize) {
 		Integer start = null;
 		if(page != null) {
 			start = (page - 1) * pageSize;
 		}
-		List<Order> orders = orderDao.getOrderByState(state, userId, start, pageSize);
+		List<Order> orders = orderDao.getOrderByState(order, start, pageSize);
 		return setResponseSuccess(orders);
 	}
 

@@ -3,6 +3,7 @@ package com.lqh.api.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSONObject;
@@ -31,23 +32,21 @@ public class GoodServiceImpl extends BaseApiService implements GoodService{
 	}
 
 	@Override
-	public ResponseBase getBrand(Integer num, String topCategory) {
+	public ResponseBase getBrand(@RequestParam("num") Integer num, @RequestParam("topCategory") String topCategory) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResponseBase getGood(Integer num, String topCategory) {
+	public ResponseBase getGood(@RequestParam("num") Integer num, @RequestParam("topCategory") String topCategory) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public ResponseBase getGoodById(Integer goodId) {
+	public ResponseBase getGoodById(@RequestParam("goodId") Integer goodId) {
 		Good good = goodDao.getGoodById(goodId);
-		JSONObject json = new JSONObject();
-		json.put("good", good);
-		return setResponseSuccess(json);
+		return setResponseSuccess(good);
 	}
 
 }

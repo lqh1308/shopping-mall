@@ -3,24 +3,26 @@ package com.lqh.controller;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.lqh.base.BaseApiService;
 import com.lqh.base.ResponseBase;
 import com.lqh.contants.Constans;
 import com.lqh.feign.GoodServiceFeign;
-
 import entity.Banner;
 
-@RestController
+@Controller
 public class GoodController extends BaseApiService {
 	
 	@Autowired
 	private GoodServiceFeign goodServiceFeign;
 	
 	@RequestMapping("/getBrandWall")
+	@ResponseBody
 	public ResponseBase getBrandWall() {
 		//获取背景墙
 		ResponseBase responseBase = goodServiceFeign.getBrandWall();
@@ -35,5 +37,7 @@ public class GoodController extends BaseApiService {
 		
 		return setResponseSuccess(banners);
 	}
+
+	
 	
 }

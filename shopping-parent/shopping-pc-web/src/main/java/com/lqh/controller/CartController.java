@@ -33,8 +33,8 @@ public class CartController extends BaseApiService {
 	private MemberServiceFeign memberServiceFeign;
 	
 	private static final String CART = "cart";
-	
 	private static final String GORDER = "gorder";
+	private static final String ORDER = "order";
 	
 	@RequestMapping("/toCart")
 	public String toCart(HttpServletRequest request) {
@@ -91,7 +91,17 @@ public class CartController extends BaseApiService {
 	
 	@RequestMapping("/addToCart")
 	@ResponseBody
-	public ResponseBase addToCart(Cart cart) {
+	public ResponseBase addToCart(Cart cart, HttpServletRequest request) {
+		User user = getUserInfo(request);
+		cart.setUserId(user.getId());
+		ResponseBase cartResult = cartServiceFeign.addIntoCart(cart);
+		
+		return cartResult;
+	}
+	
+	@RequestMapping("/changeCartGoodNum")
+	@ResponseBody
+	public ResponseBase changeCartGoodNum(Cart cart) {
 		ResponseBase result = cartServiceFeign.updateGoodPurchaseNum(cart);
 		if(!result.getStatusCode().equals(Constans.HTTP_RES_CODE_200))
 			return setResponseError("修改失败"); 
@@ -132,6 +142,15 @@ public class CartController extends BaseApiService {
 		if(!result.getStatusCode().equals(Constans.HTTP_RES_CODE_200))
 			return setResponseError("修改失败");
 		return setResponseSuccess("修改成功");
+	}
+	
+	@RequestMapping("/myfav")
+	public String myfav(HttpServletRequest request) {
+		User user = getUserInfo(request);
+		ResponseBase fav = cartServiceFeign.getCollector(user.getId()+"");
+		request.setAttribute("favs", fav.getData());
+		
+		return ORDER;
 	}
 	
 	//结算商品

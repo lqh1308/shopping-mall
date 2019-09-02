@@ -2,7 +2,6 @@ package com.lqh.api.service.impl;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.apache.commons.lang.StringUtils;
@@ -88,7 +87,7 @@ public class CartServiceImpl extends BaseApiService implements CartService{
 	}
 
 	@Override
-	public ResponseBase addIntoCart(Cart cart) {
+	public ResponseBase addIntoCart(@RequestBody Cart cart) {
 		//查询商品是否已经加入到购物车
 		Cart cartResult = cartDao.getCartByGoodId(cart.getGoodId());
 		if(cartResult != null) {
@@ -100,10 +99,10 @@ public class CartServiceImpl extends BaseApiService implements CartService{
 		}
 		//添加商品进购物车
 		//获取商品信息
-		@SuppressWarnings("rawtypes")
-		LinkedHashMap goodMap = (LinkedHashMap) goodServiceFeign.getGoodById(cart.getGoodId()).getData();
-		Good good = JSONObject.parseObject(JSONObject.toJSONString(goodMap.get("good")), Good.class);
+		ResponseBase goodResult = goodServiceFeign.getGoodById(cart.getGoodId());
+		Good good = JSONObject.parseObject(JSONObject.toJSONString(goodResult.getData()), Good.class);
 		cart.setPurchasePrice(good.getSalePrice());
+		cart.setPurchaseNum(1);
 		//设置初始信息
 		cartDao.insertCart(cart);
 		return setResponseSuccess();
@@ -120,6 +119,14 @@ public class CartServiceImpl extends BaseApiService implements CartService{
 		}
 		List<Cart> carts = cartDao.getCartsByCartId(cartIds);
 		return setResponseSuccess(carts);
+	}
+
+	@Override
+	public ResponseBase getCollector(@RequestParam("userId") String userId) {
+		if(StringUtils.isEmpty(userId))
+			return setResponseError("userId不能为空");
+		List<Good> collectors = cartDao.getCollectors(userId);
+		return setResponseSuccess(collectors);
 	}
 	
 

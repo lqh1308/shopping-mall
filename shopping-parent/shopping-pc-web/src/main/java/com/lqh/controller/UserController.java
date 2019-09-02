@@ -39,10 +39,16 @@ public class UserController {
 		request.setAttribute("username", user.getUsername());
 		
 		//订单查询
-		ResponseBase unPaylist = orderServiceFeign.getOrderByState(0, user.getId()+"", null, null);
-		ResponseBase unDeliverlist = orderServiceFeign.getOrderByState(1, user.getId()+"", null, null);
-		ResponseBase unReceivelist = orderServiceFeign.getOrderByState(2, user.getId()+"", null, null);
-		ResponseBase unEvaluatelist = orderServiceFeign.getOrderByState(3, user.getId()+"", null, null);
+		Order order = new Order();
+		order.setUserId(user.getId());
+		order.setState(0);
+		ResponseBase unPaylist = orderServiceFeign.getOrderByState(order, null, null);
+		order.setState(1);
+		ResponseBase unDeliverlist = orderServiceFeign.getOrderByState(order, null, null);
+		order.setState(2);
+		ResponseBase unReceivelist = orderServiceFeign.getOrderByState(order, null, null);
+		order.setState(3);
+		ResponseBase unEvaluatelist = orderServiceFeign.getOrderByState(order, null, null);
 		List<Order> unPayOrders = JSONArray.parseArray(JSONArray.toJSONString(unPaylist.getData()), Order.class); 
 		List<Order> unDeliverOrders = JSONArray.parseArray(JSONArray.toJSONString(unDeliverlist.getData()), Order.class); 
 		List<Order> unReceiveOrders = JSONArray.parseArray(JSONArray.toJSONString(unReceivelist.getData()), Order.class); 
