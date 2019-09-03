@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.codingapi.tx.annotation.TxTransaction;
+//import com.codingapi.tx.annotation.TxTransaction;
 import com.lqh.base.BaseApiService;
 import com.lqh.base.ResponseBase;
 import com.lqh.dao.OrderGoodDao;
@@ -40,7 +40,7 @@ public class OrderGoodServiceImpl extends BaseApiService implements OrderGoodSer
 	}
 
 	@Override
-	@TxTransaction
+//	@TxTransaction
 	@Transactional
 	public ResponseBase batchInsertOrderGoods(@RequestBody List<OrderGood> orderGoods) {
 		if(orderGoods == null || orderGoods.size() == 0) 

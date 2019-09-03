@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSONArray;
-import com.codingapi.tx.annotation.ITxTransaction;
-import com.codingapi.tx.annotation.TxTransaction;
+//import com.codingapi.tx.annotation.ITxTransaction;
+//import com.codingapi.tx.annotation.TxTransaction;
 import com.lqh.base.BaseApiService;
 import com.lqh.base.ResponseBase;
 import com.lqh.contants.Constans;
@@ -29,7 +29,7 @@ import entity.OrderGood;
 import entity.PaymentInfo;
 
 @RestController
-public class OrderServiceImpl extends BaseApiService implements OrderService, ITxTransaction{
+public class OrderServiceImpl extends BaseApiService implements OrderService {
 	@Autowired
 	private OrderDao orderDao;
 	@Autowired
@@ -40,7 +40,7 @@ public class OrderServiceImpl extends BaseApiService implements OrderService, IT
 	private CartServiceFeign cartServiceFeign;
 	
 	@Override
-	@TxTransaction
+//	@TxTransaction
 	@Transactional
 	public ResponseBase updateOrder(@RequestParam("payStatus") Integer payStatus, @RequestParam("payId") String payId, 
 			@RequestParam("orderNumber") String orderNumber, @RequestParam("state") Integer state) {
@@ -53,7 +53,7 @@ public class OrderServiceImpl extends BaseApiService implements OrderService, IT
 	}
 	
 	@Override
-	@TxTransaction
+//	@TxTransaction
 	@Transactional
 	public ResponseBase createOrder(@RequestBody Order order) {
 		//参数判断
