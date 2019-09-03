@@ -20,12 +20,12 @@ spring:
     #数据库连接信息   
   datasource:
         name: test
-        url: jdbc:mysql://127.0.0.1:3306/shopping_member?characterEncoding=utf-8&useSSL=false
+        url: jdbc:mysql://127.0.0.1:3306/shopping_member?useSSL=false&serverTimezone=UTC&useUnicode=true&characterEncoding=utf8
         username: root
         password: 123456
         # 使用druid数据源
         type: com.alibaba.druid.pool.DruidDataSource
-        driver-class-name: com.mysql.jdbc.Driver
+        driver-class-name: com.mysql.cj.jdbc.Driver
         filters: stat
         maxActive: 20
         initialSize: 1

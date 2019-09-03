@@ -92,7 +92,7 @@ public class OrderController extends BaseApiService{
 		//String url = "/alipay?payToken=" + orderId;
 		String url = "/pay?oid=" + orderId + "&payType=" + payType;
 		
-		return setResponseUrl(url);
+			return setResponseUrl(url);
 	}
 	
 	//获取用户信息
