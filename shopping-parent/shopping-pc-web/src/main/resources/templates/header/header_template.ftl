@@ -2,12 +2,20 @@
     <div class="header">
         <div class="head-top">
             <div class="nb">
-                <span style="color:#e01;font-size:14px;">演示站，请勿购物！！&nbsp; 前台账号 yunec&nbsp; &nbsp; <span style="color: rgb(238, 0, 17); font-size: 14px;">密码&nbsp;</span>666666&nbsp; &nbsp;后台地址：&nbsp;<a href="https://demo.yunec.cn/admin.html" target="_self" title="https://demo.yunec.cn/admin.html">https://demo.yunec.cn/admin.html</a></span><div class="rside" style="float:right">
-                    <ul class="head-ul"><li><a href="../login.html">登录</a></li>
-                        <li><a href="../reg.html">注册</a></li><li><a href="../myorder.html">我的订单</a></li>
-                        <li><a href="../user.html">会员中心</a></li>
-                    </ul>
-                </div>
+                <!--<span style="color:#e01;font-size:14px;">演示站，请勿购物！！&nbsp; 前台账号 yunec&nbsp; &nbsp; <span style="color: rgb(238, 0, 17); font-size: 14px;">密码&nbsp;</span>666666&nbsp; &nbsp;后台地址：&nbsp;<a href="https://demo.yunec.cn/admin.html" target="_self" title="https://demo.yunec.cn/admin.html">https://demo.yunec.cn/admin.html</a></span><div class="rside" style="float:right">-->
+                <ul class="head-ul">
+
+                    <#if isLogin==true>
+                        <li><a href="/user">${username}</a></li>
+                        <li><a href="logout">退出</a></li>
+                    <#else>
+                        <li><a href="login">登录</a></li>
+                        <li><a href="register">注册</a></li>
+                    </#if>
+
+                    <li><a href="myOrder">我的订单</a></li>
+                    <li><a href="/user">会员中心</a></li>
+                </ul>
             </div>
         </div>
         <div class="head-bot">
@@ -23,13 +31,28 @@
                     </div>
                     <div class="cartbox">
                         <div class="cartbtn">
-                            <a href="../cart.html" class="radv-nav"><span>购物车</span>(<span class="cartinfo">1</span>)</a>
+                            <a href="/toCart" class="radv-nav"><span>购物车</span>(<span class="cartinfo">0</span>)</a>
                         </div>
                         <div class="cart-slidedownbox">
                             <h3>最近加入</h3>
-                            <ul class="cart-slidedown" id="cart-list"></ul>
+                            <ul class="cart-slidedown" id="cart-list">
+                                <li id="[goods_id]" data-spec="[spec_name]">
+                                    <div class="cart-pro">
+                                        <a href="[url]" class="pic-box"><img src="[thumb]" alt="60*60"></a>
+                                        <div class="cart-pro-num elli">
+                                            <a href="[url]">[name]</a>
+                                        </div>
+                                        <div class="close-price">
+                                            <button class="close delgoods"></button>
+                                            <p class="red">￥<span class="mincart-price">[price]</span>x<span
+                                                        class="mincart-num">[num]</span></p>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
                             <div class="sum-box">
-                                <a class="slidecart-js" href="../cart.html">立即结算(<span class="cartinfo">0</span>)</a>
+                                <a class="slidecart-js" href="https://demo.yunec.cn/cart.html">立即结算(<span
+                                            class="cartinfo">0</span>)</a>
                                 <div class="sum">合计：￥<span class="red" id="cart-total">0.00</span></div>
                                 <div class="check">
                                     <p>共<span class="red cartinfo">0</span>件商品</p>
@@ -101,7 +124,6 @@
             var cgyJson = null;
             $.getJSON("/category/getAll", function(json) {
                 cgyJson = json.data;
-                out(cgyJson);
                 // 初始化分类导航栏菜单
                 init_main_nav();
             });
@@ -112,8 +134,6 @@
                 $('.menu-mainnav').empty();
                 // cgyJson下标为1的是第一层结点的list json
                 var level_1_list = cgyJson['0'];
-                out(level_1_list);
-                out(level_1_list.length);
                 var len = level_1_list.length;
                 // list 下标为0的是父节点的Category bean，
                 // 之后的才是子节点的Category bean，所以要从index=1开始遍历
