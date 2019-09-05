@@ -128,6 +128,12 @@
                 init_main_nav();
             });
 
+            //显示购物车
+            carthtml= $(".cart-slidedownbox ul").html();
+            $(".cart-slidedownbox ul").html("");
+            //加载购物车
+            show_cartinfo();
+
             function init_main_nav() {
                 if(cgyJson == null)
                     return;

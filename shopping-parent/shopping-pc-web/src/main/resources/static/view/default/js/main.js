@@ -431,8 +431,9 @@ $(function() {
 });
 
 //显示购物车
-var carthtml= $(".cart-slidedownbox ul").html();
-$(".cart-slidedownbox ul").html("");
+var carthtml;
+// var carthtml= $(".cart-slidedownbox ul").html();
+// $(".cart-slidedownbox ul").html("");
 function show_cartinfo(t) {
 	$.getJSON("/getUserCart", function(res) {
 		if(res.statusCode != 200) {

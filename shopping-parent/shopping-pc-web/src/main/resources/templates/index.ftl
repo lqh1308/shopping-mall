@@ -1222,7 +1222,6 @@
             $(".time-limit .slide-timeslimit .bd li:nth-child(6n)").children(" .nr").css("border-right", "none");
         }
     </script>
-    <script src="view/default/js/good/goods.js"></script>
 
     <div id="XIANKEFU-BAR" class="XIANKEFU-bar XIANKEFU-bar-style1">
         <img src="./view/default/images/icon-logo.png">
