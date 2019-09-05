@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSONObject;
+import com.codingapi.txlcn.tc.annotation.LcnTransaction;
 //import com.codingapi.tx.annotation.TxTransaction;
 import com.lqh.base.BaseApiService;
 import com.lqh.base.ResponseBase;
@@ -50,7 +51,7 @@ public class CartServiceImpl extends BaseApiService implements CartService{
 	}
 
 	@Override
-//	@TxTransaction
+	@LcnTransaction
 	@Transactional
 	public ResponseBase deleteGood(@RequestParam("cids") String ids) {
 		String[] idArr = ids.split(",");

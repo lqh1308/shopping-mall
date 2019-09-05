@@ -36,7 +36,7 @@ public class OrderController extends BaseApiService{
 	private OrderGoodServiceFeign orderGoodServiceFeign;
 	
 	private static final String ORDER = "order";
-	
+
 	//不同类型的订单
 	@RequestMapping("/myOrder")
 	public String toMyOrder(Order orderParam, HttpServletRequest request) {

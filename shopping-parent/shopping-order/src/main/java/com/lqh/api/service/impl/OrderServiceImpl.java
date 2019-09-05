@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.fastjson.JSONArray;
-//import com.codingapi.tx.annotation.ITxTransaction;
-//import com.codingapi.tx.annotation.TxTransaction;
+import com.codingapi.txlcn.tc.annotation.LcnTransaction;
 import com.lqh.base.BaseApiService;
 import com.lqh.base.ResponseBase;
 import com.lqh.contants.Constans;
@@ -40,7 +39,7 @@ public class OrderServiceImpl extends BaseApiService implements OrderService {
 	private CartServiceFeign cartServiceFeign;
 	
 	@Override
-//	@TxTransaction
+	@LcnTransaction
 	@Transactional
 	public ResponseBase updateOrder(@RequestParam("payStatus") Integer payStatus, @RequestParam("payId") String payId, 
 			@RequestParam("orderNumber") String orderNumber, @RequestParam("state") Integer state) {
@@ -53,7 +52,7 @@ public class OrderServiceImpl extends BaseApiService implements OrderService {
 	}
 	
 	@Override
-//	@TxTransaction
+	@LcnTransaction
 	@Transactional
 	public ResponseBase createOrder(@RequestBody Order order) {
 		//参数判断
@@ -137,6 +136,5 @@ public class OrderServiceImpl extends BaseApiService implements OrderService {
 		orderDao.upateOrderState(7, orderId);
 		return setResponseSuccess();
 	}
-	
 
 }

@@ -12,11 +12,11 @@ spring:
     host: 127.0.0.1
     password: 123456
     port: 6379
-    pool:
-      max-idle: 100
-      min-idle: 1
-      max-active: 1000
-      max-wait: -1
+#    pool:
+#      max-idle: 100
+#      min-idle: 1
+#      max-active: 1000
+#      max-wait: -1
   #数据库连接信息
   datasource:
         name: test
@@ -42,7 +42,7 @@ spring:
 
 tm: 
   manager: 
-    url: http://127.0.0.1:8899/tx/manager/
+    url: http://127.0.0.1:8070/tx/manager/
         
 alipay: 
   #应用ID,您的APPID，收款账号既是您的APPID对应支付宝账号
