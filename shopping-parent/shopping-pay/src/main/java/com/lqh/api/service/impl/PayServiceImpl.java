@@ -18,14 +18,14 @@ import com.alipay.api.DefaultAlipayClient;
 import com.alipay.api.internal.util.AlipaySignature;
 import com.alipay.api.request.AlipayTradePagePayRequest;
 //import com.codingapi.tx.annotation.TxTransaction;
-
-import api.service.PayService;
+import com.codingapi.txlcn.tc.annotation.LcnTransaction;
 import com.lqh.base.BaseApiService;
 import com.lqh.base.ResponseBase;
 import com.lqh.contants.Constans;
 import com.lqh.dao.PayDao;
 import com.lqh.feign.OrderServiceFeign;
 
+import api.service.PayService;
 import entity.PaymentInfo;
 import lombok.extern.slf4j.Slf4j;
 
@@ -56,7 +56,7 @@ public class PayServiceImpl extends BaseApiService implements PayService {
 	private String notify_url;
 	
 	@Override
-//	@TxTransaction
+	@LcnTransaction
 	@Transactional
 	public ResponseBase createToken(@RequestBody PaymentInfo paymentInfo) {
 		//创建支付订单
@@ -171,7 +171,7 @@ public class PayServiceImpl extends BaseApiService implements PayService {
 	
 	//异步
 	@Override
-//	@TxTransaction
+	@LcnTransaction
 	@Transactional
 	public String asyncPayCallBack(@RequestParam Map<String, String> map) {
 		log.info("##############开始调用asyncPayCallBack 接口###########");

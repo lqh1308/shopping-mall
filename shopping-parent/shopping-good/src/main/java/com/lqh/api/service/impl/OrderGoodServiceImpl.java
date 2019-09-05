@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.codingapi.txlcn.tc.annotation.LcnTransaction;
 //import com.codingapi.tx.annotation.TxTransaction;
 import com.lqh.base.BaseApiService;
 import com.lqh.base.ResponseBase;
@@ -24,6 +25,8 @@ public class OrderGoodServiceImpl extends BaseApiService implements OrderGoodSer
 	private OrderGoodDao orderGoodDao;
 
 	@Override
+	@LcnTransaction
+	@Transactional
 	public ResponseBase insertOrderGoods(@RequestBody OrderGood orderGood) {
 		if(orderGood == null) 
 			return setResponseError("参数不能为空");
@@ -40,7 +43,7 @@ public class OrderGoodServiceImpl extends BaseApiService implements OrderGoodSer
 	}
 
 	@Override
-//	@TxTransaction
+	@LcnTransaction
 	@Transactional
 	public ResponseBase batchInsertOrderGoods(@RequestBody List<OrderGood> orderGoods) {
 		if(orderGoods == null || orderGoods.size() == 0) 
