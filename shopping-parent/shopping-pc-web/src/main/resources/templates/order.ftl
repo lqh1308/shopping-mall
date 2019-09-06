@@ -291,7 +291,7 @@
 <a href="#">优惠券</a>
 </li>
 <li>
-<a href="#">个人信息</a>
+<a href="/userInfo">个人信息</a>
 </li>
 <li>
 <a href="/myAddress">收货地址</a>
@@ -310,8 +310,9 @@
 <a href="https://demo.yunec.cn/n-help.html">
 <i class="icon-question"></i>	<h3>帮助中心<span>Help Center</span></h3>  </a>
 </div></div>
-<div class="center-rside">
-<#if (totalOrderSize??)>					
+
+<#if (totalOrderSize??)>
+<div class="center-rside">					
 <div class="cen-center center1">
 <div class="centerbar">
 <div class="lside">
@@ -419,7 +420,7 @@
 <div class="page" id="Page"></div>
 </div>
 </div>
-
+</div>
 </#if>
 
 <#if (favs??)>
@@ -445,7 +446,83 @@
 	<div class="page" id="Page"></div>
 </div>
 </#if>
-</div>
+
+<#if (userInfo??)>
+<div class="center-rside">
+	<div class="center2 center-title-sig">
+		<h3>个人信息设置</h3>
+	</div>
+	<div class="edit-user-infor">
+		<input type="hidden" id="userInfoId" value="<#if (userInfo??)>${userInfo.id}<#else></#if>">
+		<ul>
+			<li class="set-touxiang">
+				<p>头像:</p>
+				<div class="pic-tx picker">
+					<p>编辑头像</p>
+					<div class="filePicker preview webuploader-container" id="mainpicker">
+					<div class="webuploader-pick">
+						<img src="<#if (userInfo.avatar??)>${userInfo.avatar}<#else>http://localhost/view/default/images/userDefaultPic.jpg</#if>">
+					</div>
+					<div id="" style="position: absolute; top: 0px; left: 0px; width: 80px; 
+						height: 80px; overflow: hidden; bottom: auto; right: auto;">
+						<input type="file" name="file" class="webuploader-element-invisible" multiple="multiple"
+							accept="image/gif,image/jpg,image/jpeg,image/bmp,image/png">
+					</div>
+					<input type="hidden" id="img" name="img" value="<#if (userInfo.avatar??)>${userInfo.avatar}<#else></#if>">
+				</div>
+				</div>
+			</li>
+			<li>
+				<p>用户名:</p>
+				<div>
+					<input type="text" name="username" value="${userInfo.username}">
+				</div>
+			</li>
+			<li>
+				<p>
+					<span class="red">*</span>
+					手机号码:
+				</p>
+				<div>
+					<input type="text" name="phone" class="input unedit" value="${userInfo.phone}" readonly="readonly" style="width: 120px;">
+					<span class="blue">更换手机号码</span>
+				</div>
+			</li>
+			<li>
+				<p>性别:</p>
+				<div>
+					<input type="radio" name="sex" class="cboy" value="<#if (userInfo.sex??)> ${userInfo.sex} <#else></#if>" 
+						checked="<#if (userInfo.sex?? && userInfo.sex == 0)>true<#else>false</#if>">
+					<label for="cbody">男</label>
+					<input type="radio" name="sex" class="cgirl" value="<#if (userInfo.sex??)> ${userInfo.sex} <#else></#if>" 
+						checked="<#if (userInfo.sex?? && userInfo.sex == 1)>true<#else>false</#if>">
+					<lable for="cgirl">女</label>
+				</div>
+			</li>
+			<li>
+				<p>生日:</p>
+				<div>
+					<input type="text" id="birthday" value="<#if (userInfo.birth??)> ${userInfo.birth?string('yyyy-MM-dd')} <#else></#if>" class="time hasTimePicker" maxlength="10" readonly="readonly">
+				</div>
+			</li>
+			<li>
+				<p>邮箱:</p>
+				<div>
+					<input type="email" id="email" value="<#if (userInfo.email??)> ${userInfo.email} <#else></#if>" class="input" maxlength="30">
+				</div>
+			</li>
+			<li>
+				<p>真实姓名:</p>
+				<div>
+					<input type="text" id="realname" value="<#if (userInfo.realname??)> ${userInfo.realname} <#else></#if>" class="input" maxlength="20">
+				</div>
+			</li>
+		</ul>
+		
+		<input type="button" id="btnEditUser" class="btn" value="提交">
+	</div>	
+</div>	
+</#if>
 </div>
 </div>
  <div class="footer">
@@ -565,6 +642,12 @@
 			var hour = now.getHours();
 			var minute = now.getMinutes();
 			
+			var birthday = $("#birthday").val();
+			var birthArr = [year, month, day];
+			if(birthday!="" && birthday!=null){
+				birthArr = birthday.split("-");
+			}
+			
 			$("#startDate").datetime({
 				type:"datetime",
 				value:[year,month,day,hour,minute]
@@ -572,6 +655,10 @@
 			$("#endDate").datetime({
 				type:"datetime",
 				value:[year,month,day,hour,minute]
+			})
+			$("#birthday").datetime({
+				type:"date",
+				value:birthArr
 			})
 		}
 		

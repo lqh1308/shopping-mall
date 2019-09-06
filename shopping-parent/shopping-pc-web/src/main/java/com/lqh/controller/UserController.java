@@ -30,6 +30,7 @@ public class UserController {
 	private OrderServiceFeign orderServiceFeign;
 	
 	private static final String USER = "user";
+	private static final String ORDER = "order";
 	
 	@RequestMapping("/user")
 	public String toUser(HttpServletRequest request) {
@@ -59,6 +60,13 @@ public class UserController {
 		request.setAttribute("unEvaluate", unEvaluateOrders);
 		
 		return USER;
+	}
+	
+	@RequestMapping("/userInfo")
+	public String userInfo(HttpServletRequest request) {
+		User user = getUserInfo(request);
+		request.setAttribute("userInfo", user);
+		return ORDER;
 	}
 	
 	//获取用户信息

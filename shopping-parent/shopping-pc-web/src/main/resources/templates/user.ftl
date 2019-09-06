@@ -264,16 +264,16 @@
 </div>
 <ul>
 <li>
-<a href="https://demo.yunec.cn/myorder.html">我的订单</a>
+<a href="/myOrder">我的订单</a>
 </li>
 <li>
-<a href="https://demo.yunec.cn/mycomment.html">我的评价</a>
+<a href="#">我的评价</a>
 </li>
 <li>
-<a href="https://demo.yunec.cn/fav.html">我的收藏</a>
+<a href="/myfav">我的收藏</a>
 </li>
 <li>
-<a href="https://demo.yunec.cn/service.html">退换货</a>
+<a href="#">退换货</a>
 </li>
 </ul>
 </div>
@@ -283,24 +283,24 @@
 </div>
 <ul>
 <li>
-<a href="https://demo.yunec.cn/mymoney.html">我的钱包</a>
+<a href="#">我的钱包</a>
 </li>
 <li>
-<a href="https://demo.yunec.cn/mypoint.html">积分</a>
+<a href="#">积分</a>
 </li>
 <li>
-<a href="https://demo.yunec.cn/myquan.html">优惠券</a>
+<a href="#">优惠券</a>
 </li>
 <li>
-<a href="https://demo.yunec.cn/userinfo.html">个人信息</a>
+<a href="#">个人信息</a>
 </li>
 <li>
-<a href="https://demo.yunec.cn/address.html">收货地址</a>
+<a href="#">收货地址</a>
 </li>
 <li>
-<a href="https://demo.yunec.cn/updatepwd.html">账户安全</a>
+<a href="#">账户安全</a>
 </li><li>
-<a href="https://demo.yunec.cn/dt.html">分销</a>
+<a href="#">分销</a>
 </li>	</ul>
 </div>
 </div>

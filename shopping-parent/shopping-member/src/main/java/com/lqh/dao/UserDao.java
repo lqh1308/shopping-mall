@@ -48,4 +48,33 @@ public interface UserDao {
 	
 	@Select("select * from receiving_address where id = #{id}")
 	public Address getAddressById(@Param("id") Integer id);
+	
+	@Update("update user set " + 
+			"<when test='username != null'>" + 
+			"username=#{username} , " + 
+			"</when>" + 
+			"<when test='phone != null'>" + 
+			"phone=#{phone} , " + 
+			"</when>" + 
+			"<when test='email != null'>" + 
+			"email=#{email} , " + 
+			"</when>" + 
+			"<when test='avator != null'>" + 
+			"avator=#{avator} , " + 
+			"</when>" + 
+			"<when test='sex != null'>" + 
+			"sex=#{sex} , " + 
+			"</when>" + 
+			"<when test='birth != null'>" + 
+			"birth=#{birth} , " + 
+			"</when>" + 
+			"<when test='realname != null'>" + 
+			"realname=#{realname} , " + 
+			"</when>" + 
+			"<when test='updated != null'>" + 
+			"updated=#{updated} " + 
+			"</when>" + 
+			"where id = #{id}"
+			)
+	public void updateUserInfo(User user);
 }
