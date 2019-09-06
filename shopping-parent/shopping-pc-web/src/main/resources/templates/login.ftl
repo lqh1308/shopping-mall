@@ -19,7 +19,7 @@
 	<div class="ny-header">
 		<div class="nb">
 			<div class="logo">
-				<a href="/index.html"><img src="view/default/images/logo.png"
+				<a href="/index"><img src="view/default/images/logo.png"
 					alt="" style="width: 200px; height: 60px" /></a>
 			</div>
 			<div class="right login-right">

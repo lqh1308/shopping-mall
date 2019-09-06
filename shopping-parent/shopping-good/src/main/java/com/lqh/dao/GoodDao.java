@@ -47,4 +47,7 @@ public interface GoodDao {
 
 	@Select("select * from good where id = #{goodId}")
 	public Good getGoodById(Integer goodId);
+
+	@Select("select * from good")
+    List<Good> findAll();
 }

@@ -19,7 +19,7 @@
 	<div class="ny-header">
 		<div class="nb">
 			<div class="logo">
-				<a href="../index.html"><img src="static/images/logo.png" alt="" /></a>
+				<a href="/index"><img src="static/images/logo.png" alt="" /></a>
 				<span>&middot; 欢迎注册</span>
 			</div>
 			<div class="right">

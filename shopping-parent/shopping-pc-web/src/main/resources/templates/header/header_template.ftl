@@ -5,6 +5,7 @@
                 <!--<span style="color:#e01;font-size:14px;">演示站，请勿购物！！&nbsp; 前台账号 yunec&nbsp; &nbsp; <span style="color: rgb(238, 0, 17); font-size: 14px;">密码&nbsp;</span>666666&nbsp; &nbsp;后台地址：&nbsp;<a href="https://demo.yunec.cn/admin.html" target="_self" title="https://demo.yunec.cn/admin.html">https://demo.yunec.cn/admin.html</a></span><div class="rside" style="float:right">-->
                 <ul class="head-ul">
 
+                    <li><a href="/good/toAddGoodPage">添加商品</a></li>
                     <#if isLogin==true>
                         <li><a href="/user">${username}</a></li>
                         <li><a href="logout">退出</a></li>
@@ -23,10 +24,10 @@
                 <div class="web-title-container">
                     <a href="../index.html" class="logo"><img src="../static/images/logo.png" alt=""></a>
                     <div class="searchbox">
-                        <form name="search" action="../list.html" method="get">
-                            <input type="search" name="word" id="word" value="" placeholder="请输入关键词" class="txt-search">
+                        <form name="search" action="/search/good/keyword" method="get">
+                            <input type="search" name="keyword" id="word" value="" placeholder="请输入关键词" class="txt-search">
                             <input type="submit" value="搜&nbsp;&nbsp;索" id="btn-search" class="btn-submit">
-                            <input type="hidden" name="action" value="list">
+<#--                            <input type="hidden" name="action" value="list">-->
                         </form>
                     </div>
                     <div class="cartbox">
@@ -82,6 +83,7 @@
         </div>
     </div>
     <#nested >
+    <script src="/view/default/js/main.js" type="text/javascript"></script>
     <script>
 
         var isDev = true;

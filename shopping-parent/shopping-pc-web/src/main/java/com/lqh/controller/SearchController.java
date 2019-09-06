@@ -3,6 +3,7 @@ package com.lqh.controller;
 import com.alibaba.fastjson.JSONObject;
 import com.lqh.base.ResponseBase;
 import com.lqh.feign.CategoryServiceFeign;
+import com.lqh.feign.GoodEsServiceFeign;
 import com.lqh.feign.GoodServiceFeign;
 import entity.Good;
 import lombok.Getter;
@@ -27,20 +28,45 @@ public class SearchController {
     @Autowired
     private GoodServiceFeign goodService;
     @Autowired
+    private GoodEsServiceFeign goodEsService;
+    @Autowired
     private CategoryServiceFeign categoryService;
 
     // 默认分页查询每页20
     private static final Integer PAGE_COUNT = 20;
+
+    @RequestMapping("/good/keyword/{keyword}")
+    public String searchByKeywork1(HttpServletRequest request, @PathVariable(value = "keyword", required = false) String keyword) {
+        ResponseBase resp = goodEsService.getGoodByKeyword(keyword, 0, 20);
+        List<Good> goods = (List<Good>) resp.getData();
+        request.setAttribute("goods", goods);
+        // 设置面包屑导航
+        setNavRightWithKeyWord(request, keyword);
+        return YOUR_LIKE;
+    }
+    @RequestMapping("/good/keyword")
+    public String searchByKeywork2(HttpServletRequest request, @RequestParam("keyword") String keyword) {
+        ResponseBase resp = goodEsService.getGoodByKeyword(keyword, 0, 20);
+        List<Good> goods = (List<Good>) resp.getData();
+        request.setAttribute("goods", goods);
+        // 设置面包屑导航
+        setNavRightWithKeyWord(request, keyword);
+        return YOUR_LIKE;
+    }
 
     @RequestMapping(path = {"/category/title/{levelOneTitle}"})
     public String searchGoodByCategoryTitle(HttpServletRequest request,
                                             @PathVariable("levelOneTitle") String t1,
                                             @RequestParam(value = "code1", required = false) Long c1) {
         ResponseBase resp = null;
-        if(c1 == null)
-            resp = goodService.searchByCategoryTitle(0, PAGE_COUNT, t1, null, null);
-        else
-            resp = goodService.searchByCategoryId(0, PAGE_COUNT, c1, null, null);
+        if(c1 == null) {
+//            resp = goodService.searchByCategoryTitle(0, PAGE_COUNT, t1, null, null);
+            c1 = categoryService.findIdByTitle(t1, null, null);
+            log.info("category t: {} id: {}", t1, c1.toString());
+            resp = goodEsService.getGoodByCategory(c1.toString(), 0, 20);
+        } else
+//            resp = goodService.searchByCategoryId(0, PAGE_COUNT, c1, null, null);
+            resp = goodEsService.getGoodByCategory(c1.toString(), 0, 20);
         List<Good> goods = (List<Good>) resp.getData();
         // 把商品队列传到页面
         request.setAttribute("goods", goods);
@@ -55,10 +81,15 @@ public class SearchController {
                                             @RequestParam(value = "code1", required = false) Long c1,
                                             @RequestParam(value = "code2", required = false) Long c2) {
         ResponseBase resp = null;
-        if(c1 == null)
-            resp = goodService.searchByCategoryTitle(0, PAGE_COUNT, t1, t2, null);
-        else
-            resp = goodService.searchByCategoryId(0, PAGE_COUNT, c1, c2, null);
+        if(c1 == null) {
+//            resp = goodService.searchByCategoryTitle(0, PAGE_COUNT, t1, t2, null);
+//            resp = goodService.searchByCategoryTitle(0, PAGE_COUNT, t1, null, null);
+            c2 = categoryService.findIdByTitle(t1, t2, null);
+            log.info("category t: {} id: {}", t2, c2.toString());
+            resp = goodEsService.getGoodByCategory(c2.toString(), 0, 20);
+        } else
+//            resp = goodService.searchByCategoryId(0, PAGE_COUNT, c1, c2, null);
+            resp = goodEsService.getGoodByCategory(c2.toString(), 0, 20);
         List<Good> goods = (List<Good>) resp.getData();
         request.setAttribute("goods", goods);
         setNavRightWithCategoryAndGood(request, t1, t2);
@@ -73,10 +104,14 @@ public class SearchController {
                                             @RequestParam(value = "code2", required = false) Long c2,
                                             @RequestParam(value = "code3", required = false) Long c3){
         ResponseBase resp = null;
-        if(c1 == null)
-            resp = goodService.searchByCategoryTitle(0, PAGE_COUNT, t1, t2, t3);
-        else
-            resp = goodService.searchByCategoryId(0, PAGE_COUNT, c1, c2, c3);
+        if(c1 == null) {
+//            resp = goodService.searchByCategoryTitle(0, PAGE_COUNT, t1, t2, t3);
+            c3 = categoryService.findIdByTitle(t1, t2, t3);
+            log.info("category t: {} id: {}", t3, c3.toString());
+            resp = goodEsService.getGoodByCategory(c3.toString(), 0, 20);
+        } else
+//            resp = goodService.searchByCategoryId(0, PAGE_COUNT, c1, c2, c3);
+            resp = goodEsService.getGoodByCategory(c3.toString(), 0, 20);
         List<Good> goods = (List<Good>) resp.getData();
         request.setAttribute("goods", goods);
         setNavRightWithCategoryAndGood(request, t1, t2, t3);
@@ -128,6 +163,19 @@ public class SearchController {
         }
         setNavRightWithCategoryAndGood(request, navs);
     }
+    /**
+     * 接受搜索keyword生成面包屑导航
+     * @param request
+     * @param keyword
+     */
+    private void setNavRightWithKeyWord(HttpServletRequest request, String... keyword) {
+        Nav[] navs = new Nav[keyword.length];
+        String prefix = "/search/good/keyword?keyword=";
+        for(int i = 0; i < keyword.length; i++) {
+            navs[i] = new Nav(prefix + keyword[i], keyword[i]);
+        }
+        setNavRightWithCategoryAndGood(request, navs);
+    }
 
     /**
      * 根据最后一级类目id以及商品生成面包屑导航的分级
@@ -167,4 +215,6 @@ public class SearchController {
             this.name = name;
         }
     }
+
+
 }

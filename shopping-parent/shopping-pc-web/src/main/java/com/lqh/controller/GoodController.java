@@ -38,6 +38,9 @@ public class GoodController extends BaseApiService {
 		return setResponseSuccess(banners);
 	}
 
-	
+	@RequestMapping("/good/toAddGoodPage")
+	public String toAddGoodPage() {
+		return "goods/addGoods";
+	}
 	
 }

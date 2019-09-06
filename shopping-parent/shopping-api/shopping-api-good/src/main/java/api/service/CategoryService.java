@@ -12,4 +12,9 @@ public interface CategoryService {
 
     @RequestMapping(value = "/findAllLinksById")
     ResponseBase findAllLinksById(@RequestParam("id") Long id);
+
+    @RequestMapping("/findIdByTitle")
+    Long findIdByTitle(@RequestParam(value = "t1") String t1,
+                       @RequestParam(value = "t2",required = false) String t2,
+                       @RequestParam(value = "t3",required = false) String t3);
 }

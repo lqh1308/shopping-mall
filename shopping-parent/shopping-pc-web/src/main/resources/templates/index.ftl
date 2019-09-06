@@ -4,9 +4,6 @@
 <#import "./layout/layout.ftl" as layout>
 <head>
     <@layout.h>
-
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-
         <title>云EC电商系统</title>
         <meta name="keywords" content="云EC,云EC电商系统,商城系统,电商系统,免费开源,PHP电商系统,网店系统,PHP商城系统,独立网店,电子商务软件">
         <meta name="description"

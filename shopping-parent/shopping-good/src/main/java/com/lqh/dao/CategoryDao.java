@@ -14,4 +14,21 @@ public interface CategoryDao {
 
     @Select("select * from category_info where cgy_id=#{id}")
     Category findCategoryById(@Param("id") Long topFId);
+
+    @Select("<script>" +
+            "select cgy_id from category_info " +
+            "where " +
+            "<choose>" +
+                "<when test='t3!=null'>title=#{t3}</when>" +
+                "<otherwise>" +
+                    "<choose>" +
+                        "<when test='t2!=null'>title=#{t2}</when>" +
+                        "<otherwise>" +
+                            "<when test='t1!=null'>title=#{t1}</when>" +
+                        "</otherwise>" +
+                    "</choose>" +
+                "</otherwise>" +
+            "</choose>" +
+            "</script>")
+    Long findIdByTitle(@Param("t1") String t1, @Param("t2") String t2, @Param("t3") String t3);
 }

@@ -1,5 +1,6 @@
 <#macro h>
     <base target="_self" href="/">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <link rel="stylesheet" href="/view/default/css/common.css">
     <link rel="stylesheet" href="/view/default/css/animate.min.css">
     <link rel="stylesheet" href="/view/default/css/layer.css" id="layui_layer_skinlayercss" style="">
@@ -14,7 +15,7 @@
     <@header_template.ht>
         <#if hasNavRight==true>
             <div class="navtitleright nb">
-                <a href="/index.html">首页</a>  &gt;
+                <a href="/index">首页</a>  &gt;
                 <#assign navRightJson>
                     ${navRightList}
                 </#assign>

@@ -14,7 +14,7 @@ spring:
     host: 127.0.0.1
     password: 123456
     port: 6379
-#    pool: 
+#    pool:
 #      max-idle: 100
 #      min-idle: 1
 #      max-active: 1000
@@ -47,7 +47,16 @@ spring:
         testOnReturn: false
         poolPreparedStatements: true
         maxOpenPreparedStatements: 20
-        
-tm: 
-  manager: 
+  data:
+    elasticsearch:
+      cluster-name: shopping_mall
+      cluster-nodes: 249z6h3316.zicp.vip:10659 # 我的机子开的花生壳域名，这个是动态端口号，，如果连接不上需要看我这边端口号是否变了。
+      repositories:
+        enabled: true
+
+logging:
+  level:
+    com.lqh.dao: debug
+tm:
+  manager:
     url: http://127.0.0.1:8070/tx/manager/

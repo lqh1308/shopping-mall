@@ -104,6 +104,14 @@ public class CategoryServiceImpl extends BaseApiService implements CategoryServi
 		return setResponseSuccess(result);
 	}
 
+	@Override
+	public Long findIdByTitle(@RequestParam(value = "t1") String t1,
+							  @RequestParam(value = "t2",required = false) String t2,
+							  @RequestParam(value = "t3",required = false) String t3) {
+		Long id = dao.findIdByTitle(t1, t2, t3);
+		return id;
+	}
+
 	public Long getFatherId(Long id) throws Exception {
 		if(id < 10000000)
 			throw new Exception("id小于8位，没有父节点");
@@ -111,5 +119,7 @@ public class CategoryServiceImpl extends BaseApiService implements CategoryServi
 		long fid = id / 10000;
 		return fid;
 	}
+
+
 
 }
