@@ -36,5 +36,6 @@ public class MemberServiceTestImpl extends BaseApiService implements MemberServi
 		baseRedisService.setString(key, value);
 		return setResponseSuccess();
 	}
+	
 
 }

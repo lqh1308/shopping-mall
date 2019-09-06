@@ -34,6 +34,10 @@ public interface MemberService {
 	@RequestMapping("/findByOpenIdUser")
 	public ResponseBase findByOpenIdUser(@RequestParam("openId") String openId);
 	
+	//修改用户信息
+	@RequestMapping("/updateUserInfo")
+	public ResponseBase updateUserInfo(@RequestBody User user);
+	
 	
 	/**
 	 * 收获地址

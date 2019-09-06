@@ -227,6 +227,15 @@ public class MemberServiceImpl extends BaseApiService implements MemberService{
 		return setResponseSuccess(address);
 	}
 
+	@Override
+	public ResponseBase updateUserInfo(@RequestBody User user) {
+		if(user == null)
+			setResponseError("用户信息不能为空");
+		user.setUpdated(new Date());
+		userDao.updateUserInfo(user);
+		return setResponseSuccess();
+	}
+
 
 
 }

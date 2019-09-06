@@ -81,6 +81,13 @@
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-devtools</artifactId>
       </dependency>
+      
+      <!-- FastDFS 框架 -->
+	  <dependency>
+	    <groupId>com.github.tobato</groupId>
+	    <artifactId>fastdfs-client</artifactId>
+	    <version>${fastDFS.client.version}</version>
+	  </dependency>
 
   </dependencies>
     <build>

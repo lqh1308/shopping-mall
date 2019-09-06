@@ -174,8 +174,8 @@ input.btn-sub{display: block;width:32px;height: 28px;right: 0;background: url(..
 .center2{background-color:#fff;border:1px solid #eee;}
 .edit-user-infor{background-color:#fff;width:100%;padding:4% 12%;}
 .edit-user-infor>h3 span{margin-left: 50px;}
-.edit-user-infor ul li{margin:25px;}
-.edit-user-infor ul li input[type="text"],.edit-user-infor ul li input[type="email"]{height:28px;/*line-height: 28px;*/border:1px solid #dcdcdc;width:20%;padding:0 1%}
+.edit-user-infor ul li{margin: 25px;display: flex;flex-direction: row;align-items: center;}
+.edit-user-infor ul li input[type="text"],.edit-user-infor ul li input[type="email"]{height:28px;/*line-height: 28px;*/border:1px solid #dcdcdc;width:200px;padding:0 10px;}
 .edit-user-infor ul li select{width:90px;border:1px solid #dcdcdc;height: 28px;}                                                                                                                    
 .edit-user-infor ul li.set-touxiang {height: 80px;}
 .edit-user-infor ul li.set-touxiang .pic-tx{position: relative;display: inline-block;width:80px;height: 80px;}
@@ -184,7 +184,7 @@ input.btn-sub{display: block;width:32px;height: 28px;right: 0;background: url(..
 .edit-user-infor ul li.set-touxiang img{width: 80px;height: 80px; display: block;}
 .edit-user-infor ul li.set-touxiang .filePicker{position: relative;}
 .edit-user-infor ul li.set-touxiang input[type='file']{width: 80px;height: 80px;display: block;}
-.edit-user-infor ul li p{display: inline-block;width:10%;min-width: 80px; text-align: right;margin-right: 8px;}
+.edit-user-infor ul li p{display: inline-block;width:10%;min-width: 80px; text-align: right;margin-right: 20px;}
 .edit-user-infor>input[type="button"]{margin-left:13.5%;width:80px;}
 .edit-user-infor .smscode{display: none;}
 .edit-user-infor .smscode .input{width: 90px;margin-right: 5px;}
@@ -402,4 +402,7 @@ i.i-del:after{content: "X";}
     margin-left: 40px;
     width: 90px;
     font-size: 12px;
+}
+.blue{
+	color:cornflowerblue;
 }
