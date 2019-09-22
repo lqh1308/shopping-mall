@@ -12,12 +12,17 @@ import org.elasticsearch.action.get.GetRequest;
 import org.elasticsearch.action.get.GetRequestBuilder;
 import org.elasticsearch.action.get.GetResponse;
 import org.elasticsearch.client.Client;
+import org.elasticsearch.index.query.QueryBuilder;
+import org.elasticsearch.index.query.QueryBuilders;
+import org.elasticsearch.search.sort.SortBuilders;
+import org.elasticsearch.search.sort.SortOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.elasticsearch.core.query.NativeSearchQueryBuilder;
+import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -39,6 +44,18 @@ public class GoodEsServiceImpl extends BaseApiService implements GoodEsService {
 
     public ResponseBase getGoodByCategory(@RequestParam("categoryId") String categoryId, @RequestParam("page") int page, @RequestParam("size") int size) {
         Page<Good> goods = esDao.findByCategoryIdStartingWith(categoryId, PageRequest.of(page, size));
+//        //等价
+//        SearchQuery query = new NativeSearchQueryBuilder()
+//                .withQuery(
+//                        QueryBuilders.boolQuery()
+//                                // ↓ or
+//                                .must(QueryBuilders.matchPhrasePrefixQuery("categoryId", categoryId)))
+//                // ↓ 排序
+//                .withSort(SortBuilders.fieldSort("sortWeight").order(SortOrder.ASC))
+//                .withPageable(PageRequest.of(page, size))
+//                .build();
+//
+//        Page<Good> goods = esDao.search(query);
 
         return setResponseSuccess(goods.getContent());
     }
